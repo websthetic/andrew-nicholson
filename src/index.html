@@ -130,7 +130,6 @@ tags: "sitemap"
 <!-- ===================================================== -->
 <!--                  Who is Andrew                        -->
 <!-- ===================================================== -->
-
 <section class="cs-who-is-andrew" id="who-is-andrew">
 
     <div class="cs-who-sticky">
@@ -215,52 +214,69 @@ tags: "sitemap"
         </div>
 
     </div>
-
 </section>
-
 <div class="cs-who-spacer"></div>
 
 <!-- ============================================ -->
 <!--               Brand Statement                -->
 <!-- ============================================ -->
 
-<section id="brand-statement">
-  <p class="cs-headline">
-    Built through years of discipline in sport and expanded through a thoughtful approach to business.
-    Defined by a lasting commitment to impact, community, and opportunities beyond the game.
-  </p>
+<div id="brand-statement-wrapper">
+  <section id="brand-statement">
+    <p class="cs-headline" id="cs-brand-headline" aria-label="Built through years of discipline in sport and expanded through a thoughtful approach to business. Defined by a lasting commitment to impact, community, and opportunities beyond the game.">
+      <!-- Words injected by JS -->
+    </p>
 
-  <div class="cs-marquee-wrapper" aria-hidden="true">
-    <div class="cs-marquee-track" id="cs-marquee-track">
-      <!-- Logos injected by JS below -->
+    <div class="cs-marquee-wrapper" aria-hidden="true">
+      <div class="cs-marquee-track" id="cs-marquee-track">
+        <!-- Logos injected by JS below -->
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
 <script>(function () {
-    const logos = [
-        { text: "Recess Athletic Club",      cls: "" },
-        { text: "Rise Up",                   cls: "cs-upper" },
-        { text: "44Hoops Foundation",        cls: "" },
-        { text: "Revibe",                    cls: "cs-script" },
-        { text: "Fuel Nutrition Co.",        cls: "" },
-        { text: "MoveFit Performance",       cls: "cs-upper" },
-        { text: "Crumbl Cookies Ontario",    cls: "cs-serif" },
-        { text: "Canurta Therapeutics",      cls: "" },
-    ];
+  /* ── Marquee logos ── */
+  const logos = [
+    { text: "Recess Athletic Club",   cls: "" },
+    { text: "Rise Up",                cls: "cs-upper" },
+    { text: "44Hoops Foundation",     cls: "" },
+    { text: "Revibe",                 cls: "cs-script" },
+    { text: "Fuel Nutrition Co.",     cls: "" },
+    { text: "MoveFit Performance",    cls: "cs-upper" },
+    { text: "Crumbl Cookies Ontario", cls: "cs-serif" },
+    { text: "Canurta Therapeutics",   cls: "" },
+  ];
 
-    /* Quadruple so the seamless loop works at any screen width */
-    const items = [...logos, ...logos, ...logos, ...logos];
-    const track = document.getElementById("cs-marquee-track");
-
-    if (!track) return;
-
+  const items = [...logos, ...logos, ...logos, ...logos];
+  const track = document.getElementById("cs-marquee-track");
+  if (track) {
     items.forEach(function (logo) {
-        const span = document.createElement("span");
-        span.className = "cs-logo-item" + (logo.cls ? " " + logo.cls : "");
-        span.textContent = logo.text;
-        track.appendChild(span);
+      const span = document.createElement("span");
+      span.className = "cs-logo-item" + (logo.cls ? " " + logo.cls : "");
+      span.textContent = logo.text;
+      track.appendChild(span);
     });
+  }
+
+  /* ── Word splitting ── */
+  const headline = document.getElementById("cs-brand-headline");
+  if (!headline) return;
+
+  const fullText = "Built through years of discipline in sport and expanded through a thoughtful approach to business. Defined by a lasting commitment to impact, community, and opportunities beyond the game.";
+  const tokens = fullText.split(/(\s+)/);
+
+  tokens.forEach(function (token) {
+    const span = document.createElement("span");
+    if (token.trim() === "") {
+      span.className = "cs-word-space";
+      span.textContent = token;
+    } else {
+      span.className = "cs-word";
+      span.textContent = token;
+    }
+    headline.appendChild(span);
+  });
 })();</script>
 
 <!-- ===================================================== -->
@@ -269,7 +285,32 @@ tags: "sitemap"
 <section id="brand-pillars">
   <div class="cs-pillars-sticky">
 
-    <!-- sticky panel -->
+    <!-- ── Mobile cards (hidden on desktop) ── -->
+    <div class="cs-pillars-mobile">
+      <div class="cs-pillar-card">
+        <div class="cs-pillar-card-img">
+          <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-10.jpg" alt="Build" loading="lazy" decoding="async" />
+        </div>
+        <h3 class="cs-pillar-card-heading">Build.</h3>
+        <p class="cs-pillar-card-text">Before the courts, there was the classroom. Andrew's foundation in physics at St. Bonaventure University gave him something most athletes never develop — a systems thinker's mind. The ability to break down complexity, identify patterns, and solve for the unknown. It's the same principle he applies to every venture he touches.</p>
+      </div>
+      <div class="cs-pillar-card">
+        <div class="cs-pillar-card-img">
+          <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-3.jpg" alt="Compete" loading="lazy" decoding="async" />
+        </div>
+        <h3 class="cs-pillar-card-heading">Compete.</h3>
+        <p class="cs-pillar-card-text">Eight seasons in the NBA teaches you things no business school can. The relentless preparation, the resilience through adversity, the discipline to show up when it counts. Andrew carried every lesson from the professional game into how he builds — with consistency, competitiveness, and an unwillingness to settle for average.</p>
+      </div>
+      <div class="cs-pillar-card">
+        <div class="cs-pillar-card-img">
+          <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-6.jpg" alt="Create" loading="lazy" decoding="async" />
+        </div>
+        <h3 class="cs-pillar-card-heading">Create.</h3>
+        <p class="cs-pillar-card-text">Andrew doesn't write cheques and walk away. He embeds himself — from concept to launch, from brand identity to operations. Across sports, wellness, biotech, hospitality, and media, he builds businesses with the same hands-on intensity he brought to every training session. The venture is the arena. And he plays to win.</p>
+      </div>
+    </div>
+
+    <!-- ── Desktop sticky panel (hidden on mobile) ── -->
     <div class="cs-pillars-panel">
       <div class="cs-pillar-left">
         <h3 class="cs-pillar-heading">
@@ -306,82 +347,11 @@ tags: "sitemap"
     <div class="cs-pillars-spacer" aria-hidden="true"></div>
 
     <div class="cs-pillars-progress">
-  <div class="cs-pillars-progress-bar" id="cs-progress-bar"></div>
-</div>
+      <div class="cs-pillars-progress-bar" id="cs-progress-bar"></div>
+    </div>
 
   </div>
 </section>
-
-<script>(function () {
-  const section  = document.getElementById('brand-pillars');
-  if (!section) return;
-
-  const words    = section.querySelectorAll('.cs-pillar-word');
-  const texts    = section.querySelectorAll('.cs-pillar-text');
-  const images   = section.querySelectorAll('.cs-pillar-img-wrapper');
-  const spacer   = section.querySelector('.cs-pillars-spacer');
-  const bar      = document.getElementById('cs-progress-bar');
-  let current    = -1;
-
-  function activate(i) {
-    if (i === current) return;
-    current = i;
-    [words, texts, images].forEach(list => {
-      list.forEach(el => {
-        el.classList.toggle('is-active', +el.dataset.pillar === i);
-      });
-    });
-    if (bar) bar.style.width = ((i + 1) / 3 * 100) + '%';
-  }
-
-  function onScroll() {
-    if (!spacer || window.innerWidth < 1024) {
-      activate(0);
-      if (bar) bar.style.width = '0%';
-      return;
-    }
-
-    const rect     = section.getBoundingClientRect();
-    const total    = section.offsetHeight - window.innerHeight;
-    const progress = Math.max(0, Math.min(1, -rect.top / total));
-    const index    = Math.min(2, Math.floor(progress * 3));
-
-    activate(index);
-  }
-
-  activate(0);
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll, { passive: true });
-})();
-
-// ── Scroll throttle (both directions) ────────────────────────────────────
-let lastProgress = 0;
-const MAX_REVERSE_STEP = 0.02; // max rewind per frame (scrolling up)
-const MAX_FORWARD_STEP = 0.02; // max advance per frame (scrolling down, phase 1 only)
-const PHASE1_END = 0.55;       // throttle forward scroll only in phase 1
-
-ScrollTrigger.create({
-  trigger:  section,
-  start:    "top top",
-  end: () => "+=" + (section.offsetHeight - window.innerHeight),
-  scrub:    4,
-  onUpdate: function (self) {
-    let p = self.progress;
-
-    if (p < lastProgress) {
-      // scrolling up — throttle rewind
-      p = Math.max(p, lastProgress - MAX_REVERSE_STEP);
-    } else if (p > lastProgress && lastProgress < PHASE1_END) {
-      // scrolling down in phase 1 — throttle forward
-      p = Math.min(p, lastProgress + MAX_FORWARD_STEP);
-    }
-
-    lastProgress = p;
-    applyProgress(p);
-  },
-});
-
-</script>
 
 <!-- ============================================ -->
 <!--                  Portfolio                   -->
@@ -626,7 +596,7 @@ ScrollTrigger.create({
 </section>
 
 <script src="/assets/js/brand-pillars.js"></script>
-
 <script src="/assets/js/who-is-andrew.js"></script>
+<script src="/assets/js/brand-statement.js"></script>
 
 {% endblock %}

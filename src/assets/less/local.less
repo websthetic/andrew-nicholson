@@ -68,7 +68,7 @@ body {
         letter-spacing: -0.02em;
         color: @cs-who-text-color;
         margin: 0;
-        padding: 0 clamp(2rem, 12vw, 9rem);
+        padding: clamp(1rem, 3vw, 2rem) (20/16rem) clamp(3rem, 5vw, 4rem);
     }
 
     .cs-portrait-wrapper {
@@ -207,7 +207,7 @@ body {
     }
 
     .cs-who-copy {
-        font-size: clamp(1rem, 2vw, 2rem);
+        font-size: clamp(1.5rem, 3vw, 2.5rem);
         padding: 0 clamp(4rem, 18vw, 14rem);
     }
 
@@ -310,41 +310,55 @@ body {
 
 @media only screen and (min-width: 0px) {
 
-  #brand-statement {
+  #brand-statement-wrapper {
+    height: 350vh;
+    position: relative;
     background: #0d0d0d;
-    padding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem clamp(3rem, 5vw, 4rem);
-    text-align: center;
+  }
+
+  #brand-statement {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    background: #0d0d0d;
     overflow: hidden;
-    min-height: 100svh;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
+    padding: clamp(1.5rem, 3vw, 2.5rem) (20/16rem) clamp(1.5rem, 3vw, 2.5rem);
+    text-align: center;
 
     .cs-headline {
       font-family: var(--bodyFont);
       font-size: clamp(1.5rem, 3vw, 2.5rem);
       font-weight: 700;
-      line-height: 1.2em;
+      line-height: 1.3em;
       letter-spacing: -0.01em;
-      color: var(--bodyTextColorWhite);
       margin: 0 auto clamp(3rem, 5vw, 4rem);
-      max-width: 55rem;
+      max-width: (880/16rem);
 
-      em {
-        font-style: italic;
-        color: #6a9fd8;
-        text-transform: none;
-        font-family: Georgia, serif;
-        font-weight: 400;
-        font-size: 0.95em;
+      .cs-word {
+        display: inline;
+        color: rgba(255, 255, 255, 0.15);
+        transition: color 0.35s ease;
+        white-space: pre-wrap;
+
+        &.cs-lit {
+          color: rgba(255, 255, 255, 1);
+        }
+      }
+
+      .cs-word-space {
+        display: inline;
+        white-space: pre-wrap;
       }
     }
 
-    /*-- Marquee --*/
     .cs-marquee-wrapper {
       width: 100%;
       overflow: hidden;
-      padding-top: 2.25rem;
+      padding-top: (36/16rem);
       position: relative;
 
       &::before,
@@ -353,25 +367,25 @@ body {
         position: absolute;
         top: 0;
         bottom: 0;
-        width: 6.25rem;
+        width: (100/16rem);
         z-index: 2;
         pointer-events: none;
       }
 
       &::before {
         left: 0;
-        background: linear-gradient(to right, #000, transparent);
+        background: linear-gradient(to right, #0d0d0d, transparent);
       }
 
       &::after {
         right: 0;
-        background: linear-gradient(to left, #000, transparent);
+        background: linear-gradient(to left, #0d0d0d, transparent);
       }
     }
 
     .cs-marquee-track {
       display: flex;
-      gap: 4.5rem;
+      gap: (72/16rem);
       width: max-content;
       align-items: center;
       animation: brandStatementMarquee 120s linear infinite;
@@ -383,7 +397,7 @@ body {
 
     .cs-logo-item {
       font-family: var(--bodyFont);
-      font-size: 2rem;
+      font-size: (32/16rem);
       font-weight: 600;
       color: rgba(255, 255, 255, 0.4);
       white-space: nowrap;
@@ -398,20 +412,20 @@ body {
       &.cs-serif {
         font-family: Georgia, serif;
         font-weight: 400;
-        font-size: 2rem;
+        font-size: (32/16rem);
       }
 
       &.cs-script {
         font-family: Georgia, serif;
         font-style: italic;
         font-weight: 400;
-        font-size: 2rem;
+        font-size: (32/16rem);
       }
 
       &.cs-upper {
         font-family: var(--bodyFont);
         font-weight: 700;
-        font-size: 2rem;
+        font-size: (32/16rem);
         text-transform: uppercase;
         letter-spacing: 0.14em;
       }
@@ -423,7 +437,15 @@ body {
     to   { transform: translateX(-50%); }
   }
 
-} /* end @media */
+} /* end mobile */
+
+@media only screen and (min-width: 48rem) {
+
+  #brand-statement {
+    padding: clamp(3.75rem, 7.82vw, 6.25rem) (20/16rem) clamp(3rem, 5vw, 4rem);
+  }
+
+} /* end tablet */
 
 /*-- ------------------------------------ -->
 <---          Brand Pillars Section        -->
@@ -437,22 +459,130 @@ body {
 
   .cs-pillars-spacer { display: none; }
 
+  // ── hide desktop panel on mobile ──
   .cs-pillars-panel {
-    padding: clamp(4rem, 8vw, 6rem) clamp(1rem, 4vw, 2rem);
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
+    display: none;
   }
 
-  .cs-pillar-heading {
+  // ── Mobile cards ──
+  .cs-pillars-mobile {
+    display: flex;
+    flex-direction: column;
+    padding: clamp(2rem, 5vw, 3rem) clamp(1rem, 4vw, 2rem);
+  }
+
+  .cs-pillar-card {
+    padding-bottom: 3rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  .cs-pillar-card-img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  .cs-pillar-card-heading {
     font-family: var(--headerFont);
-    font-size: clamp(2.5rem, 10vw, 4rem);
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
     font-weight: 700;
     line-height: 1.0;
     letter-spacing: -0.02em;
     text-transform: uppercase;
     color: #fff;
-    margin: 0 0 1.5rem;
+    margin: 0 0 0.75rem;
+  }
+
+  .cs-pillar-card-text {
+    font-family: var(--bodyFont);
+    font-size: var(--bodyFontSize);
+    font-weight: 400;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+  }
+
+  .cs-pillars-progress {
+    display: none;
+  }
+
+  // ── keep desktop sticky internals intact but inert on mobile ──
+  .cs-pillar-word,
+  .cs-pillar-text,
+  .cs-pillar-img-wrapper {
+    transition: none;
+  }
+
+}
+
+/* ---- Desktop sticky scroll ---- */
+@media only screen and (min-width: 64rem) {
+
+  #brand-pillars {
+    padding: 0;
+  }
+
+  // ── hide mobile cards on desktop ──
+  .cs-pillars-mobile {
+    display: none;
+  }
+
+  .cs-pillars-sticky {
+    position: relative;
+  }
+
+  .cs-pillars-spacer {
+    display: block;
+    height: 300vh;
+  }
+
+  .cs-pillars-panel {
+    display: grid;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    grid-template-columns: 1fr 1fr;
+    padding: 0;
+    gap: 0;
+    overflow: hidden;
+  }
+
+  .cs-pillar-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(3rem, 5vw, 6rem);
+    background: #0d0d0d;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cs-pillar-heading {
+    font-family: var(--headerFont);
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    font-weight: 700;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0 0 2rem;
     position: relative;
     height: 1.1em;
   }
@@ -474,6 +604,7 @@ body {
 
   .cs-pillar-bodies {
     position: relative;
+    min-height: 8em;
   }
 
   .cs-pillar-text {
@@ -483,7 +614,8 @@ body {
     line-height: 1.7;
     color: rgba(255, 255, 255, 0.6);
     margin: 0;
-    max-width: 48ch;
+    max-width: 42ch;
+    display: block;
     position: absolute;
     top: 0; left: 0;
     opacity: 0;
@@ -495,100 +627,7 @@ body {
       opacity: 1;
       transform: translateY(0);
       pointer-events: auto;
-      position: relative;
     }
-  }
-
-  .cs-pillar-img-wrapper {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-top: 2rem;
-    opacity: 0;
-    transform: scale(1.03);
-    transition: opacity 0.6s 0.15s ease, transform 0.6s 0.15s ease;
-
-    img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    &.is-active {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-
-  .cs-pillars-progress {
-    display: none;
-  }
-
-  @media only screen and (max-width: 63.9375rem) {
-    .cs-pillar-heading { height: auto; margin-bottom: 1rem; }
-    .cs-pillar-word { position: relative; display: none; opacity: 1; transform: none; }
-    .cs-pillar-word.is-active { display: block; }
-    .cs-pillar-text { position: relative; opacity: 1; transform: none; pointer-events: auto; }
-    .cs-pillar-text:not(.is-active) { display: none; }
-    .cs-pillar-img-wrapper { opacity: 1; transform: none; }
-    .cs-pillar-img-wrapper:not(.is-active) { display: none; }
-  }
-}
-
-/* ---- Desktop sticky scroll ---- */
-@media only screen and (min-width: 64rem) {
-
-  #brand-pillars {
-    padding: 0;
-  }
-
-  .cs-pillars-sticky {
-    position: relative;
-  }
-
-  .cs-pillars-spacer {
-    display: block;
-    height: 300vh;
-  }
-
-  .cs-pillars-panel {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0;
-    gap: 0;
-    overflow: hidden;
-  }
-
-  .cs-pillar-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: clamp(3rem, 5vw, 6rem);
-    background: #0d0d0d;
-    position: relative;
-    z-index: 1;
-  }
-
-  .cs-pillar-heading {
-    font-size: clamp(3rem, 5vw, 5.5rem);
-    margin-bottom: 2rem;
-    height: 1.1em;
-  }
-
-  .cs-pillar-bodies {
-    position: relative;
-    min-height: 8em;
-  }
-
-  .cs-pillar-text {
-    position: absolute;
-    max-width: 42ch;
   }
 
   .cs-pillar-right {
@@ -598,6 +637,7 @@ body {
   }
 
   .cs-pillar-img-wrapper {
+    display: block;
     position: absolute;
     inset: 0;
     width: 100%;
@@ -605,6 +645,9 @@ body {
     aspect-ratio: unset;
     border-radius: 0;
     margin: 0;
+    opacity: 0;
+    transform: scale(1.03);
+    transition: opacity 0.6s 0.15s ease, transform 0.6s 0.15s ease;
 
     img {
       width: 100%;
@@ -612,6 +655,11 @@ body {
       top: -5%;
       position: relative;
       object-fit: cover;
+    }
+
+    &.is-active {
+      opacity: 1;
+      transform: scale(1);
     }
   }
 
@@ -627,14 +675,13 @@ body {
 
     &-bar {
       height: 100%;
-      background: #fff;
+      background: #f08809;
       width: 0%;
       transition: width 0.1s linear;
     }
   }
 
 }
-
 /*-- -------------------------- -->
 <---         Portfolio          -->
 <--- -------------------------- -*/
@@ -675,7 +722,7 @@ body {
         .cs-text {
             line-height: 1.65em;
             color: rgba(255, 255, 255, 0.5);
-            max-width: (320/16rem);
+            max-width: (520/16rem);
             margin: 0;
         }
 
