@@ -1,0 +1,477 @@
+/* =============================================================
+   VENTURES PORTFOLIO v2
+   3 independent sticky scroll groups + divider sections.
+   CodeStitch BEM conventions, pixel-to-rem via (X/16rem).
+   ============================================================= */
+
+/* ── FIXED SIDEBAR ──────────────────────────────────────────── */
+#vp-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: (140/16rem);
+    height: 100%;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 (32/16rem);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+
+    &.is-visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .vp-sidebar-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: (28/16rem);
+    }
+
+    .vp-sidebar-item {
+        display: flex;
+        flex-direction: column;
+        gap: (4/16rem);
+        cursor: pointer;
+        opacity: 0.3;
+        transition: opacity 0.4s ease;
+        position: relative;
+        padding-left: (14/16rem);
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: (2/16rem);
+            height: 0;
+            background: #fff;
+            transition: height 0.4s ease;
+        }
+
+        &.is-active {
+            opacity: 1;
+
+            &::before { height: 100%; }
+
+            .vp-sidebar-label { color: #fff; }
+        }
+
+        &:hover { opacity: 0.7; }
+    }
+
+    .vp-sidebar-label {
+        font-family: var(--bodyFont);
+        font-size: (10/16rem);
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.6);
+        transition: color 0.4s ease;
+    }
+
+    .vp-sidebar-count {
+        font-family: var(--bodyFont);
+        font-size: (9/16rem);
+        letter-spacing: 0.08em;
+        color: rgba(255, 255, 255, 0.2);
+    }
+}
+
+/* ── DIVIDER SECTION ────────────────────────────────────────── */
+.vp-divider-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: #000;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: (64/16rem) (72/16rem) (56/16rem);
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: (72/16rem);
+        right: (72/16rem);
+        height: (1/16rem);
+        background: rgba(255, 255, 255, 0.06);
+        z-index: 2;
+    }
+
+    .vp-divider-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.75) 0%,
+            rgba(0, 0, 0, 0.25) 60%,
+            rgba(0, 0, 0, 0.15) 100%
+        );
+        z-index: 1;
+    }
+
+    .vp-divider-bottom {
+        position: relative;
+        z-index: 2;
+    }
+
+    .vp-divider-title {
+        font-family: var(--headerFont);
+        font-size: clamp((56/16rem), 9vw, (120/16rem));
+        color: #fff;
+        line-height: 1;
+        letter-spacing: 0.02em;
+    }
+}
+
+/* ── HORIZONTAL GROUP ───────────────────────────────────────── */
+.vp-group {
+    position: relative;
+    /* height set dynamically by JS */
+
+    .vp-group-sticky {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+
+        /* Left gradient so sidebar stays readable over images */
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: (180/16rem);
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.65) 0%, transparent 100%);
+            z-index: 5;
+            pointer-events: none;
+        }
+    }
+
+    .vp-track {
+        display: flex;
+        height: 100%;
+        will-change: transform;
+        /* width set by JS */
+    }
+}
+
+/* ── PANELS ─────────────────────────────────────────────────── */
+.vp-panel {
+    flex: 0 0 100vw;
+    width: 100vw;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ── CARD INTERNALS ─────────────────────────────────────────── */
+.vp-card-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+
+    .vp-panel:hover & { transform: scale(1.04); }
+}
+
+.vp-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.88) 0%,
+        rgba(0, 0, 0, 0.38) 50%,
+        rgba(0, 0, 0, 0.1) 100%
+    );
+    opacity: 0.75;
+    transition: opacity 0.5s ease;
+
+    .vp-panel:hover & { opacity: 1; }
+}
+
+.vp-card-content {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: (40/16rem) (60/16rem) (52/16rem);
+}
+
+.vp-card-category {
+    font-family: var(--bodyFont);
+    font-size: (9/16rem);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.3);
+    margin-left: (80/16rem);
+}
+
+.vp-card-body-wrap {
+    padding-left: (80/16rem);
+}
+
+.vp-card-body {
+    transform: translateY((18/16rem));
+    opacity: 0;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity 0.5s ease;
+
+    .vp-panel:hover & {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.vp-card-title {
+    font-family: var(--headerFont);
+    font-size: clamp((32/16rem), 4vw, (56/16rem));
+    color: #fff;
+    line-height: 1.05;
+    margin: 0 0 (6/16rem);
+    transform: translateY((10/16rem));
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.05s;
+
+    .vp-panel:hover & { transform: translateY(0); }
+}
+
+.vp-card-role {
+    font-family: var(--bodyFont);
+    font-size: (9/16rem);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
+    margin: 0 0 (14/16rem);
+}
+
+.vp-card-desc {
+    font-family: var(--bodyFont);
+    font-size: clamp((13/16rem), 1.1vw, (15/16rem));
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: (480/16rem);
+    margin: 0 0 (22/16rem);
+}
+
+.vp-card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: (8/16rem);
+    font-family: var(--bodyFont);
+    font-size: (10/16rem);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+    border-bottom: (1/16rem) solid rgba(255, 255, 255, 0.25);
+    padding-bottom: (4/16rem);
+    transition: border-color 0.3s ease, gap 0.3s ease;
+
+    &:hover {
+        border-color: #fff;
+        gap: (14/16rem);
+    }
+}
+
+/* ── DOTS ───────────────────────────────────────────────────── */
+.vp-dots {
+    position: absolute;
+    bottom: (28/16rem);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    display: flex;
+    gap: (6/16rem);
+    align-items: center;
+}
+
+.vp-dot {
+    width: (4/16rem);
+    height: (4/16rem);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    transition: all 0.3s ease;
+
+    &.is-active {
+        background: #fff;
+        transform: scale(1.4);
+    }
+}
+
+/* ── SCROLL HINT ────────────────────────────────────────────── */
+.vp-scroll-hint {
+    position: absolute;
+    bottom: (28/16rem);
+    right: (44/16rem);
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: (8/16rem);
+    font-family: var(--bodyFont);
+    font-size: (9/16rem);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.25);
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+
+    svg { animation: vp-hint-slide 1.8s ease-in-out infinite; }
+
+    &.is-hidden { opacity: 0; }
+}
+
+@keyframes vp-hint-slide {
+    0%, 100% { transform: translateX(0); }
+    50%       { transform: translateX((6/16rem)); }
+}
+
+/* ── MOBILE TAB NAV ─────────────────────────────────────────── */
+.vp-mobile-tabs {
+    display: none;
+}
+
+/* ── MOBILE ─────────────────────────────────────────────────── */
+@media only screen and (max-width: 47.9375rem) {
+
+    /* Hide desktop sidebar */
+    #vp-sidebar { display: none; }
+
+    /* Mobile tab nav — fixed top center, transparent */
+    .vp-mobile-tabs {
+        display: flex;
+        position: fixed;
+        top: (16/16rem);
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 200;
+        gap: 0;
+        background: transparent;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s ease;
+
+        &.is-visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    }
+
+    .vp-mobile-tab {
+        font-family: var(--bodyFont);
+        font-size: (9/16rem);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.35);
+        padding: (8/16rem) (14/16rem);
+        cursor: pointer;
+        transition: color 0.3s ease;
+        white-space: nowrap;
+        position: relative;
+
+        /* Dot indicator below active tab */
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: (2/16rem);
+            left: 50%;
+            transform: translateX(-50%);
+            width: (3/16rem);
+            height: (3/16rem);
+            border-radius: 50%;
+            background: #fff;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        &.is-active {
+            color: #fff;
+
+            &::after { opacity: 1; }
+        }
+    }
+
+    /* Divider — 50vh, title bottom-left */
+    .vp-divider-section {
+        height: 50vh;
+        padding: (28/16rem) (24/16rem) (28/16rem);
+        justify-content: flex-end;
+
+        &::after {
+            left: (24/16rem);
+            right: (24/16rem);
+        }
+
+        .vp-divider-title {
+            font-size: clamp((40/16rem), 10vw, (64/16rem));
+        }
+    }
+
+    /* Group — height driven by JS for swipe, keep sticky */
+    .vp-group {
+        /* height still set by JS: 100vh × cardCount */
+
+        .vp-group-sticky {
+            /* stays sticky on mobile too */
+            height: 100vh;
+            overflow: hidden;
+
+            &::before { display: none; }
+        }
+
+        .vp-track {
+            /* horizontal flex — JS drives translateX via touch */
+            flex-direction: row;
+        }
+    }
+
+    /* Panels — full viewport on mobile */
+    .vp-panel {
+        flex: 0 0 100vw;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    /* Cards — always show body on mobile (no hover state) */
+    .vp-card-body {
+        transform: none;
+        opacity: 1;
+    }
+    .vp-card-title { transform: none; }
+
+    .vp-card-category { margin-left: (24/16rem); }
+    .vp-card-body-wrap { padding-left: (24/16rem); }
+
+    .vp-card-content {
+        padding: (24/16rem) (20/16rem) (40/16rem);
+    }
+
+    /* Dots — larger tap target on mobile */
+    .vp-dots {
+        bottom: (20/16rem);
+    }
+    .vp-dot {
+        width: (5/16rem);
+        height: (5/16rem);
+    }
+
+    /* Scroll hint hidden on mobile */
+    .vp-scroll-hint { display: none; }
+}
