@@ -1,59 +1,57 @@
 <!-- ============================================ -->
 <!--                 Navigation                   -->
 <!-- ============================================ -->
-
-<!--  Full-screen overlay menu — hamburger on all breakpoints  -->
 <div class="cs-menu-overlay" id="cs-menu-overlay" aria-hidden="true">
     <div class="cs-menu-inner">
-        <ul class="cs-ul" id="cs-expanded">
-            <li class="cs-li">
-                <a href="/" class="cs-li-link {% if page.url == "/" %} cs-active {% endif %}" {% if page.url == "/" %} aria-current="page" {% endif %}>
-                    Home <span class="cs-arrow" aria-hidden="true">→</span>
-                </a>
-            </li>
-            <li class="cs-li">
-                <a href="/about/" class="cs-li-link {% if page.url == "/about/" %} cs-active {% endif %}" {% if page.url == "/about/" %} aria-current="page" {% endif %}>
-                    About <span class="cs-arrow" aria-hidden="true">→</span>
-                </a>
-            </li>
-            <li class="cs-li cs-dropdown">
-                <button class="cs-li-link cs-dropdown-toggle {% if page.url == "/project-one/" or page.url == "/project-two/" %} cs-active {% endif %}" aria-haspopup="menu" aria-expanded="false" id="projects-dropdown-toggle">
-                    Projects <span class="cs-arrow" aria-hidden="true">→</span>
-                </button>
-                <ul class="cs-drop-ul" aria-labelledby="projects-dropdown-toggle">
-                    <li class="cs-drop-li">
-                        <a href="/project-one/" class="cs-li-link cs-drop-link">Project One</a>
-                    </li>
-                    <li class="cs-drop-li">
-                        <a href="/project-two/" class="cs-li-link cs-drop-link">Project Two</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="cs-li">
-                <a href="/reviews/" class="cs-li-link {% if page.url == "/reviews/" %} cs-active {% endif %}" {% if page.url == "/reviews/" %} aria-current="page" {% endif %}>
-                    Reviews <span class="cs-arrow" aria-hidden="true">→</span>
-                </a>
-            </li>
-            <li class="cs-li">
-                <a href="/blog/" class="cs-li-link {% if page.url == "/blog/" %} cs-active {% endif %}" {% if page.url == "/blog/" %} aria-current="page" {% endif %}>
-                    Blog <span class="cs-arrow" aria-hidden="true">→</span>
-                </a>
-            </li>
-            <li class="cs-li">
-                <a href="/contact/" class="cs-li-link {% if page.url == "/contact/" %} cs-active {% endif %}" {% if page.url == "/contact/" %} aria-current="page" {% endif %}>
-                    Contact <span class="cs-arrow" aria-hidden="true">→</span>
-                </a>
-            </li>
-        </ul>
-        <a href="/contact/" class="cs-button-solid cs-menu-button">Contact Us</a>
+
+        <nav class="cs-nav-col">
+            <ul class="cs-ul">
+                <li class="cs-li">
+                    <a href="/" class="cs-li-link" {% if page.url == "/" %} aria-current="page" {% endif %}>
+                        Home <span class="cs-arrow" aria-hidden="true">→</span>
+                    </a>
+                </li>
+                <li class="cs-li">
+                    <a href="/portfolio/" class="cs-li-link" {% if page.url == "/portfolio/" %} aria-current="page" {% endif %}>
+                        Portfolio <span class="cs-arrow" aria-hidden="true">→</span>
+                    </a>
+                </li>
+                <li class="cs-li">
+                    <a href="/about/" class="cs-li-link" {% if page.url == "/about/" %} aria-current="page" {% endif %}>
+                        About <span class="cs-arrow" aria-hidden="true">→</span>
+                    </a>
+                </li>
+                <li class="cs-li">
+                    <a href="/44-hoops-foundation/" class="cs-li-link" {% if page.url == "/44-hoops-foundation/" %} aria-current="page" {% endif %}>
+                        44 Hoops Foundation <span class="cs-arrow" aria-hidden="true">→</span>
+                    </a>
+                </li>
+                <li class="cs-li">
+                    <a href="/contact/" class="cs-li-link" {% if page.url == "/contact/" %} aria-current="page" {% endif %}>
+                        Contact <span class="cs-arrow" aria-hidden="true">→</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <aside class="cs-menu-aside">
+            <p class="cs-social-label">Social</p>
+            <ul class="cs-social-list">
+                <li><a href="https://instagram.com/" class="cs-social-link" target="_blank" rel="noopener">Instagram</a></li>
+                <li><a href="https://twitter.com/" class="cs-social-link" target="_blank" rel="noopener">Twitter</a></li>
+                <li><a href="https://facebook.com/" class="cs-social-link" target="_blank" rel="noopener">Facebook</a></li>
+                <li><a href="https://youtube.com/" class="cs-social-link" target="_blank" rel="noopener">YouTube</a></li>
+            </ul>
+        </aside>
+
     </div>
 </div>
 
 <header id="cs-navigation">
     <div class="cs-container">
-        <!--Nav Logo — 44 in Suisse Screen-->
-        <a href="/" class="cs-logo" aria-label="Home">44</a>
-        <!--Hamburger Toggle — used on all screen sizes-->
+        <a href="/" class="cs-logo" aria-label="Home">
+            <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/andrew-nicholoson-logo.png" alt="Andrew Nicholson" class="cs-logo-img" />
+        </a>
         <button class="cs-toggle" id="cs-toggle" aria-expanded="false" aria-controls="cs-menu-overlay" aria-label="menu toggle" aria-haspopup="menu">
             <span class="cs-box" aria-hidden="true">
                 <span class="cs-line cs-line1"></span>

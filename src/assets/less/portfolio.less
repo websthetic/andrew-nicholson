@@ -351,10 +351,9 @@
 /* ── MOBILE ─────────────────────────────────────────────────── */
 @media only screen and (max-width: 47.9375rem) {
 
-    /* Hide desktop sidebar */
     #vp-sidebar { display: none; }
 
-    /* Mobile tab nav — fixed top center, transparent */
+    /* Mobile tab nav */
     .vp-mobile-tabs {
         display: flex;
         position: fixed;
@@ -362,7 +361,6 @@
         left: 50%;
         transform: translateX(-50%);
         z-index: 200;
-        gap: 0;
         background: transparent;
         opacity: 0;
         pointer-events: none;
@@ -380,13 +378,12 @@
         letter-spacing: 0.12em;
         text-transform: uppercase;
         color: rgba(255, 255, 255, 0.35);
-        padding: (8/16rem) (14/16rem);
+        padding: (8/16rem) (12/16rem);
         cursor: pointer;
         transition: color 0.3s ease;
         white-space: nowrap;
         position: relative;
 
-        /* Dot indicator below active tab */
         &::after {
             content: "";
             position: absolute;
@@ -403,15 +400,14 @@
 
         &.is-active {
             color: #fff;
-
             &::after { opacity: 1; }
         }
     }
 
-    /* Divider — 50vh, title bottom-left */
+    /* Divider — 50vh on mobile */
     .vp-divider-section {
         height: 50vh;
-        padding: (28/16rem) (24/16rem) (28/16rem);
+        padding: (28/16rem) (24/16rem);
         justify-content: flex-end;
 
         &::after {
@@ -424,54 +420,58 @@
         }
     }
 
-    /* Group — height driven by JS for swipe, keep sticky */
+    /* Group — just 100vh, no extra scroll height */
     .vp-group {
-        /* height still set by JS: 100vh × cardCount */
+        height: 100vh !important;
+        position: relative;
 
+        /* Sticky becomes the scroll container */
         .vp-group-sticky {
-            /* stays sticky on mobile too */
+            position: relative;
+            top: auto;
+            width: 100%;
             height: 100vh;
-            overflow: hidden;
+            /* CSS scroll snap — native browser swipe */
+            overflow-x: scroll;
+            overflow-y: hidden;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            &::-webkit-scrollbar { display: none; }
 
             &::before { display: none; }
         }
 
+        /* Track flows naturally inside scroll container */
         .vp-track {
-            /* horizontal flex — JS drives translateX via touch */
-            flex-direction: row;
+            transform: none !important;
+            display: flex;
+            height: 100%;
         }
     }
 
-    /* Panels — full viewport on mobile */
+    /* Each panel snaps into place */
     .vp-panel {
         flex: 0 0 100vw;
         width: 100vw;
         height: 100vh;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
     }
 
-    /* Cards — always show body on mobile (no hover state) */
+    /* Cards always visible on mobile — no hover needed */
     .vp-card-body {
-        transform: none;
-        opacity: 1;
+        transform: none !important;
+        opacity: 1 !important;
     }
-    .vp-card-title { transform: none; }
+    .vp-card-title { transform: none !important; }
 
     .vp-card-category { margin-left: (24/16rem); }
     .vp-card-body-wrap { padding-left: (24/16rem); }
+    .vp-card-content { padding: 0 1.5rem 2.5rem; }
 
-    .vp-card-content {
-        padding: (24/16rem) (20/16rem) (40/16rem);
-    }
+    .vp-dots { bottom: (20/16rem); }
+    .vp-dot { width: (5/16rem); height: (5/16rem); }
 
-    /* Dots — larger tap target on mobile */
-    .vp-dots {
-        bottom: (20/16rem);
-    }
-    .vp-dot {
-        width: (5/16rem);
-        height: (5/16rem);
-    }
-
-    /* Scroll hint hidden on mobile */
     .vp-scroll-hint { display: none; }
 }
