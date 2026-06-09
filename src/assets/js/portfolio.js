@@ -1,10 +1,3 @@
-/* =============================================================
-   VENTURES PORTFOLIO — Scroll Controller v4
-   Desktop: scroll-driven sticky horizontal (translateX via scrollY)
-   Mobile:  CSS scroll-snap — pure native, zero JS touch handling
-   IIFE pattern per project conventions.
-   ============================================================= */
-
 (function () {
   "use strict";
 
@@ -16,14 +9,15 @@
 
   /* ── Build group objects ───────────────────── */
   document.querySelectorAll(".vp-group").forEach(function (groupEl) {
-    const cat    = groupEl.dataset.category;
-    const track  = groupEl.querySelector(".vp-track");
-    const panels = Array.from(groupEl.querySelectorAll(".vp-panel"));
-    const dots   = Array.from(groupEl.querySelectorAll(".vp-dot"));
-    const hint   = groupEl.querySelector(".vp-scroll-hint");
+    const cat      = groupEl.dataset.category;
+    const track    = groupEl.querySelector(".vp-track");
+    const panels   = Array.from(groupEl.querySelectorAll(".vp-panel"));
+    const dots     = Array.from(groupEl.querySelectorAll(".vp-dot"));
+    const hint     = groupEl.querySelector(".vp-scroll-hint");
+    const progress = groupEl.querySelector(".vp-progress-fill");
 
     groups.push({
-      el: groupEl, track, panels, dots, hint, cat,
+      el: groupEl, track, panels, dots, hint, progress, cat,
       targetX: 0, currentX: 0, maxX: 0, panelW: 0,
       hintHidden: false
     });
@@ -39,15 +33,11 @@
       g.track.style.width = (g.panels.length * g.panelW) + "px";
 
       if (isMobile()) {
-        /* Mobile: group is just 100vh — no extra scroll height needed.
-           CSS scroll-snap handles everything inside .vp-group-sticky */
         g.el.style.height = "100vh";
-        /* Reset JS transform — CSS snap takes over */
         g.track.style.transform = "none";
         g.currentX = 0;
         g.targetX  = 0;
       } else {
-        /* Desktop: extra scroll height per additional card */
         g.el.style.height = (100 + (g.panels.length - 1) * 100) + "vh";
       }
     });
@@ -62,7 +52,7 @@
       const stickyH  = window.innerHeight;
       const scrolled = scrollY - elTop;
 
-      if (scrolled < 0)               { g.targetX = 0; }
+      if (scrolled < 0)                  { g.targetX = 0; }
       else if (scrolled > elH - stickyH) { g.targetX = g.maxX; }
       else { g.targetX = (scrolled / (elH - stickyH)) * g.maxX; }
 
@@ -70,18 +60,6 @@
         g.hintHidden = true;
         if (g.hint) g.hint.classList.add("is-hidden");
       }
-    });
-  }
-
-  /* ── Mobile: read scroll-snap position for dots ── */
-  function syncMobileDots() {
-    groups.forEach(function (g) {
-      const sticky = g.el.querySelector(".vp-group-sticky");
-      if (!sticky) return;
-      const idx = Math.round(sticky.scrollLeft / (g.panelW || 1));
-      g.dots.forEach(function (d, i) { d.classList.toggle("is-active", i === idx); });
-
-      /* Update mobile tab active state based on which group is in view */
     });
   }
 
@@ -93,8 +71,15 @@
         g.currentX = Math.abs(diff) < 0.4 ? g.targetX : g.currentX + diff * 0.12;
         g.track.style.transform = "translateX(" + (-g.currentX) + "px)";
 
+        /* Dots (desktop: hidden via CSS, but logic kept for resize safety) */
         const idx = Math.round(g.currentX / (g.panelW || 1));
         g.dots.forEach(function (d, i) { d.classList.toggle("is-active", i === idx); });
+
+        /* Progress bar — fills 0% → 100% across the group's scroll range */
+        if (g.progress && g.maxX > 0) {
+          const pct = (g.currentX / g.maxX) * 100;
+          g.progress.style.width = Math.min(100, Math.max(0, pct)) + "%";
+        }
       });
     }
 
