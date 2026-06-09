@@ -11,6 +11,91 @@ permalink: "/portfolio/"
 {% endblock %}
 
 {% block body %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+
+<!-- ============================================ -->
+<!--                    HERO                      -->
+<!-- ============================================ -->
+
+<section id="hoops-hero">
+    <div class="cs-container">
+        <div class="cs-content">
+            <h1 class="cs-title">
+                The Portfolio
+            </h1>
+            <p class="cs-text">
+                Eight ventures. Three categories. One through line — build something that lasts.
+            </p>
+            <div class="cs-meta">
+                <span class="cs-meta-item">The Body</span>
+                <span class="cs-meta-divider">·</span>
+                <span class="cs-meta-item">The Community</span>
+                <span class="cs-meta-divider">·</span>
+                <span class="cs-meta-item">The Business</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background image -->
+    <picture class="cs-background">
+        <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-3.jpg">
+        <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-3.jpg">
+        <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-3.jpg"
+             alt="Andrew Nicholson with youth at a 44 Hoops basketball camp"
+             loading="eager"
+             decoding="async">
+    </picture>
+
+    <!-- Scroll cue -->
+    <div class="cs-scroll-cue" aria-hidden="true">
+        <span class="cs-scroll-line"></span>
+    </div>
+</section>
+
+<script>(function () {
+    "use strict";
+
+    var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) { return; }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    var hero      = document.querySelector("#hoops-hero");
+    if (!hero) { return; }
+
+    var title     = hero.querySelector(".cs-title");
+    var text      = hero.querySelector(".cs-text");
+    var meta      = hero.querySelector(".cs-meta");
+    var scrollCue = hero.querySelector(".cs-scroll-cue");
+    var bgImg     = hero.querySelector(".cs-background img");
+
+    gsap.set([title, text, meta], { opacity: 0, y: 28 });
+    gsap.set(scrollCue, { opacity: 0 });
+
+    var tl = gsap.timeline({ delay: 0.2 });
+
+    tl.to(title,  { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" }, 0.1)
+      .to(text,   { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, "-=0.5")
+      .to(meta,   { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "-=0.4")
+      .to(scrollCue, { opacity: 1, duration: 0.6, ease: "power2.out" }, "-=0.2");
+
+    /* Parallax — image drifts down as user scrolls away */
+    ScrollTrigger.create({
+        trigger: hero,
+        start: "top top",
+        end: "bottom top",
+        onUpdate: function (self) {
+            if (bgImg) {
+                gsap.set(bgImg, { y: self.progress * -150 });
+            }
+        }
+    });
+
+}());</script>
+
 <!-- ============================================ -->
 <!--                  Portfolio                   -->
 <!-- ============================================ -->
