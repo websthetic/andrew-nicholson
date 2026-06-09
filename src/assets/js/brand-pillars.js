@@ -42,11 +42,16 @@
   }
 
   // init
-  if (window.innerWidth < 1024) {
-    activateAll();
-  } else {
-    activate(0);
-  }
+if (window.innerWidth < 1024) {
+  activateAll();
+} else {
+  // activate first pillar visually but leave bar empty
+  words[0] && words[0].classList.add('is-active');
+  texts[0] && texts[0].classList.add('is-active');
+  images[0] && images[0].classList.add('is-active');
+  current = 0;
+  if (bar) bar.style.width = '0%';
+}
 
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll, { passive: true });

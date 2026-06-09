@@ -77,56 +77,6 @@ tags: "sitemap"
     </div>
 </section>
 
-<script>
-(function () {
-    var canvas = document.querySelector('.cs-grain');
-    var ctx    = canvas.getContext('2d');
-
-    function resizeCanvas() {
-        canvas.width  = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    function drawGrain() {
-        var w         = canvas.width;
-        var h         = canvas.height;
-        var imageData = ctx.createImageData(w, h);
-        var buffer    = imageData.data;
-
-        for (var i = 0; i < buffer.length; i += 4) {
-            var val   = Math.random() * 255 | 0;
-            buffer[i]   = val;
-            buffer[i+1] = val;
-            buffer[i+2] = val;
-            buffer[i+3] = 255;
-        }
-
-        ctx.putImageData(imageData, 0, 0);
-        requestAnimationFrame(drawGrain);
-    }
-
-    drawGrain();
-
-    var hero  = document.getElementById('hero');
-    var video = hero.querySelector('video.cs-background');
-    var btn   = hero.querySelector('.cs-sound-btn');
-    var label = hero.querySelector('.cs-sound-label');
-
-    if (!btn || !video) return;
-
-    btn.addEventListener('click', function () {
-        var isOn = hero.classList.toggle('cs-sound-on');
-        video.muted = !isOn;
-        btn.setAttribute('aria-pressed', isOn ? 'true' : 'false');
-        btn.setAttribute('aria-label', isOn ? 'Mute sound' : 'Unmute sound');
-        label.textContent = isOn ? 'Mute' : 'Sound';
-    });
-})();
-</script>
-
 <!-- ===================================================== -->
 <!--                  Who is Andrew                        -->
 <!-- ===================================================== -->
@@ -215,6 +165,7 @@ tags: "sitemap"
 
     </div>
 </section>
+
 <div class="cs-who-spacer"></div>
 
 <!-- ============================================ -->
@@ -234,50 +185,6 @@ tags: "sitemap"
     </div>
   </section>
 </div>
-
-<script>(function () {
-  /* ── Marquee logos ── */
-  const logos = [
-    { text: "Recess Athletic Club",   cls: "" },
-    { text: "Rise Up",                cls: "cs-upper" },
-    { text: "44Hoops Foundation",     cls: "" },
-    { text: "Revibe",                 cls: "cs-script" },
-    { text: "Fuel Nutrition Co.",     cls: "" },
-    { text: "MoveFit Performance",    cls: "cs-upper" },
-    { text: "Crumbl Cookies Ontario", cls: "cs-serif" },
-    { text: "Canurta Therapeutics",   cls: "" },
-  ];
-
-  const items = [...logos, ...logos, ...logos, ...logos];
-  const track = document.getElementById("cs-marquee-track");
-  if (track) {
-    items.forEach(function (logo) {
-      const span = document.createElement("span");
-      span.className = "cs-logo-item" + (logo.cls ? " " + logo.cls : "");
-      span.textContent = logo.text;
-      track.appendChild(span);
-    });
-  }
-
-  /* ── Word splitting ── */
-  const headline = document.getElementById("cs-brand-headline");
-  if (!headline) return;
-
-  const fullText = "Built through years of discipline in sport and expanded through a thoughtful approach to business. Defined by a lasting commitment to impact, community, and opportunities beyond the game.";
-  const tokens = fullText.split(/(\s+)/);
-
-  tokens.forEach(function (token) {
-    const span = document.createElement("span");
-    if (token.trim() === "") {
-      span.className = "cs-word-space";
-      span.textContent = token;
-    } else {
-      span.className = "cs-word";
-      span.textContent = token;
-    }
-    headline.appendChild(span);
-  });
-})();</script>
 
 <!-- ===================================================== -->
 <!--                   Brand Pillars                       -->
@@ -344,13 +251,13 @@ tags: "sitemap"
     </div>
 
     <!-- scroll-height spacer — 3 panels -->
-    <div class="cs-pillars-spacer" aria-hidden="true"></div>
+<div class="cs-pillars-spacer" aria-hidden="true"></div>
 
-    <div class="cs-pillars-progress">
-      <div class="cs-pillars-progress-bar" id="cs-progress-bar"></div>
-    </div>
-
+<div class="cs-pillars-progress">
+  <div class="cs-pillars-progress-bar-track">
+    <div class="cs-pillars-progress-bar" id="cs-progress-bar"></div>
   </div>
+</div>
 </section>
 
 <!-- ============================================ -->
@@ -375,10 +282,10 @@ tags: "sitemap"
                     <div class="cs-media">
                         <video
                             class="cs-video"
-                            autoplay
                             muted
                             loop
                             playsinline
+                            preload="none"
                             poster="/assets/images/portfolio/pro-performance-lab.jpg"
                         >
                             <source src="https://player.vimeo.com/progressive_redirect/playback/1158898677/rendition/720p/file.mp4%20%28720p%29.mp4?loc=external&signature=cebc439b86e44502a2e45116bec7403473b144ec6f4ac5c5664aa22db683ea9c" type="video/mp4">
@@ -403,10 +310,10 @@ tags: "sitemap"
                     <div class="cs-media">
                         <video
                             class="cs-video"
-                            autoplay
                             muted
                             loop
                             playsinline
+                            preload="none"
                             poster="/assets/images/portfolio/recovery-co.jpg"
                         >
                             <source src="https://player.vimeo.com/progressive_redirect/playback/1158898918/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&signature=5830e04cab690d6cce23a8d38b3a0c7fcb8585fedff8124eaf6a3434e0d202c8" type="video/mp4">
@@ -431,10 +338,10 @@ tags: "sitemap"
                     <div class="cs-media">
                         <video
                             class="cs-video"
-                            autoplay
                             muted
                             loop
                             playsinline
+                            preload="none"
                             poster="/assets/images/portfolio/bioedge-sciences.jpg"
                         >
                             <source src="https://player.vimeo.com/progressive_redirect/playback/1162670261/rendition/360p/file.mp4%20%28360p%29.mp4?loc=external&signature=b3cdda2454b67e67d8d6d313fcf8e0c171270933b56f19d155332e6c7319d02d" type="video/mp4">
@@ -459,10 +366,10 @@ tags: "sitemap"
                     <div class="cs-media">
                         <video
                             class="cs-video"
-                            autoplay
                             muted
                             loop
                             playsinline
+                            preload="none"
                             poster="/assets/images/portfolio/fuel-form.jpg"
                         >
                             <source src="https://player.vimeo.com/progressive_redirect/playback/1158898829/rendition/720p/file.mp4%20%28720p%29.mp4?loc=external&signature=3390fef9bf6220e43016c8dd57a72784374a3c96a00cfd6b1263b45947e7bf03" type="video/mp4">
@@ -486,10 +393,10 @@ tags: "sitemap"
                     <div class="cs-media">
                         <video
                             class="cs-video"
-                            autoplay
                             muted
                             loop
                             playsinline
+                            preload="none"
                             poster="https://cdn.prod.website-files.com/696dfd1171b624690cfd2f6e/6970b883d409cc79cc67e715_Belkin.avif"
                         >
                             <source src="/assets/videos/portfolio/court-table.mp4" type="video/mp4">
@@ -513,10 +420,10 @@ tags: "sitemap"
                     <div class="cs-media">
                         <video
                             class="cs-video"
-                            autoplay
                             muted
                             loop
                             playsinline
+                            preload="none"
                             poster="/assets/images/portfolio/next-court-up.jpg"
                         >
                             <source src="https://player.vimeo.com/progressive_redirect/playback/1158899611/rendition/480p/file.mp4%20%28480p%29.mp4?loc=external&signature=aee541459cc8f381f80b9e7605c3420b38d8153b37db5214a10eeb971dd55af9" type="video/mp4">
@@ -541,10 +448,10 @@ tags: "sitemap"
                     <div class="cs-media">
                         <video
                             class="cs-video"
-                            autoplay
                             muted
                             loop
                             playsinline
+                            preload="none"
                             poster="/assets/images/portfolio/hardwood-stories.jpg"
                         >
                             <source src="https://player.vimeo.com/progressive_redirect/playback/1158898850/rendition/720p/file.mp4%20%28720p%29.mp4?loc=external&signature=5f637d6452236b028c1a706081a6045dee082e52868d13736300b6d2257c7524" type="video/mp4">
@@ -569,10 +476,10 @@ tags: "sitemap"
                     <div class="cs-media">
                         <video
                             class="cs-video"
-                            autoplay
                             muted
                             loop
                             playsinline
+                            preload="none"
                             poster="/assets/images/portfolio/nicholson-ventures.jpg"
                         >
                             <source src="https://player.vimeo.com/progressive_redirect/playback/1158898774/rendition/720p/file.mp4%20%28720p%29.mp4?loc=external&signature=ea01c1f82571e4bc9778fb966868a39511de480673df36c55f57a41d1d12046e" type="video/mp4">
@@ -595,8 +502,10 @@ tags: "sitemap"
     </div>
 </section>
 
+<script src="/assets/js/hero.js"></script>
 <script src="/assets/js/brand-pillars.js"></script>
 <script src="/assets/js/who-is-andrew.js"></script>
 <script src="/assets/js/brand-statement.js"></script>
+<script src="/assets/js/hero-portfolio.js"></script>
 
 {% endblock %}
