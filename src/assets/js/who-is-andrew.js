@@ -269,24 +269,13 @@
     }
 
     // ── Reverse scroll throttle ───────────────────────────────────────────────
-    let lastProgress = 0;
-    const MAX_REVERSE_STEP = 0.01;
-
-    ScrollTrigger.create({
+  ScrollTrigger.create({
       trigger:  section,
       start:    "top top",
       end: () => "+=" + (section.offsetHeight - window.innerHeight),
-      scrub:    4,
+      scrub:    1.5,
       onUpdate: function (self) {
-        let p = self.progress;
-
-        // if scrolling up, limit how fast progress can drop
-        if (p < lastProgress) {
-          p = Math.max(p, lastProgress - MAX_REVERSE_STEP);
-        }
-
-        lastProgress = p;
-        applyProgress(p);
+        applyProgress(self.progress);
       },
     });
 
