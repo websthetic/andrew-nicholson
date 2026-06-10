@@ -1,0 +1,665 @@
+---
+title: "44 Hoops Foundation | Andrew Nicholson"
+description: "Meta description for the page"
+permalink: "/44hoops-foundation/"
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/44hoops-foundation.css">
+{% endblock %}
+
+{% block body %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+
+<!-- ============================================ -->
+<!--                    HERO                      -->
+<!-- ============================================ -->
+
+<section id="hoops-hero">
+    <div class="cs-container">
+        <div class="cs-content">
+            <h1 class="cs-title">
+                44 Hoops Foundation
+            </h1>
+            <p class="cs-text">
+                Founded in 2014 — during his NBA career — to serve the city that raised him. Jersey #44. Mississauga born.
+            </p>
+            <div class="cs-meta">
+                <span class="cs-meta-item">Est. 2014</span>
+                <span class="cs-meta-divider">·</span>
+                <span class="cs-meta-item">Mississauga, ON</span>
+                <span class="cs-meta-divider">·</span>
+                <span class="cs-meta-item">4,400+ Youth Impacted</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background image -->
+    <picture class="cs-background">
+        <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-3.jpg">
+        <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-3.jpg">
+        <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-3.jpg"
+             alt="Andrew Nicholson with youth at a 44 Hoops basketball camp"
+             loading="eager"
+             decoding="async">
+    </picture>
+
+    <!-- Scroll cue -->
+    <div class="cs-scroll-cue" aria-hidden="true">
+        <span class="cs-scroll-line"></span>
+    </div>
+</section>
+
+<script>(function () {
+    "use strict";
+
+    var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) { return; }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    var hero      = document.querySelector("#hoops-hero");
+    if (!hero) { return; }
+
+    var title     = hero.querySelector(".cs-title");
+    var text      = hero.querySelector(".cs-text");
+    var meta      = hero.querySelector(".cs-meta");
+    var scrollCue = hero.querySelector(".cs-scroll-cue");
+    var bgImg     = hero.querySelector(".cs-background img");
+
+    gsap.set([title, text, meta], { opacity: 0, y: 28 });
+    gsap.set(scrollCue, { opacity: 0 });
+
+    var tl = gsap.timeline({ delay: 0.2 });
+
+    tl.to(title,  { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" }, 0.1)
+      .to(text,   { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, "-=0.5")
+      .to(meta,   { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "-=0.4")
+      .to(scrollCue, { opacity: 1, duration: 0.6, ease: "power2.out" }, "-=0.2");
+
+    /* Parallax — image drifts down as user scrolls away */
+    ScrollTrigger.create({
+        trigger: hero,
+        start: "top top",
+        end: "bottom top",
+        onUpdate: function (self) {
+            if (bgImg) {
+                gsap.set(bgImg, { y: self.progress * -60 });
+            }
+        }
+    });
+
+}());</script>
+
+<!-- ============================================ -->
+<!--                  STATS                       -->
+<!-- ============================================ -->
+
+<section id="hoops-stats">
+    <ul class="cs-card-group">
+
+        <li class="cs-item">
+            <picture class="cs-background">
+                <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/44hoops/Asset-4-1.png.webp">
+                <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/44hoops/Asset-4-1.png.webp">
+                <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/44hoops/Asset-4-1.png.webp"
+                     alt="Youth at a 44 Hoops basketball camp"
+                     loading="lazy"
+                     decoding="async">
+            </picture>
+            <div class="cs-item-content">
+                <span class="cs-number">4,400<em>+</em></span>
+                <span class="cs-label">Youth impacted</span>
+            </div>
+        </li>
+
+        <li class="cs-item">
+            <picture class="cs-background">
+                <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-2.jpg">
+                <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-2.jpg">
+                <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-2.jpg"
+                     alt="Andrew visiting a school with 44 Hoops"
+                     loading="lazy"
+                     decoding="async">
+            </picture>
+            <div class="cs-item-content">
+                <span class="cs-number">20<em>+</em></span>
+                <span class="cs-label">Schools served</span>
+            </div>
+        </li>
+
+        <li class="cs-item">
+            <picture class="cs-background">
+                <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-4.jpg">
+                <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-4.jpg">
+                <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-4.jpg"
+                     alt="44 Hoops scholarship award ceremony"
+                     loading="lazy"
+                     decoding="async">
+            </picture>
+            <div class="cs-item-content">
+                <span class="cs-number">$25K<em>+</em></span>
+                <span class="cs-label">Scholarships awarded</span>
+            </div>
+        </li>
+
+    </ul>
+</section>
+
+<script>(function () {
+    "use strict";
+
+    /* ─── 44 Hoops Stats — scroll-triggered entrance ─────────────────────────
+       Each card fades up with a staggered delay as the section enters the
+       viewport. Numbers count up once visible.
+       Respects prefers-reduced-motion.
+    ──────────────────────────────────────────────────────────────────────── */
+
+    var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    var section = document.querySelector("#hoops-stats");
+    if (!section) { return; }
+
+    var cards = section.querySelectorAll(".cs-item");
+
+    /* ── Card entrance ── */
+    if (!prefersReducedMotion) {
+        gsap.set(cards, { opacity: 0, y: 40 });
+
+        ScrollTrigger.create({
+            trigger: section,
+            start: "top 80%",
+            once: true,
+            onEnter: function () {
+                gsap.to(cards, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: "power2.out",
+                    stagger: 0.15
+                });
+            }
+        });
+    }
+
+    /* ── Number count-up ── */
+    var counters = [
+        { el: cards[0] && cards[0].querySelector(".cs-number"), target: 4400, prefix: "",    suffix: "+", decimals: 0 },
+        { el: cards[1] && cards[1].querySelector(".cs-number"), target: 20,   prefix: "",    suffix: "+", decimals: 0 },
+        { el: cards[2] && cards[2].querySelector(".cs-number"), target: 25,   prefix: "$",   suffix: "K+", decimals: 0 }
+    ];
+
+    counters.forEach(function (counter) {
+        if (!counter.el) { return; }
+
+        /* Store original em (gold plus) — we'll re-append it */
+        var em = counter.el.querySelector("em");
+
+        ScrollTrigger.create({
+            trigger: counter.el,
+            start: "top 85%",
+            once: true,
+            onEnter: function () {
+                var obj = { val: 0 };
+                gsap.to(obj, {
+                    val: counter.target,
+                    duration: 1.6,
+                    ease: "power2.out",
+                    onUpdate: function () {
+                        var formatted = counter.prefix + Math.round(obj.val).toLocaleString();
+                        counter.el.textContent = formatted;
+                        /* Re-append the em so gold suffix stays */
+                        if (em) {
+                            em.textContent = counter.suffix;
+                            counter.el.appendChild(em);
+                        }
+                    }
+                });
+            }
+        });
+    });
+
+}());</script>
+
+<!-- ============================================ -->
+<!--                 ORIGIN                       -->
+<!-- ============================================ -->
+
+<section id="hoops-origin">
+
+    <div class="cs-container">
+
+        <div class="cs-top">
+            <span class="cs-topper">Origin</span>
+            <blockquote class="cs-pull">"A physics degree. An NBA draft pick. And the first thing he builds when he gets there — is a way back."</blockquote>
+        </div>
+
+        <div class="cs-bottom">
+            <div class="cs-left">
+                <p class="cs-text">
+                    <strong>Before the businesses, there was the foundation.</strong> Andrew Nicholson was still playing in the NBA when he started 44 Hoops in 2014 — his jersey number, his hometown, his name on the door.
+                </p>
+                <p class="cs-text">
+                    A Mississauga kid who made the league didn't disappear into it. He turned around. 44 Hoops is the venture that makes everything else make sense — proof that the platform was always meant to be pointed back at the community.
+                </p>
+            </div>
+            <div class="cs-right">
+                <div class="cs-founded">
+                    <span class="cs-founded-year">2014</span>
+                    <span class="cs-founded-label">Year founded</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="cs-video-wrap">
+        <video class="cs-video"
+               autoplay
+               muted
+               loop
+               playsinline
+               preload="none">
+               <source src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/IntroVideo_WADE_1.mp4" type="video/mp4">
+        </video>
+    </div>
+
+</section>
+
+<script>(function () {
+    "use strict";
+
+    var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) { return; }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    var section = document.querySelector("#hoops-origin");
+    if (!section) { return; }
+
+    var top     = section.querySelector(".cs-top");
+    var bottom  = section.querySelector(".cs-bottom");
+
+    gsap.set([top, bottom], { opacity: 0, y: 28 });
+
+    ScrollTrigger.create({
+        trigger: section,
+        start: "top 75%",
+        once: true,
+        onEnter: function () {
+            gsap.to(top,    { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" });
+            gsap.to(bottom, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", delay: 0.15 });
+        }
+    });
+
+}());</script>
+
+<!-- ============================================ -->
+<!--                 TIMELINE                     -->
+<!-- ============================================ -->
+
+<section id="hoops-timeline">
+
+    <div class="cs-container">
+        <div class="cs-left">
+            <span class="cs-topper">Foundation timeline</span>
+            <h2 class="cs-title">The Journey</h2>
+            <p class="cs-text">From the hardwood to the community — every milestone shaped what 44 Hoops stands for today.</p>
+            <p class="cs-scroll-hint" aria-hidden="true">Drag to explore</p>
+        </div>
+    </div>
+
+    <div class="cs-track-wrap">
+        <ul class="cs-track" id="hoopsTimelineTrack" role="list">
+
+            <li class="cs-item">
+                <div class="cs-photo-wrap">
+                    <picture>
+                        <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/44hoops-tl-2012.jpg"
+                             alt="Andrew Nicholson on NBA draft night, 2012"
+                             loading="lazy"
+                             decoding="async">
+                    </picture>
+                </div>
+                <div class="cs-card">
+                    <span class="cs-year">2012</span>
+                    <strong class="cs-milestone">NBA Draft — 19th Overall</strong>
+                    <p class="cs-desc">Selected by the Orlando Magic. The platform that would fund everything else begins here.</p>
+                </div>
+            </li>
+
+            <li class="cs-item">
+                <div class="cs-photo-wrap">
+                    <picture>
+                        <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/44hoops-tl-2014.jpg"
+                             alt="First 44 Hoops camp in the GTA, 2014"
+                             loading="lazy"
+                             decoding="async">
+                    </picture>
+                </div>
+                <div class="cs-card">
+                    <span class="cs-year">2014</span>
+                    <strong class="cs-milestone">44 Hoops Founded</strong>
+                    <p class="cs-desc">First camps launched in the GTA while Andrew was still in the NBA.</p>
+                </div>
+            </li>
+
+            <li class="cs-item">
+                <div class="cs-photo-wrap">
+                    <picture>
+                        <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/44hoops-tl-2017.jpg"
+                             alt="44 Hoops school visit, 2017"
+                             loading="lazy"
+                             decoding="async">
+                    </picture>
+                </div>
+                <div class="cs-card">
+                    <span class="cs-year">2017</span>
+                    <strong class="cs-milestone">School Partnerships</strong>
+                    <p class="cs-desc">Expanded into 20+ schools across the Greater Toronto Area.</p>
+                </div>
+            </li>
+
+            <li class="cs-item">
+                <div class="cs-photo-wrap">
+                    <picture>
+                        <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/44hoops-tl-2020.jpg"
+                             alt="Jr. NBA and NBPA partnership announcement, 2020"
+                             loading="lazy"
+                             decoding="async">
+                    </picture>
+                </div>
+                <div class="cs-card">
+                    <span class="cs-year">2020</span>
+                    <strong class="cs-milestone">Jr. NBA &amp; NBPA</strong>
+                    <p class="cs-desc">Official backing from the league and the Players Association.</p>
+                </div>
+            </li>
+
+            <li class="cs-item">
+                <div class="cs-photo-wrap">
+                    <picture>
+                        <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/44hoops-tl-2022.jpg"
+                             alt="44 Hoops scholarship award ceremony, 2022"
+                             loading="lazy"
+                             decoding="async">
+                    </picture>
+                </div>
+                <div class="cs-card">
+                    <span class="cs-year">2022</span>
+                    <strong class="cs-milestone">$25K in Scholarships</strong>
+                    <p class="cs-desc">Milestone crossed in total awards to student-athletes across the GTA.</p>
+                </div>
+            </li>
+
+            <li class="cs-item">
+                <div class="cs-photo-wrap">
+                    <picture>
+                        <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/44hoops-tl-2024.jpg"
+                             alt="Books and Buckets program launch, 2024"
+                             loading="lazy"
+                             decoding="async">
+                    </picture>
+                </div>
+                <div class="cs-card">
+                    <span class="cs-year">2024</span>
+                    <strong class="cs-milestone">Books &amp; Buckets</strong>
+                    <p class="cs-desc">New program launched bridging academic support with athletic development.</p>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+
+</section>
+
+<script>(function () {
+    "use strict";
+
+    var section = document.querySelector("#hoops-timeline");
+    if (!section) { return; }
+
+    var track = document.getElementById("hoopsTimelineTrack");
+    var items = section.querySelectorAll(".cs-item");
+    var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    var isDragging    = false;
+    var startX        = 0;
+    var scrollStart   = 0;
+    var dragThreshold = 4;
+    var didDrag       = false;
+
+    track.addEventListener("mousedown", function (e) {
+        isDragging  = true;
+        didDrag     = false;
+        startX      = e.pageX;
+        scrollStart = track.scrollLeft;
+        track.classList.add("is-dragging");
+    });
+
+    document.addEventListener("mouseup", function () {
+        isDragging = false;
+        track.classList.remove("is-dragging");
+    });
+
+    document.addEventListener("mousemove", function (e) {
+        if (!isDragging) { return; }
+        var delta = e.pageX - startX;
+        if (Math.abs(delta) > dragThreshold) { didDrag = true; }
+        track.scrollLeft = scrollStart - delta;
+    });
+
+    track.addEventListener("click", function (e) {
+        if (didDrag) { e.preventDefault(); }
+    }, true);
+
+    if (prefersReducedMotion) { return; }
+
+    gsap.set(items, { opacity: 0, x: 40 });
+
+    ScrollTrigger.create({
+        trigger: section,
+        start: "top 80%",
+        once: true,
+        onEnter: function () {
+            gsap.to(items, {
+                opacity: 1,
+                x: 0,
+                duration: 0.7,
+                ease: "power2.out",
+                stagger: 0.10
+            });
+        }
+    });
+
+}());</script>
+
+<!-- ============================================ -->
+<!--               THE 4 FOURS                    -->
+<!-- ============================================ -->
+
+<section id="hoops-fours">
+    <div class="cs-container">
+
+        <div class="cs-header">
+    <div class="cs-heading-wrap">
+        <span class="cs-topper">The 4 Fours</span>
+        <h2 class="cs-title">His operating<br>philosophy</h2>
+    </div>
+    <p class="cs-text">
+        Four pillars built into every program, every camp, every scholarship. Not a mission statement — a way of moving through the world.
+    </p>
+</div>
+
+        <ul class="cs-card-group">
+
+            <li class="cs-item">
+                <div class="cs-item-inner">
+                    <div class="cs-num" aria-hidden="true">01</div>
+                    <div class="cs-content">
+                        <h3 class="cs-h3">Educational<br>Wellness</h3>
+                        <p class="cs-desc">Education is the foundation of opportunity. We support youth beyond the classroom by building confidence, discipline, and a belief in their own potential.</p>
+                    </div>
+                </div>
+            </li>
+
+            <li class="cs-item">
+                <div class="cs-item-inner">
+                    <div class="cs-num" aria-hidden="true">02</div>
+                    <div class="cs-content">
+                        <h3 class="cs-h3">Physical<br>Wellness</h3>
+                        <p class="cs-desc">Movement changes lives. Through basketball and active programming, we promote healthy habits, teamwork, and resilience — not just physically, but in character.</p>
+                    </div>
+                </div>
+            </li>
+
+            <li class="cs-item">
+                <div class="cs-item-inner">
+                    <div class="cs-num" aria-hidden="true">03</div>
+                    <div class="cs-content">
+                        <h3 class="cs-h3">Mental<br>Wellness</h3>
+                        <p class="cs-desc">Strong minds build strong futures. We create spaces where youth feel seen, supported, and valued — helping young people navigate challenges and know they are never alone.</p>
+                    </div>
+                </div>
+            </li>
+
+            <li class="cs-item">
+                <div class="cs-item-inner">
+                    <div class="cs-num" aria-hidden="true">04</div>
+                    <div class="cs-content">
+                        <h3 class="cs-h3">Community<br>Service</h3>
+                        <p class="cs-desc">It takes a village to raise leaders. We invest directly into communities by creating safe, inclusive spaces and empowering the next generation to give back.</p>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+</section>
+
+<script>(function () {
+    "use strict";
+
+    /* ─── 44 Hoops 4 Fours — scroll-triggered entrance ───────────────────────
+       Header fades up first, then cards stagger in from below.
+       Respects prefers-reduced-motion.
+    ──────────────────────────────────────────────────────────────────────── */
+
+    var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) { return; }
+
+    var section = document.querySelector("#hoops-fours");
+    if (!section) { return; }
+
+    var header = section.querySelector(".cs-header");
+    var cards  = section.querySelectorAll(".cs-item");
+
+    /* ── Initial states ── */
+    gsap.set(header, { opacity: 0, y: 24 });
+    gsap.set(cards,  { opacity: 0, y: 36 });
+
+    /* ── Header entrance ── */
+    ScrollTrigger.create({
+        trigger: header,
+        start: "top 82%",
+        once: true,
+        onEnter: function () {
+            gsap.to(header, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "power2.out"
+            });
+        }
+    });
+
+    /* ── Cards stagger in ── */
+    ScrollTrigger.create({
+        trigger: section.querySelector(".cs-card-group"),
+        start: "top 85%",
+        once: true,
+        onEnter: function () {
+            gsap.to(cards, {
+                opacity: 1,
+                y: 0,
+                duration: 0.7,
+                ease: "power2.out",
+                stagger: 0.12
+            });
+        }
+    });
+
+}());</script>
+
+
+
+<!-- ============================================ -->
+<!--                  CTA                         -->
+<!-- ============================================ -->
+
+<section id="hoops-partners">
+
+    <div class="cs-bg" aria-hidden="true">
+        <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-2.jpg"
+             alt=""
+             loading="lazy"
+             decoding="async">
+    </div>
+
+    <div class="cs-container">
+
+        <div class="cs-cta-block">
+            <div class="cs-cta-left">
+                <p class="cs-cta-label">Before the businesses,<br>there was the foundation.</p>
+                <p class="cs-cta-sub">Visit 44 Hoops to learn more, donate, or bring a camp to your school.</p>
+            </div>
+            <div class="cs-cta-right">
+                <a href="https://44hoops.netlify.app/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="cs-cta-btn">
+                    Visit 44 Hoops
+                    <span class="cs-cta-arrow" aria-hidden="true">↗</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script>(function () {
+    "use strict";
+
+    var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) { return; }
+
+    var section  = document.querySelector("#hoops-partners");
+    if (!section) { return; }
+
+    var ctaBlock = section.querySelector(".cs-cta-block");
+
+    gsap.set(ctaBlock, { opacity: 0, y: 28 });
+
+    ScrollTrigger.create({
+        trigger: section,
+        start: "top 80%",
+        once: true,
+        onEnter: function () {
+            gsap.to(ctaBlock, {
+                opacity: 1,
+                y: 0,
+                duration: 0.7,
+                ease: "power2.out"
+            });
+        }
+    });
+
+}());</script>
+
+{% endblock %}

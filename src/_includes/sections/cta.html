@@ -1,32 +1,117 @@
 <!-- ============================================ -->
-<!--                     CTA                      -->
+<!--             PARTNERS + CTA                   -->
 <!-- ============================================ -->
 
-<section id="cta-51">
+<section id="hoops-partners">
     <div class="cs-container">
-        <div class="cs-content">
-            <span class="cs-topper">Contact Us</span>
-            <h2 class="cs-title">Get It Done With Us Today</h2>
-            <p class="cs-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis at sit pellentesque molestie.  Diam, adipiscing ultrices eu turpis gravida.
-            </p>
-            <a href="/contact/" class="cs-button-solid">Get A Free Quote</a>
+
+        <!-- Partners -->
+        <div class="cs-partners-block">
+            <span class="cs-topper">Institutional partners</span>
+            <ul class="cs-partner-list" role="list">
+                <li class="cs-partner-item">
+                    <span class="cs-partner-name">Canada Basketball</span>
+                </li>
+                <li class="cs-partner-item">
+                    <span class="cs-partner-name">Jr. NBA</span>
+                </li>
+                <li class="cs-partner-item">
+                    <span class="cs-partner-name">NBPA</span>
+                </li>
+                <li class="cs-partner-item">
+                    <span class="cs-partner-name">Training Ground</span>
+                </li>
+                <li class="cs-partner-item">
+                    <span class="cs-partner-name">Revibe</span>
+                </li>
+                <li class="cs-partner-item">
+                    <span class="cs-partner-name">Recess Athletic Club</span>
+                </li>
+            </ul>
         </div>
+
+        <!-- Divider -->
+        <div class="cs-divider" aria-hidden="true"></div>
+
+        <!-- CTA -->
+        <div class="cs-cta-block">
+            <div class="cs-cta-left">
+                <p class="cs-cta-label">Before the businesses,<br>there was the foundation.</p>
+                <p class="cs-cta-sub">Visit 44 Hoops to learn more, donate, or bring a camp to your school.</p>
+            </div>
+            <div class="cs-cta-right">
+                <a href="https://44hoops.netlify.app/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="cs-cta-btn">
+                    Visit 44 Hoops
+                    <span class="cs-cta-arrow" aria-hidden="true">↗</span>
+                </a>
+            </div>
+        </div>
+
     </div>
-    <!-- Background Image-->
-    <picture class="cs-picture">
-        <!--Mobile Image-->
-        <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 640, height: 812 }) | avif %}" type="image/avif">
-        <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 640, height: 812 }) | webp %}" type="image/webp">
-        <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 640, height: 812 }) | jpeg %}" type="image/jpeg">
-        <!--Tablet Image-->
-        <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 2048, height: 750 }) | avif %}" type="image/avif">
-        <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 2048, height: 750 }) | webp %}" type="image/webp">
-        <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 2048, height: 750 }) | jpeg %}" type="image/jpeg">
-        <!--Desktop Image-->
-        <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 2500, height: 555 }) | avif %}" type="image/avif">
-        <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 2500, height: 555 }) | webp %}" type="image/webp">
-        <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 2500, height: 555 }) | jpeg %}" type="image/jpeg">
-        <img src="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 2500, height: 555 }) | jpeg %}" alt="cabinets" width="1920" height="426" loading="lazy" decoding="async">
-    </picture>
 </section>
+
+<script>(function () {
+    "use strict";
+
+    /* ─── 44 Hoops Partners + CTA — scroll-triggered entrance ────────────────
+       Partner pills stagger in, then CTA block fades up.
+       Respects prefers-reduced-motion.
+    ──────────────────────────────────────────────────────────────────────── */
+
+    var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) { return; }
+
+    var section  = document.querySelector("#hoops-partners");
+    if (!section) { return; }
+
+    var topper   = section.querySelector(".cs-topper");
+    var pills    = section.querySelectorAll(".cs-partner-item");
+    var divider  = section.querySelector(".cs-divider");
+    var ctaBlock = section.querySelector(".cs-cta-block");
+
+    /* ── Initial states ── */
+    gsap.set(topper,   { opacity: 0, y: 16 });
+    gsap.set(pills,    { opacity: 0, y: 20 });
+    gsap.set(divider,  { opacity: 0, scaleX: 0 });
+    gsap.set(ctaBlock, { opacity: 0, y: 28 });
+
+    ScrollTrigger.create({
+        trigger: section,
+        start: "top 80%",
+        once: true,
+        onEnter: function () {
+            var tl = gsap.timeline();
+
+            tl.to(topper, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.6,
+                    ease: "power2.out"
+                })
+              .to(pills, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.5,
+                    ease: "power2.out",
+                    stagger: 0.07
+                }, "-=0.3")
+              .to(divider, {
+                    opacity: 1,
+                    scaleX: 1,
+                    duration: 0.8,
+                    ease: "power2.inOut",
+                    transformOrigin: "left center"
+                }, "-=0.2")
+              .to(ctaBlock, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.7,
+                    ease: "power2.out"
+                }, "-=0.4");
+        }
+    });
+
+}());</script>
