@@ -1,201 +1,573 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// PAGE STYLES
-// Interior pages have their own stylesheet for styles that only exist on
-// that page. Any styles shared between pages, including repeated sections,
-// should go into root.less
-// ─────────────────────────────────────────────────────────────────────────────
-
 /*-- -------------------------- -->
-<---       Side By Side         -->
+<---       44Hoops Hero         -->
 <--- -------------------------- -*/
 
-/* Mobile - 360px */
+/* Mobile - 0px */
 @media only screen and (min-width: 0rem) {
-    #RPsbs-313 {
-        padding: var(--sectionPadding);
+
+    #hoops-hero {
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        min-height: 100svh;
+        padding: (80/16rem) (16/16rem) (60/16rem);
+        overflow: clip;
+        isolation: isolate;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(to top, rgba(0,0,0,0.96) 0%, rgba(0,0,0,0.72) 35%, rgba(0,0,0,0.30) 65%, rgba(0,0,0,0.10) 100%),
+                linear-gradient(to right, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.30) 40%, transparent 70%);
+            z-index: 1;
+        }
 
         .cs-container {
+            position: relative;
+            z-index: 2;
             width: 100%;
             max-width: (1280/16rem);
-            margin: auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            /* 48px - 64px */
-            gap: clamp(3rem, 6vw, 4rem);
+            margin: 0 auto;
         }
 
         .cs-content {
-            /* set text align to left if content needs to be left aligned */
-            text-align: left;
-            width: 100%;
-            max-width: (542/16rem);
-            display: flex;
-            flex-direction: column;
-            /* centers content horizontally, set to flex-start to left align */
-            align-items: flex-start;
+            max-width: (600/16rem);
+        }
+
+        .cs-title {
+            font-family: var(--headerFont);
+            font-size: clamp(2.5rem, 10vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.0;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            color: #fff;
+            margin-bottom: (20/16rem);
+            max-width: none;
+
+            em {
+                font-style: normal;
+                color: var(--primary);
+            }
         }
 
         .cs-text {
-            margin-bottom: (16/16rem);
-            &:last-of-type {
-                margin-bottom: (32/16rem);
-            }
-        }
-
-        .cs-quote {
-            margin: 0 0 (32/16rem) 0;
-            /* 16px - 32px */
-            padding: clamp(1rem, 3vw, 2rem);
-            background-color: #f7f7f7;
-            border-radius: (16/16rem);
-            position: relative;
-        }
-
-        .cs-quote-text {
-            /* 14px - 16px */
-            font-size: clamp(0.875rem, 1.5vw, 1rem);
-            line-height: 1.5em;
-            margin: 0 0 (16/16rem);
-            color: #767676;
-            display: block;
-        }
-
-        .cs-name {
-            font-size: (16/16rem);
-            line-height: 1.2em;
-            text-transform: uppercase;
-            font-weight: bold;
-            margin: 0 0 (4/16rem);
-            color: var(--headerColor);
-            display: block;
-        }
-
-        .cs-job {
+            color: rgba(255, 255, 255, 0.55);
             font-size: (14/16rem);
-            line-height: 1.5em;
-            color: #767676;
-            display: block;
+            line-height: 1.7;
+            max-width: (400/16rem);
+            margin-bottom: (28/16rem);
         }
 
-        .cs-quote-icon {
-            /* 60px - 136px */
-            width: clamp(3.75rem, 10vw, 8.5rem);
-            height: auto;
+        .cs-meta {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: (8/16rem);
+        }
+
+        .cs-meta-item {
+            font-family: var(--bodyFont);
+            font-size: (11/16rem);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        .cs-meta-divider {
+            color: rgba(255, 255, 255, 0.15);
+            font-size: (11/16rem);
+        }
+
+        .cs-background {
             position: absolute;
-            bottom: (0/16rem);
-            /* 16px - 32px */
-            right: clamp(1rem, 4vw, 2rem);
-        }
-
-        .cs-image-group {
-            /* scaling the font size with the view width */
-            font-size: ~"min(2.31vw, .7em)";
-            /* using ems so we can use font size to scale the whole section */
-            width: (631/16em);
-            height: (636/16em);
-            position: relative;
-        }
-
-        .cs-picture {
-            border-radius: (24/16em);
-            /* clips img tag corners */
+            inset: 0;
+            z-index: 0;
+            display: block;
             overflow: hidden;
-            position: absolute;
-            display: block;
 
             img {
                 position: absolute;
-                top: 0;
-                left: 0;
-                height: 100%;
                 width: 100%;
-                /* makes image act like a background image */
+                height: 130%;
+                top: -15%;
                 object-fit: cover;
+                object-position: center top;
+                display: block;
+                transform-origin: center center;
+                will-change: transform;
             }
         }
 
-        .cs-picture1 {
-            width: (522/16em);
-            height: (581/16em);
-            left: 0;
-            top: 0;
+        .cs-scroll-cue {
+            position: absolute;
+            bottom: (32/16rem);
+            right: (24/16rem);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .cs-picture2 {
-            width: (414/16em);
-            height: (400/16em);
-            background-color: #fff;
-            box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 40px;
-            /* 6px - 12px */
-            border: clamp(0.375em, 1.5vw, 0.75em) solid #fff;
-            right: 0;
-            bottom: 0;
+        .cs-scroll-line {
+            display: block;
+            width: 1px;
+            height: (48/16rem);
+            background: linear-gradient(
+                to bottom,
+                rgba(244, 115, 35, 0) 0%,
+                rgba(244, 115, 35, 0.6) 100%
+            );
+            animation: scrollCueDrop 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollCueDrop {
+            0%   { transform: scaleY(0); transform-origin: top; opacity: 0; }
+            40%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+            60%  { transform: scaleY(1); transform-origin: bottom; opacity: 1; }
+            100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+        }
+
+    }
+
+}
+
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+
+    #hoops-hero {
+        padding: (100/16rem) (24/16rem) (80/16rem);
+
+        .cs-title {
+            font-size: clamp(3.5rem, 7vw, 5.5rem);
+        }
+
+        .cs-text {
+            font-size: (15/16rem);
         }
     }
+
 }
 
 /* Desktop - 1024px */
 @media only screen and (min-width: 64rem) {
-    #RPsbs-313 {
-        .cs-container {
-            flex-flow: row;
-            justify-content: space-between;
-            gap: (52/16rem);
-        }
 
-        .cs-image-group {
-            font-size: ~"min(1.2vw, 1em)";
-            flex: none;
+    #hoops-hero {
+        padding: (120/16rem) (40/16rem) (100/16rem);
+        min-height: 100svh;
+
+        .cs-background img {
+            object-position: center center;
         }
 
         .cs-content {
-            margin: 0;
+            max-width: (680/16rem);
+        }
+
+        .cs-title {
+            font-size: clamp(4rem, 5.5vw, 6.5rem);
+        }
+
+        .cs-text {
+            font-size: (16/16rem);
+            max-width: (480/16rem);
+        }
+
+        .cs-meta-item {
+            font-size: (12/16rem);
+        }
+
+        .cs-scroll-cue {
+            right: (48/16rem);
+            bottom: (48/16rem);
+        }
+
+        .cs-scroll-line {
+            height: (64/16rem);
+        }
+    }
+
+}
+
+/* Wide - 1440px */
+@media only screen and (min-width: 90rem) {
+
+    #hoops-hero {
+        padding: (140/16rem) (80/16rem) (120/16rem);
+    }
+
+}
+
+/*-- -------------------------- -->
+<---        Stats Strip         -->
+<--- -------------------------- -*/
+
+@media only screen and (min-width: 0rem) {
+    #stats-strip {
+        background: var(--headerColor);
+        padding: var(--sectionPadding);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        .cs-topper {
+            color: var(--primary) !important;
+            text-align: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .cs-title {
+            font-family: var(--bodyFont);
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
+            font-weight: 400;
+            text-transform: none;
+            line-height: 1.7em;
+            text-align: center;
+            color: var(--bodyTextColorWhite);
+            opacity: 0.65;
+            max-width: (672/16rem);
+            margin: 0 auto (56/16rem);
+        }
+
+        .stats-grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: (10/16rem);
+        }
+
+        .stat-card {
+            position: relative;
+            border-radius: (10/16rem);
+            overflow: hidden;
+            aspect-ratio: 1/1;
+            background: #1a1a1a;
+
+            &:hover .stat-bg {
+                transform: scale(1.03);
+            }
+        }
+
+        .stat-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.4s ease;
+        }
+
+        .stat-gradient {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.45) 0%,
+                rgba(0, 0, 0, 0.65) 50%,
+                rgba(0, 0, 0, 0.45) 100%
+            );
+        }
+
+        .stat-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: (20/16rem);
+        }
+
+        .stat-number {
+            font-family: var(--headerFont);
+            font-size: clamp(2.2rem, 7vw, 3rem);
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1;
+            margin-bottom: (8/16rem);
+            display: block;
+        }
+
+        .stat-label {
+            font-family: var(--bodyFont);
+            font-size: clamp(0.6rem, 1.8vw, 0.7rem);
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.55);
+            display: block;
         }
     }
 }
 
-/* Dark Mode */
+@media only screen and (min-width: 48rem) {
+    #stats-strip {
+        .stats-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}
+
+@media only screen and (min-width: 64rem) {
+    #stats-strip {
+        .stats-grid {
+            grid-template-columns: repeat(6, 1fr);
+        }
+    }
+}
+
+/*-- -------------------------- -->
+<---          Timeline          -->
+<--- -------------------------- -*/
+
 @media only screen and (min-width: 0rem) {
-    body.dark-mode {
-        #RPsbs-313 {
-            .cs-image-group {
-                &:before,
-                &:after {
-                    background: var(--accent);
+    #about-timeline {
+        background: var(--headerColor);
+        padding: clamp(3rem, 6vw, 5rem) (16/16rem);
+
+        .tl-inner {
+            max-width: 100%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .tl-line-track {
+            position: absolute;
+            left: (40/16rem);
+            top: (12/16rem);
+            bottom: (12/16rem);
+            width: 1px;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .tl-line-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1px;
+            height: 0%;
+            background: var(--primary);
+            transform-origin: top;
+        }
+
+        .tl-row {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: (24/16rem);
+            margin-bottom: (64/16rem);
+            padding-left: (68/16rem);
+            opacity: 0;
+            transform: translateY((24/16rem));
+            transition: opacity 0.6s ease, transform 0.6s ease;
+
+            &.is-visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        .tl-dot {
+            position: absolute;
+            left: (35.5/16rem);
+            top: (2/16rem);
+            width: (10/16rem);
+            height: (10/16rem);
+            border-radius: 50%;
+            background: var(--primary);
+            opacity: 0;
+            transform: scale(0);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .tl-row.is-visible .tl-dot {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .tl-body-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: (24/16rem);
+        }
+
+        .tl-image-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: (10/16rem);
+            flex-shrink: 0;
+        }
+
+        .tl-year {
+            font-family: var(--bodyFont);
+            font-size: clamp(0.55rem, 1.5vw, 0.65rem);
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--primary);
+            font-weight: 500;
+            white-space: nowrap;
+            display: block;
+        }
+
+        .tl-image {
+            width: 100%;
+            aspect-ratio: 4/3;
+            border-radius: (8/16rem);
+            overflow: hidden;
+            background: #1a1a1a;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+        }
+
+        .tl-chapter {
+            display: block;
+            font-family: var(--bodyFont);
+            font-size: (10/16rem);
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.35);
+            margin-bottom: (10/16rem);
+        }
+
+        .tl-heading {
+            font-family: var(--headerFont);
+            font-size: clamp(1.3rem, 3vw, 1.75rem);
+            font-weight: 700;
+            color: var(--bodyTextColorWhite);
+            line-height: 1.2;
+            margin: 0 0 (16/16rem);
+        }
+
+        .tl-body {
+            font-family: var(--bodyFont);
+            font-size: (15/16rem);
+            line-height: 1.75;
+            color: var(--bodyTextColorWhite);
+            opacity: 0.55;
+            margin: 0 0 (20/16rem);
+        }
+
+        .tl-ventures {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 (20/16rem);
+            display: flex;
+            flex-direction: column;
+            gap: (6/16rem);
+
+            li {
+                font-family: var(--bodyFont);
+                font-size: (13/16rem);
+                color: var(--bodyTextColorWhite);
+                opacity: 0.5;
+                padding-left: (14/16rem);
+                position: relative;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: (4/16rem);
+                    height: (4/16rem);
+                    border-radius: 50%;
+                    background: var(--primary);
+                    opacity: 0.6;
                 }
             }
+        }
 
-            .cs-picture2 {
-                background-color: var(--dark);
-                /* 6px - 12px */
-                border: clamp(0.375em, 1.5vw, 0.75em) solid var(--dark);
-            }
+        .tl-tag {
+            display: inline-block;
+            font-family: var(--bodyFont);
+            font-size: (10/16rem);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--primary);
+            border: 1px solid rgba(244, 115, 35, 0.35);
+            border-radius: 2rem;
+            padding: (5/16rem) (12/16rem);
+        }
+    }
+}
 
-            .cs-topper {
-                color: var(--primaryLight);
-            }
+@media only screen and (min-width: 48rem) {
+    #about-timeline {
+        padding: clamp(3rem, 6vw, 5rem) (24/16rem);
 
-            .cs-title,
-            .cs-text,
-            .cs-h3,
-            .cs-quote-text,
-            .cs-name {
-                color: var(--bodyTextColorWhite);
-            }
+        .tl-line-track {
+            left: (48/16rem);
+        }
 
-            .cs-quote {
-                background-color: var(--accent);
-            }
+        .tl-dot {
+            left: (43.5/16rem);
+            top: (2/16rem);
+        }
 
-            .cs-job {
-                color: var(--bodyTextColorWhite);
-                opacity: 0.8;
-            }
+        .tl-row {
+            padding-left: (80/16rem);
+        }
 
-            .cs-quote-icon {
-                opacity: 0.2;
-            }
+        .tl-body-wrap {
+            flex-direction: row;
+            align-items: flex-start;
+            gap: (40/16rem);
+        }
+
+        .tl-image-wrap {
+            width: (400/16rem);
+        }
+
+        .tl-image {
+            width: 100%;
+            aspect-ratio: 4/3;
+        }
+    }
+}
+
+@media only screen and (min-width: 64rem) {
+    #about-timeline {
+        padding: clamp(3rem, 6vw, 5rem) (40/16rem);
+
+        .tl-line-track {
+            left: (56/16rem);
+        }
+
+        .tl-dot {
+            left: (51.5/16rem);
+            top: (2/16rem);
+        }
+
+        .tl-row {
+            padding-left: (96/16rem);
+            margin-bottom: (80/16rem);
+        }
+
+        .tl-image-wrap {
+            width: (480/16rem);
+        }
+    }
+}
+
+@media only screen and (min-width: 90rem) {
+    #about-timeline {
+        padding: clamp(3rem, 6vw, 5rem) (80/16rem);
+
+        .tl-image-wrap {
+            width: (520/16rem);
         }
     }
 }

@@ -1,5 +1,5 @@
 ---
-title: "About | Code Stitch Web Designs"
+title: "About | Andrew Nicholson"
 description: "Meta description for the page"
 permalink: "/about/"
 ---
@@ -7,159 +7,207 @@ permalink: "/about/"
 {% extends "layouts/base.html" %}
 
 {% block head %}
-    <link rel="preload" as="image" href="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 640, height: 600 }) | avif %}"/>
-    <link rel="preload" as="image" href="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 482, height: 536 }) | avif %}"/>
     <link rel="stylesheet" href="/assets/css/about.css">
 {% endblock %}
 
 {% block body %}
 
-    <!-- ============================================ -->
-    <!--                   Banner                     -->
-    <!-- ============================================ -->
+<!-- ============================================ -->
+<!--                    HERO                      -->
+<!-- ============================================ -->
 
-    <div id="banner-310">
-        <div class="cs-container">
-            <span class="cs-int-title">About Us</span>
-            <div class="cs-breadcrumbs">
-                <a href="/" class="cs-link">Home</a>
-                <a href="/about/" class="cs-link cs-active">About Us</a>
-            </div>
-        </div>
-        <!--Background Image-->
-        <picture class="cs-background">
-            <!--Mobile Image-->
-            <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 640, height: 600 }) | avif %}" type="image/avif">
-            <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 640, height: 600 }) | webp %}" type="image/webp">
-            <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 640, height: 600 }) | jpeg %}" type="image/jpeg">
-            <!--Tablet Image-->
-            <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 2048, height: 942 }) | avif %}" type="image/avif">
-            <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 2048, height: 942 }) | webp %}" type="image/webp">
-            <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 2048, height: 942 }) | jpeg %}" type="image/jpeg">
-            <!--Desktop Image-->
-            <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 2500, height: 628 }) | avif %}" type="image/avif">
-            <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 2500, height: 628 }) | webp %}" type="image/webp">
-            <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 2500, height: 628 }) | jpeg %}" type="image/jpeg">
-            <img src="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 2500, height: 628 }) | jpeg %}" alt="library" width="1920" height="482" loading="eager" decoding="async">
-        </picture>
-    </div>
-
-    <!-- ============================================ -->
-    <!--                 Side By Side                 -->
-    <!-- ============================================ -->
-
-    <section id="RPsbs-313">
-        <div class="cs-container">
-            <!-- Left Image Section -->
-            <div class="cs-image-group">
-                <picture class="cs-picture cs-picture1">
-                    <!--Mobile Image-->
-                    <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 482, height: 536 }) | avif %}" type="image/avif">
-                    <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 482, height: 536 }) | webp %}" type="image/webp">
-                    <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 482, height: 536 }) | jpeg %}" type="image/jpeg">
-                    <!--Tablet Image-->
-                    <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 802, height: 892 }) | avif %}" type="image/avif">
-                    <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 802, height: 892 }) | webp %}" type="image/webp">
-                    <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 802, height: 892 }) | jpeg %}" type="image/jpeg">
-                    <!--Desktop Image-->
-                    <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 1044, height: 1162 }) | avif %}" type="image/avif">
-                    <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 1044, height: 1162 }) | webp %}" type="image/webp">
-                    <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 1044, height: 1162 }) | jpeg %}" type="image/jpeg">
-                    <img src="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 1044, height: 1162 }) | jpeg %}" alt="lawyers" width="522" height="581" decoding="async">
-                </picture>
-                <picture class="cs-picture cs-picture2">
-                    <!--Mobile Image-->
-                    <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/construction.jpg" | resize({ width: 366, height: 354 }) | avif %}" type="image/avif">
-                    <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/construction.jpg" | resize({ width: 366, height: 354 }) | webp %}" type="image/webp">
-                    <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/construction.jpg" | resize({ width: 366, height: 354 }) | jpeg %}" type="image/jpeg">
-                    <!--Tablet Image-->
-                    <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/construction.jpg" | resize({ width: 600, height: 578 }) | avif %}" type="image/avif">
-                    <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/construction.jpg" | resize({ width: 600, height: 578 }) | webp %}" type="image/webp">
-                    <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/construction.jpg" | resize({ width: 600, height: 578 }) | jpeg %}" type="image/jpeg">
-                    <!--Desktop Image-->
-                    <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/construction.jpg" | resize({ width: 780, height: 752 }) | avif %}" type="image/avif">
-                    <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/construction.jpg" | resize({ width: 780, height: 752 }) | webp %}" type="image/webp">
-                    <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/construction.jpg" | resize({ width: 780, height: 752 }) | jpeg %}" type="image/jpeg">
-                    <img src="{% getUrl "/assets/images/construction.jpg" | resize({ width: 780, height: 752 }) | jpeg %}" alt="gavel" width="390" height="376" loading="lazy" decoding="async">
-                </picture>
-            </div>
-            <!-- Right Content Section-->
-            <div class="cs-content">
-                <span class="cs-topper">About Us</span>
-                <h2 class="cs-title">About CodeStitch</h2>
-                <p class="cs-text">
-                    In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei aptent taciti sociosqu ad litora torquent per.
-                </p>
-                <div class="cs-quote">
-                    <span class="cs-quote-text">
-                        In consequat tincidunt turpis sit amet imperdiet. Praesent Classei consequat tincidunt turpis sit amet imperdiet for mind.
-                    </span>
-                    <span class="cs-name">Justin Time</span>
-                    <span class="cs-job">CEO-Founder</span>
-                    <img class="cs-quote-icon" loading="lazy" decoding="async" src="/assets/svgs/quote.svg" alt="gavel" width="136" height="77">
-                </div>
-                <a href="/contact/" class="cs-button-solid">Get in Touch</a>
-            </div>
-        </div>
-    </section>
-
-<!-- ===================================================== -->
-<!--                   Brand Pillars                       -->
-<!-- ===================================================== -->
-<section id="brand-pillars">
-
-    <!-- Pillar 1: Create -->
-    <div class="cs-pillar">
-        <div class="cs-pillar-left">
-            <h3 class="cs-pillar-heading">Create.</h3>
-        </div>
-        <div class="cs-pillar-right">
-            <div class="cs-pillar-img-wrapper">
-                <img
-                    src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-2.jpg"
-                    alt="Create"
-                    loading="lazy"
-                    decoding="async"
-                />
-            </div>
-            <p class="cs-pillar-text">
-                Andrew plays the game with joy and purpose. That same mentality carries into every brand and venture he builds — embedding himself from the earliest stages to ensure the foundation is right.
+<section id="hoops-hero">
+    <div class="cs-container">
+        <div class="cs-content">
+            <h1 class="cs-title">
+                About Andrew Nicholson
+            </h1>
+            <p class="cs-text">
+                Former NBA player. Physics graduate. Entrepreneur and investor
+                building businesses at the intersection of sport, wellness, and
+                community.
             </p>
+            <div class="cs-meta">
+                <span class="cs-meta-item">Mississauga, Ontario</span>
+                <span class="cs-meta-divider">·</span>
+                <span class="cs-meta-item">13+ Years Pro</span>
+                <span class="cs-meta-divider">·</span>
+                <span class="cs-meta-item">8 Active Ventures</span>
+            </div>
         </div>
     </div>
 
-    <!-- Pillar 2: Amplify — dark, image right -->
-<div class="cs-pillar cs-pillar--alt">
-    <div class="cs-pillar-left">
-        <h3 class="cs-pillar-heading">Amplify.</h3>
-    </div>
-    <div class="cs-pillar-right">
-        <div class="cs-pillar-img-wrapper">
-            <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-3.jpg" alt="Amplify" loading="lazy" decoding="async" />
-        </div>
-        <p class="cs-pillar-text">
-            Andrew is a connector and facilitator on and off the court. He leverages his network to find synergies between partners — strengthening and amplifying every shared message.
-        </p>
-    </div>
-</div>
+    <picture class="cs-background">
+        <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-3.jpg">
+        <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-3.jpg">
+        <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-3.jpg"
+             alt="Andrew Nicholson with youth at a 44 Hoops basketball camp"
+             loading="eager"
+             decoding="async">
+    </picture>
 
-<!-- Pillar 3: Give Back — same as pillar 1 -->
-<div class="cs-pillar">
-    <div class="cs-pillar-left">
-        <h3 class="cs-pillar-heading">Give Back.</h3>
+    <div class="cs-scroll-cue" aria-hidden="true">
+        <span class="cs-scroll-line"></span>
     </div>
-    <div class="cs-pillar-right">
-        <div class="cs-pillar-img-wrapper">
-            <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-1.jpg" alt="Give Back" loading="lazy" decoding="async" />
-        </div>
-        <p class="cs-pillar-text">
-            At the core of every investment is a commitment to community. Andrew seeks partners who share his mission — creating lasting impact and opening doors for those who need it most.
-        </p>
-    </div>
-</div>
-
 </section>
 
-    {% include 'sections/cta.html' %}
+<!-- ============================================ -->
+<!--                 STATS STRIP                  -->
+<!-- ============================================ -->
+
+<section id="stats-strip">
+    <span class="cs-topper">About Andrew</span>
+    <p class="cs-title">A Physics graduate, first-round NBA Draft pick, and entrepreneur with eight active ventures — Andrew Nicholson's career has never followed a conventional path. From St. Bonaventure to Seoul, every chapter has been built on the same foundation: discipline, preparation, and an unrelenting standard of excellence.</p>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-bg" style="background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-1.jpg');"></div>
+            <div class="stat-gradient"></div>
+            <div class="stat-content">
+                <span class="stat-number">#19</span>
+                <span class="stat-label">2012 NBA Draft Pick</span>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-bg" style="background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-2.jpg');"></div>
+            <div class="stat-gradient"></div>
+            <div class="stat-content">
+                <span class="stat-number">13+</span>
+                <span class="stat-label">Years as a Pro</span>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-bg" style="background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-3.jpg');"></div>
+            <div class="stat-gradient"></div>
+            <div class="stat-content">
+                <span class="stat-number">8</span>
+                <span class="stat-label">Active Ventures</span>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-bg" style="background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-4.jpg');"></div>
+            <div class="stat-gradient"></div>
+            <div class="stat-content">
+                <span class="stat-number">4,400+</span>
+                <span class="stat-label">Youth via 44Hoops</span>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-bg" style="background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-5.jpg');"></div>
+            <div class="stat-gradient"></div>
+            <div class="stat-content">
+                <span class="stat-number">Physics</span>
+                <span class="stat-label">Degree · St. Bonaventure</span>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-bg" style="background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-6.jpg');"></div>
+            <div class="stat-gradient"></div>
+            <div class="stat-content">
+                <span class="stat-number">#44</span>
+                <span class="stat-label">Jersey Retired</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!--                   Timeline                   -->
+<!-- ============================================ -->
+
+<section id="about-timeline">
+    <div class="tl-inner">
+        <div class="tl-line-track">
+            <div class="tl-line-fill" id="tl-line-fill"></div>
+        </div>
+
+        <div class="tl-row">
+            <div class="tl-dot"></div>
+            <div class="tl-body-wrap">
+                <div class="tl-image-wrap">
+                    <span class="tl-year">2008 – 2012</span>
+                    <div class="tl-image">
+                        <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-4.jpg" alt="Academic Background" loading="lazy" />
+                    </div>
+                </div>
+                <div class="tl-content">
+                    <span class="tl-chapter">Academic Background</span>
+                    <h3 class="tl-heading">Physics degree.<br>St. Bonaventure University.</h3>
+                    <p class="tl-body">Before the draft, Andrew completed a Physics degree while originally planning to pursue medicine. That analytical, science-driven mindset became the through-line between elite sport and entrepreneurship — rigorous, detail-oriented, performance-focused.</p>
+                    <span class="tl-tag">Jersey #44 Retired · Hall of Fame</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="tl-row">
+            <div class="tl-dot"></div>
+            <div class="tl-body-wrap">
+                <div class="tl-image-wrap">
+                    <span class="tl-year">2012 – Present</span>
+                    <div class="tl-image">
+                        <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-1.jpg" alt="Athletic Career" loading="lazy" />
+                    </div>
+                </div>
+                <div class="tl-content">
+                    <span class="tl-chapter">Athletic Career</span>
+                    <h3 class="tl-heading">13+ years as a professional.</h3>
+                    <p class="tl-body">Drafted 19th overall by the Orlando Magic in 2012. A career spanning North America and elite leagues across Asia — including the Seoul Samsung Thunders in the KBL — defined by longevity, consistency, and an unrelenting standard of excellence.</p>
+                    <span class="tl-tag">#19 · 2012 NBA Draft</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="tl-row">
+            <div class="tl-dot"></div>
+            <div class="tl-body-wrap">
+                <div class="tl-image-wrap">
+                    <span class="tl-year">2014 – Present</span>
+                    <div class="tl-image">
+                        <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-2.jpg" alt="Transition to Entrepreneurship" loading="lazy" />
+                    </div>
+                </div>
+                <div class="tl-content">
+                    <span class="tl-chapter">Transition to Entrepreneurship</span>
+                    <h3 class="tl-heading">Building while still competing.</h3>
+                    <p class="tl-body">Andrew began building his business portfolio while still actively playing — a deliberate decision rooted in the belief that elite athletes must prepare for life beyond their career, not after it.</p>
+                    <ul class="tl-ventures">
+                        <li>Recess Athletics Club</li>
+                        <li>44Hoops Foundation</li>
+                        <li>Crumbl Cookies Ontario</li>
+                        <li>Revibe — Athlete Grade Care</li>
+                        <li>Canurta Therapeutics</li>
+                        <li>MoveFit Performance</li>
+                        <li>Rise Up Men's Basketball League</li>
+                        <li>Made</li>
+                    </ul>
+                    <span class="tl-tag">8 Active Ventures</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="tl-row">
+            <div class="tl-dot"></div>
+            <div class="tl-body-wrap">
+                <div class="tl-image-wrap">
+                    <span class="tl-year">Vision</span>
+                    <div class="tl-image">
+                        <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-3.jpg" alt="Values and Vision" loading="lazy" />
+                    </div>
+                </div>
+                <div class="tl-content">
+                    <span class="tl-chapter">Values & Vision</span>
+                    <h3 class="tl-heading">Do the work.<br>Build with intention.</h3>
+                    <p class="tl-body">Andrew's businesses are connected by a shared conviction: that the discipline and standards of elite sport belong in every area of life. At the centre of everything is community — building spaces and platforms where people can grow.</p>
+                    <span class="tl-tag">Community First</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="/assets/js/about.js"></script>
 
 {% endblock %}
