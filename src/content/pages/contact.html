@@ -1,6 +1,6 @@
 ---
-title: "Contact | Code Stitch Web Designs"
-description: "Meta description for the page"
+title: "Contact | Andrew Nicholson"
+description: "Get in touch with Andrew Nicholson for business, media, and general enquiries."
 permalink: "/contact/"
 ---
 
@@ -8,113 +8,72 @@ permalink: "/contact/"
 
 {% block head %}
     <link rel="stylesheet" href="/assets/css/contact.css">
-    <link rel="preload" as="image" href="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 640, height: 600 }) | avif %}"/>
-    <link rel="preload" as="image" href="{% getUrl "/assets/images/construction.jpg" | resize({ width: 576, height: 640 }) | avif %}"/>
 {% endblock %}
 
 {% block body %}
 
-    <!-- ============================================ -->
-    <!--                   Banner                     -->
-    <!-- ============================================ -->
+<!-- ============================================ -->
+<!--                Contact Form                  -->
+<!-- ============================================ -->
 
-    <div id="banner-310">
-        <div class="cs-container">
-            <span class="cs-int-title">Contact Us</span>
-            <div class="cs-breadcrumbs">
-                <a href="/" class="cs-link">Home</a>
-                <a href="/contact/" class="cs-link cs-active">Contact Us</a>
-            </div>
+<section id="contact-form">
+    <div class="cf-inner">
+
+        <div class="cf-header">
+            <span class="cf-topper">Contact</span>
+            <h1 class="cf-heading">Every great partnership<br>starts with a conversation.</h1>
+            <p class="cf-sub">Andrew and his team review every message personally. Expect a response within a few business days.</p>
         </div>
-        <!--Background Image-->
-        <picture class="cs-background">
-            <!--Mobile Image-->
-            <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 640, height: 600 }) | avif %}" type="image/avif">
-            <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 640, height: 600 }) | webp %}" type="image/webp">
-            <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 640, height: 600 }) | jpeg %}" type="image/jpeg">
-            <!--Tablet Image-->
-            <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 2048, height: 942 }) | avif %}" type="image/avif">
-            <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 2048, height: 942 }) | webp %}" type="image/webp">
-            <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 2048, height: 942 }) | jpeg %}" type="image/jpeg">
-            <!--Desktop Image-->
-            <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 2500, height: 628 }) | avif %}" type="image/avif">
-            <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 2500, height: 628 }) | webp %}" type="image/webp">
-            <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 2500, height: 628 }) | jpeg %}" type="image/jpeg">
-            <img src="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 2500, height: 628 }) | jpeg %}" alt="library" width="1920" height="482" loading="eager" decoding="async">
-        </picture>
-    </div>
 
-    <!-- ============================================ -->
-    <!--                Contact Form                  -->
-    <!-- ============================================ -->
+        <form class="cf-form" id="cf-form" novalidate>
 
-    <section id="cs-contact-265">
-        <div class="cs-container">
-            <div class="cs-left-section">
-                <div class="cs-content">
-                    <span class="cs-topper">Contact</span>
-                    <h2 class="cs-title">Get in Touch</h2>
-                    <p class="cs-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ridiculus elementum ullamcorper ipsum porttitor aliquam. Id magna urna ultrices odio pulvinar. Sed ut.
-                    </p>
+            <div class="cf-field">
+                <span class="cf-label">Enquiry Type</span>
+                <div class="cf-tabs" id="cf-tabs">
+                    <button type="button" class="cf-tab is-active" data-value="business">Business &amp; Partnerships</button>
+                    <button type="button" class="cf-tab" data-value="media">Media &amp; Press</button>
+                    <button type="button" class="cf-tab" data-value="general">General</button>
                 </div>
-                <form id="cs-form-265" name="Contact Form" method="post">
-                    <label>
-                        Name
-                        <input required type="text" id="name-265" name="name" placeholder="Name">
-                    </label>
-                    <label>
-                        Email
-                        <input required type="text" id="email-265" name="email" placeholder="Email">
-                    </label>
-                    <label>
-                        Phone
-                        <input required type="text" id="phone-265" name="phone" placeholder="Phone">
-                    </label>
-                    <label>
-                        How Did You Find Us
-                        <input type="text" id="find-265" name="find-us" placeholder="How did you find us?">
-                    </label>
-                    <label class="cs-label-message">
-                        Message
-                        <textarea required name="Message" id="message-265" placeholder="Write message..."></textarea>
-                    </label>
-                    <button class="cs-button-solid cs-submit" type="submit">Submit Message</button>
-                </form>
+                <input type="hidden" id="cf-category" name="category" value="business" />
             </div>
-            <div class="cs-right-section">
-                <!--Email-->
-                <span class="cs-header">Email</span>
-                <a class="cs-link" href="mailto:{{ client.email }}">{{ client.email }}</a>
-                <!--Phone-->
-                <span class="cs-header">Phone</span>
-                <a class="cs-link" href="tel:{{ client.phoneForTel }}">{{ client.phoneFormatted }}</a>
-                <!--Address-->
-                <span class="cs-header">Address</span>
-                <a class="cs-link" href="{{ client.address.mapLink }}">
-                    {{ client.address.lineOne }}, <br>
-                    {{ client.address.lineTwo }}, <br>
-                    {{ client.address.city }}, {{ client.address.state }}
-                    {{ client.address.zip }}
-                </a>
-                <!-- Background Image-->
-                <picture class="cs-bg-picture">
-                    <!--Mobile Image-->
-                    <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/construction.jpg" | resize({ width: 576, height: 640 }) | avif %}" type="image/avif">
-                    <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/construction.jpg" | resize({ width: 576, height: 640 }) | webp %}" type="image/webp">
-                    <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/construction.jpg" | resize({ width: 576, height: 640 }) | jpeg %}" type="image/jpeg">
-                    <!--Tablet Image-->
-                    <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/construction.jpg" | resize({ width: 820, height: 1372 }) | avif %}" type="image/avif">
-                    <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/construction.jpg" | resize({ width: 820, height: 1372 }) | webp %}" type="image/webp">
-                    <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/construction.jpg" | resize({ width: 820, height: 1372 }) | jpeg %}" type="image/jpeg">
-                    <!--Desktop Image-->
-                    <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/construction.jpg" | resize({ width: 1084, height: 1156 }) | avif %}" type="image/avif">
-                    <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/construction.jpg" | resize({ width: 1084, height: 1156 }) | webp %}" type="image/webp">
-                    <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/construction.jpg" | resize({ width: 1084, height: 1156 }) | jpeg %}" type="image/jpeg">
-                    <img src="{% getUrl "/assets/images/construction.jpg" | resize({ width: 1084, height: 1156 }) | jpeg %}" alt="building" width="542" height="578" decoding="async">
-                </picture>
+
+            <div class="cf-divider"></div>
+
+            <div class="cf-row">
+                <div class="cf-field">
+                    <label class="cf-label" for="cf-name">Full Name</label>
+                    <input class="cf-input" type="text" id="cf-name" name="name" placeholder="Your name" required />
+                </div>
+                <div class="cf-field">
+                    <label class="cf-label" for="cf-email">Email Address</label>
+                    <input class="cf-input" type="email" id="cf-email" name="email" placeholder="your@email.com" required />
+                </div>
             </div>
-        </div>
-    </section>
+
+            <div class="cf-field">
+                <label class="cf-label" for="cf-message">Message</label>
+                <textarea class="cf-textarea" id="cf-message" name="message" placeholder="Tell us what's on your mind..." rows="5" required></textarea>
+            </div>
+
+            <div class="cf-submit-wrap">
+                <button class="cf-submit" type="submit">
+                    <span class="cf-submit-label">Send Message</span>
+                    <span class="cf-submit-icon" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                        </svg>
+                    </span>
+                </button>
+                <p class="cf-success" id="cf-success" aria-live="polite">Thanks — we'll be in touch soon.</p>
+            </div>
+
+        </form>
+
+    </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="/assets/js/contact.js"></script>
 
 {% endblock %}
