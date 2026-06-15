@@ -1,0 +1,72 @@
+---
+title: "Contact | Andrew Nicholson"
+description: "Meta description for the page"
+permalink: "/contact/"
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/contact.css">
+    <link rel="preload" as="image" href="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 640, height: 600 }) | avif %}"/>
+    <link rel="preload" as="image" href="{% getUrl "/assets/images/construction.jpg" | resize({ width: 576, height: 640 }) | avif %}"/>
+{% endblock %}
+
+{% block body %}
+
+<!-- ============================================ -->
+<!--                Contact Form                  -->
+<!-- ============================================ -->
+
+<section id="contact-form">
+    <div class="cf-inner">
+
+        <div class="cf-header">
+            <span class="cf-topper">Contact</span>
+            <h1 class="cf-heading">Every great partnership<br>starts with a conversation.</h1>
+            <p class="cf-sub">Andrew and his team review every message personally. Expect a response within a few business days.</p>
+        </div>
+
+        <form class="cf-form" id="cf-form" novalidate>
+
+            <div class="cf-field">
+                <span class="cf-label">Enquiry Type</span>
+                <div class="cf-tabs" id="cf-tabs">
+                    <button type="button" class="cf-tab is-active" data-value="business">Business &amp; Partnerships</button>
+                    <button type="button" class="cf-tab" data-value="media">Media &amp; Press</button>
+                    <button type="button" class="cf-tab" data-value="general">General</button>
+                </div>
+                <input type="hidden" id="cf-category" name="category" value="business" />
+            </div>
+
+            <div class="cf-divider"></div>
+
+            <div class="cf-row">
+                <div class="cf-field">
+                    <label class="cf-label" for="cf-name">Full Name</label>
+                    <input class="cf-input" type="text" id="cf-name" name="name" placeholder="Your name" required />
+                </div>
+                <div class="cf-field">
+                    <label class="cf-label" for="cf-email">Email Address</label>
+                    <input class="cf-input" type="email" id="cf-email" name="email" placeholder="your@email.com" required />
+                </div>
+            </div>
+
+            <div class="cf-field">
+                <label class="cf-label" for="cf-message">Message</label>
+                <textarea class="cf-textarea" id="cf-message" name="message" placeholder="Tell us what's on your mind..." rows="5" required></textarea>
+            </div>
+
+         <div class="cf-submit-wrap">
+    <button class="cs-button-solid" type="submit">Send Message</button>
+    <p class="cf-success" id="cf-success" aria-live="polite">Thanks — we'll be in touch soon.</p>
+</div>
+
+        </form>
+
+    </div>
+</section>
+
+<script src="/assets/js/contact-page.js"></script>
+
+{% endblock %}

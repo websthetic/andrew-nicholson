@@ -1,0 +1,217 @@
+/*-- -------------------------- -->
+<---        Contact Form        -->
+<--- -------------------------- -*/
+
+// Raw channel values — from design tokens
+// --dark: #121212  --bodyTextColorWhite: #fafbfc  --primary: #f47323
+@dark-rgb:    18, 18, 18;
+@white-rgb:   250, 251, 252;  // --bodyTextColorWhite
+@primary-rgb: 244, 115, 35;   // --primary
+
+@media only screen and (min-width: 0rem) {
+    #contact-form {
+        background: var(--darkElevated);
+        min-height: 100svh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: clamp(4rem, 8vw, 7rem) (24/16rem);
+
+        .cf-inner {
+            width: 100%;
+            max-width: (560/16rem);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Header */
+        .cf-header {
+            width: 100%;
+            text-align: center;
+            margin-bottom: (48/16rem);
+        }
+
+        .cf-topper {
+            display: block;
+            font-family: var(--bodyFont);
+            font-size: (10/16rem);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: (16/16rem);
+        }
+
+        .cf-heading {
+            font-family: var(--headerFont);
+            font-size: clamp(1.75rem, 5vw, 2.5rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            color: var(--headerColor);
+            line-height: 1.15;
+            margin: 0 0 (16/16rem);
+        }
+
+        .cf-sub {
+            font-family: var(--bodyFont);
+            font-size: (14/16rem);
+            line-height: 1.7;
+            color: rgba(@white-rgb, 0.45);
+            margin: 0 auto;
+            max-width: (420/16rem);
+            text-align: center;
+        }
+
+        /* Form */
+        .cf-form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: (20/16rem);
+        }
+
+        .cf-field {
+            display: flex;
+            flex-direction: column;
+            gap: (8/16rem);
+        }
+
+        .cf-label {
+            font-family: var(--bodyFont);
+            font-size: (10/16rem);
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(@white-rgb, 0.35);
+        }
+
+        /* Enquiry tabs */
+        .cf-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: (8/16rem);
+        }
+
+        .cf-tab {
+            font-family: var(--bodyFont);
+            font-size: (10/16rem);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(@white-rgb, 0.35);
+            background: transparent;
+            border: 1px solid rgba(@white-rgb, 0.1);
+            border-radius: 2rem;
+            padding: (6/16rem) (14/16rem);
+            cursor: pointer;
+            transition: color 0.3s ease, border-color 0.3s ease;
+
+            &.is-active {
+                color: var(--primary);
+                border-color: rgba(@primary-rgb, 0.4);
+            }
+
+            &:hover:not(.is-active) {
+                color: rgba(@white-rgb, 0.6);
+                border-color: rgba(@white-rgb, 0.2);
+            }
+        }
+
+        /* Divider */
+        .cf-divider {
+            width: 100%;
+            height: 1px;
+            background: var(--darkBorder);
+            margin: (4/16rem) 0;
+        }
+
+        /* Row */
+        .cf-row {
+            display: flex;
+            flex-direction: column;
+            gap: (20/16rem);
+        }
+
+        /* Inputs */
+        .cf-input,
+        .cf-textarea {
+            font-family: var(--bodyFont);
+            font-size: (15/16rem);
+            color: var(--headerColor);
+            background: rgba(@white-rgb, 0.04);
+            border: 1px solid rgba(@white-rgb, 0.1);
+            border-radius: (6/16rem);
+            padding: (14/16rem) (16/16rem);
+            outline: none;
+            width: 100%;
+            transition: border-color 0.3s ease;
+
+            &::placeholder {
+                color: rgba(@white-rgb, 0.2);
+            }
+
+            &:focus {
+                border-color: var(--primary);
+            }
+        }
+
+        .cf-textarea {
+            resize: vertical;
+            min-height: (140/16rem);
+        }
+
+        /* Submit */
+        .cf-submit-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: (16/16rem);
+            margin-top: (8/16rem);
+
+            // cs-button-solid used as <button> — reset browser defaults
+            .cs-button-solid {
+                border: none;
+                cursor: pointer;
+
+                &:disabled {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                }
+            }
+        }
+
+        .cf-success {
+            font-family: var(--bodyFont);
+            font-size: (13/16rem);
+            color: var(--primary);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            margin: 0;
+            text-align: center;
+
+            &.is-visible {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 48rem) {
+    #contact-form {
+        .cf-row {
+            flex-direction: row;
+            gap: (20/16rem);
+
+            .cf-field {
+                flex: 1;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 64rem) {
+    #contact-form {
+        .cf-inner {
+            max-width: (600/16rem);
+        }
+    }
+}

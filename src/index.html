@@ -1,0 +1,519 @@
+---
+title: "Andrew Nicholson | Home"
+description: "Meta description for the page"
+permalink: "/"
+tags: "sitemap" # content/content.json will make sure that all pages in content/ are marked with a "sitemap" tag, for automatic sitemap generation. As index.html is not in content/, we need to add it here to ensure the root page is included in the sitemap generation
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <!-- Critical styles are loaded first -->
+    <link rel="stylesheet" href="/assets/css/critical.css"/>
+
+    <!-- If we're in production, defer the rest of the home page styles. In development, always load it. Otherwise the site will break when hot-reload is used. -->
+    {% if client.isProduction %}
+        <link rel="preload" href="/assets/css/local.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript>
+            <link rel="stylesheet" href="/assets/css/local.css">
+        </noscript>
+
+    {% else %}
+        <link rel="stylesheet" href="/assets/css/local.css"/>
+    {% endif %}
+
+    <!-- To ensure proper validation, prevent errors, and encourage developers to check, schema's are an opt-in feature. They're very bespoke and requires some customising  -->
+    <!-- Uncomment the code below to enable Structured Data, and test it when you deploy to Netlify - https://developers.google.com/search/docs/appearance/structured-data -->
+    <!-- {% include "components/home-schema.html" %} -->
+{% endblock %}
+
+{% block body %}
+
+<!-- ============================================ -->
+<!--                    Hero                      -->
+<!-- ============================================ -->
+<section id="hero">
+    <div class="cs-container">
+
+        <video
+            class="cs-background"
+            autoplay
+            loop
+            muted
+            playsinline
+            preload="auto"
+            poster="/assets/images/hero-poster.jpg"
+            aria-hidden="true"
+        >
+            <source src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/IntroVideo_WADE_1.mp4" type="video/mp4">
+        </video>
+
+        <div class="cs-overlay" aria-hidden="true"></div>
+
+        <canvas class="cs-grain" aria-hidden="true"></canvas>
+
+        <div class="cs-bottom">
+            <div class="cs-name-block">
+                <h1 class="cs-hero-name">
+                    <span class="cs-name-first">Andrew</span>
+                    <span class="cs-name-last">Nicholson</span>
+                </h1>
+            </div>
+
+            <div class="cs-right-block">
+                <p class="cs-hero-text">
+                    Andrew Nicholson is a former professional basketball player turned entrepreneur and investor with a diverse portfolio spanning sports, wellness, biotech, nutrition, hospitality, and community impact.
+                </p>
+                <button class="cs-sound-btn" aria-pressed="false" aria-label="Unmute sound">
+                    <svg class="cs-sound-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" class="cs-icon-speaker"/>
+                        <line x1="23" y1="9" x2="17" y2="15" class="cs-icon-mute"/>
+                        <line x1="17" y1="9" x2="23" y2="15" class="cs-icon-mute"/>
+                        <path d="M15.54 8.46a5 5 0 0 1 0 7.07" class="cs-icon-wave"/>
+                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14" class="cs-icon-wave"/>
+                    </svg>
+                    <span class="cs-sound-label">Sound</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================================================== -->
+<!--                  Who is Andrew                        -->
+<!-- ===================================================== -->
+<section class="cs-who-is-andrew" id="who-is-andrew">
+
+    <div class="cs-who-sticky">
+
+        <div class="cs-who-text">
+            <span class="cs-topper">Who is Andrew</span>
+            <p class="cs-who-copy">
+                Physics graduate. Former NBA professional. Founder, investor, and community builder. Andrew Nicholson's story isn't just about basketball — it's about what happens when discipline, science, and purpose converge into something bigger than the game.
+            </p>
+        </div>
+
+        <div class="cs-portrait-wrapper">
+            <img
+                class="cs-portrait-img"
+                src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-1.jpg"
+                alt="Portrait"
+            />
+        </div>
+
+        <!-- Portrait overlay text — sibling of portrait wrapper, positioned by GSAP -->
+        <div class="cs-portrait-overlay">
+            <span class="cs-portrait-overlay-text">More Than an Athlete?</span>
+        </div>
+
+        <div class="cs-mosaic" aria-hidden="true">
+
+            <!-- Row 1 — 5 tiles (desktop) / 3 tiles (mobile) -->
+            <div class="cs-mosaic-item" data-mosaic>
+                <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-2.jpg" alt="" />
+            </div>
+            <div class="cs-mosaic-item" data-mosaic>
+                <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-3.jpg" alt="" />
+            </div>
+            <div class="cs-mosaic-item" data-mosaic>
+                <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-4.jpg" alt="" />
+            </div>
+            <div class="cs-mosaic-item" data-mosaic>
+                <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&q=80" alt="" />
+            </div>
+            <div class="cs-mosaic-item" data-mosaic>
+                <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-5.jpg" alt="" />
+            </div>
+
+            <!-- Row 2 — col 1, col 2, CENTER SLOT (col 3), col 4, col 5 -->
+            <div class="cs-mosaic-item" data-mosaic>
+                <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-6.jpg" alt="" />
+            </div>
+            <div class="cs-mosaic-item" data-mosaic>
+                <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-7.jpg" alt="" />
+            </div>
+
+            <!-- Center slot — portrait lives here on mobile, GSAP uses it as target on desktop -->
+            <div class="cs-mosaic-portrait-slot">
+                <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-1.jpg" alt="Portrait" />
+                <div class="cs-mosaic-slot-label">Built for Impact.</div>
+            </div>
+
+            <div class="cs-mosaic-item" data-mosaic>
+                <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-8.jpg" alt="" />
+            </div>
+            <div class="cs-mosaic-item" data-mosaic>
+                <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-9.jpeg" alt="" />
+            </div>
+
+            <!-- Row 3 — 5 tiles -->
+            <div class="cs-mosaic-item" data-mosaic>
+                <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-10.jpg" alt="" />
+            </div>
+            <div class="cs-mosaic-item" data-mosaic>
+                <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-11.webp" alt="" />
+            </div>
+            <div class="cs-mosaic-item" data-mosaic>
+                <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-12.webp" alt="" />
+            </div>
+            <div class="cs-mosaic-item" data-mosaic>
+                <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-1.jpg" alt="" />
+            </div>
+            <div class="cs-mosaic-item" data-mosaic>
+                <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-2.jpg" alt="" />
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<div class="cs-who-spacer"></div>
+
+<!-- ============================================ -->
+<!--               Brand Statement                -->
+<!-- ============================================ -->
+
+<div id="brand-statement-wrapper">
+  <section id="brand-statement">
+    <p class="cs-headline" id="cs-brand-headline" aria-label="Built through years of discipline in sport and expanded through a thoughtful approach to business. Defined by a lasting commitment to impact, community, and opportunities beyond the game.">
+      <!-- Words injected by JS -->
+    </p>
+
+    <div class="cs-marquee-wrapper" aria-hidden="true">
+      <div class="cs-marquee-track" id="cs-marquee-track">
+        <!-- Logos injected by JS below -->
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================================================== -->
+<!--                   Brand Pillars                       -->
+<!-- ===================================================== -->
+<section id="brand-pillars">
+  <div class="cs-pillars-sticky">
+
+    <!-- ── Mobile cards (hidden on desktop) ── -->
+    <div class="cs-pillars-mobile">
+      <div class="cs-pillar-card">
+        <div class="cs-pillar-card-img">
+          <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-10.jpg" alt="Build" loading="lazy" decoding="async" />
+        </div>
+        <h3 class="cs-pillar-card-heading">Build.</h3>
+        <p class="cs-pillar-card-text">Before the courts, there was the classroom. Andrew's foundation in physics at St. Bonaventure University gave him something most athletes never develop — a systems thinker's mind. The ability to break down complexity, identify patterns, and solve for the unknown. It's the same principle he applies to every venture he touches.</p>
+      </div>
+      <div class="cs-pillar-card">
+        <div class="cs-pillar-card-img">
+          <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-3.jpg" alt="Compete" loading="lazy" decoding="async" />
+        </div>
+        <h3 class="cs-pillar-card-heading">Compete.</h3>
+        <p class="cs-pillar-card-text">Eight seasons in the NBA teaches you things no business school can. The relentless preparation, the resilience through adversity, the discipline to show up when it counts. Andrew carried every lesson from the professional game into how he builds — with consistency, competitiveness, and an unwillingness to settle for average.</p>
+      </div>
+      <div class="cs-pillar-card">
+        <div class="cs-pillar-card-img">
+          <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-6.jpg" alt="Create" loading="lazy" decoding="async" />
+        </div>
+        <h3 class="cs-pillar-card-heading">Create.</h3>
+        <p class="cs-pillar-card-text">Andrew doesn't write cheques and walk away. He embeds himself — from concept to launch, from brand identity to operations. Across sports, wellness, biotech, hospitality, and media, he builds businesses with the same hands-on intensity he brought to every training session. The venture is the arena. And he plays to win.</p>
+      </div>
+    </div>
+
+    <!-- ── Desktop sticky panel (hidden on mobile) ── -->
+    <div class="cs-pillars-panel">
+      <div class="cs-pillar-left">
+        <h3 class="cs-pillar-heading">
+          <span class="cs-pillar-word" data-pillar="0">Build.</span>
+          <span class="cs-pillar-word" data-pillar="1">Compete.</span>
+          <span class="cs-pillar-word" data-pillar="2">Create.</span>
+        </h3>
+        <div class="cs-pillar-bodies">
+          <p class="cs-pillar-text" data-pillar="0">
+            Before the courts, there was the classroom. Andrew's foundation in physics at St. Bonaventure University gave him something most athletes never develop — a systems thinker's mind. The ability to break down complexity, identify patterns, and solve for the unknown. It's the same principle he applies to every venture he touches.
+          </p>
+          <p class="cs-pillar-text" data-pillar="1">
+            Eight seasons in the NBA teaches you things no business school can. The relentless preparation, the resilience through adversity, the discipline to show up when it counts. Andrew carried every lesson from the professional game into how he builds — with consistency, competitiveness, and an unwillingness to settle for average.
+          </p>
+          <p class="cs-pillar-text" data-pillar="2">
+            Andrew doesn't write cheques and walk away. He embeds himself — from concept to launch, from brand identity to operations. Across sports, wellness, biotech, hospitality, and media, he builds businesses with the same hands-on intensity he brought to every training session. The venture is the arena. And he plays to win.
+          </p>
+        </div>
+      </div>
+      <div class="cs-pillar-right">
+        <div class="cs-pillar-img-wrapper" data-pillar="0">
+          <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-10.jpg" alt="Build" loading="lazy" decoding="async" />
+        </div>
+        <div class="cs-pillar-img-wrapper" data-pillar="1">
+          <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-3.jpg" alt="Compete" loading="lazy" decoding="async" />
+        </div>
+        <div class="cs-pillar-img-wrapper" data-pillar="2">
+          <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-6.jpg" alt="Create" loading="lazy" decoding="async" />
+        </div>
+      </div>
+    </div>
+
+    <!-- scroll-height spacer — 3 panels -->
+<div class="cs-pillars-spacer" aria-hidden="true"></div>
+
+<div class="cs-pillars-progress">
+  <div class="cs-pillars-progress-bar-track">
+    <div class="cs-pillars-progress-bar" id="cs-progress-bar"></div>
+  </div>
+</div>
+</section>
+
+<!-- ============================================ -->
+<!--                  Portfolio                   -->
+<!-- ============================================ -->
+<section id="portfolio">
+    <div class="cs-container">
+        <div class="cs-content">
+            <h2 class="cs-title">Andrew's<br>Ventures</h2>
+            <p class="cs-text">
+                Andrew Nicholson is a former professional basketball player turned entrepreneur
+                and investor with a diverse portfolio spanning sports, wellness, biotech,
+                nutrition, hospitality, and community impact.
+            </p>
+        </div>
+
+        <ul class="cs-card-group">
+
+            <!-- Row 1 Left - Wide -->
+            <li class="cs-item cs-wide-left">
+                <a href="" class="cs-link">
+                    <div class="cs-media">
+                        <video
+                            class="cs-video"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="auto"
+                            poster="/assets/images/portfolio/pro-performance-lab.jpg"
+                        >
+                            <source src="https://player.vimeo.com/progressive_redirect/playback/1158898677/rendition/720p/file.mp4%20%28720p%29.mp4?loc=external&signature=cebc439b86e44502a2e45116bec7403473b144ec6f4ac5c5664aa22db683ea9c" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="cs-info">
+                        <span class="cs-name">Pro Performance<br>Lab</span>
+                    </div>
+                    <span class="cs-plus" aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 1V13M1 7H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    </span>
+                    <div class="cs-hover-overlay">
+                        <span class="cs-tag">Sports &amp; Fitness</span>
+                        <p class="cs-desc">Elite athlete training and sports science consulting for the next generation of professionals.</p>
+                    </div>
+                </a>
+            </li>
+
+            <!-- Row 1–2 Right - Tall (spans 2 rows) -->
+            <li class="cs-item cs-tall-right">
+                <a href="" class="cs-link">
+                    <div class="cs-media">
+                        <video
+                            class="cs-video"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="auto"
+                            poster="/assets/images/portfolio/recovery-co.jpg"
+                        >
+                            <source src="https://player.vimeo.com/progressive_redirect/playback/1158898918/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&signature=5830e04cab690d6cce23a8d38b3a0c7fcb8585fedff8124eaf6a3434e0d202c8" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="cs-info">
+                        <span class="cs-name">Recovery<br>&amp; Co.</span>
+                    </div>
+                    <span class="cs-plus" aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 1V13M1 7H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    </span>
+                    <div class="cs-hover-overlay">
+                        <span class="cs-tag">Health &amp; Wellness</span>
+                        <p class="cs-desc">Holistic wellness brand built around recovery science, longevity, and peak performance living.</p>
+                    </div>
+                </a>
+            </li>
+
+            <!-- Row 2 Left - Wide -->
+            <li class="cs-item cs-wide-left">
+                <a href="" class="cs-link">
+                    <div class="cs-media">
+                        <video
+                            class="cs-video"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="auto"
+                            poster="/assets/images/portfolio/bioedge-sciences.jpg"
+                        >
+                            <source src="https://player.vimeo.com/progressive_redirect/playback/1162670261/rendition/360p/file.mp4%20%28360p%29.mp4?loc=external&signature=b3cdda2454b67e67d8d6d313fcf8e0c171270933b56f19d155332e6c7319d02d" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="cs-info">
+                        <span class="cs-name">BioEdge<br>Sciences</span>
+                    </div>
+                    <span class="cs-plus" aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 1V13M1 7H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    </span>
+                    <div class="cs-hover-overlay">
+                        <span class="cs-tag">Biotech &amp; Innovation</span>
+                        <p class="cs-desc">Pioneering performance-driven genetic research and diagnostics for athletes.</p>
+                    </div>
+                </a>
+            </li>
+
+            <!-- Row 3 - Three equal cards -->
+            <li class="cs-item cs-third">
+                <a href="" class="cs-link">
+                    <div class="cs-media">
+                        <video
+                            class="cs-video"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="auto"
+                            poster="/assets/images/portfolio/fuel-form.jpg"
+                        >
+                            <source src="https://player.vimeo.com/progressive_redirect/playback/1158898829/rendition/720p/file.mp4%20%28720p%29.mp4?loc=external&signature=3390fef9bf6220e43016c8dd57a72784374a3c96a00cfd6b1263b45947e7bf03" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="cs-info">
+                        <span class="cs-name">Fuel<br>&amp; Form</span>
+                    </div>
+                    <span class="cs-plus" aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 1V13M1 7H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    </span>
+                    <div class="cs-hover-overlay">
+                        <span class="cs-tag">Nutrition</span>
+                        <p class="cs-desc">Clean sports nutrition designed for athletes who train at the highest level.</p>
+                    </div>
+                </a>
+            </li>
+
+            <li class="cs-item cs-third">
+                <a href="" class="cs-link">
+                    <div class="cs-media">
+                        <video
+                            class="cs-video"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="auto"
+                            poster="https://cdn.prod.website-files.com/696dfd1171b624690cfd2f6e/6970b883d409cc79cc67e715_Belkin.avif"
+                        >
+                            <source src="/assets/videos/portfolio/court-table.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="cs-info">
+                        <span class="cs-name">Court<br>&amp; Table</span>
+                    </div>
+                    <span class="cs-plus" aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 1V13M1 7H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    </span>
+                    <div class="cs-hover-overlay">
+                        <span class="cs-tag">Hospitality</span>
+                        <p class="cs-desc">An athlete-founded dining experience merging culture, community, and culinary craft.</p>
+                    </div>
+                </a>
+            </li>
+
+            <li class="cs-item cs-third">
+                <a href="" class="cs-link">
+                    <div class="cs-media">
+                        <video
+                            class="cs-video"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="auto"
+                            poster="/assets/images/portfolio/next-court-up.jpg"
+                        >
+                            <source src="https://player.vimeo.com/progressive_redirect/playback/1158899611/rendition/480p/file.mp4%20%28480p%29.mp4?loc=external&signature=aee541459cc8f381f80b9e7605c3420b38d8153b37db5214a10eeb971dd55af9" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="cs-info">
+                        <span class="cs-name">Next<br>Court Up</span>
+                    </div>
+                    <span class="cs-plus" aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 1V13M1 7H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    </span>
+                    <div class="cs-hover-overlay">
+                        <span class="cs-tag">Community Impact</span>
+                        <p class="cs-desc">Youth development foundation giving underserved athletes access to elite coaching and education.</p>
+                    </div>
+                </a>
+            </li>
+
+            <!-- Row 4 Left - Small -->
+            <li class="cs-item cs-small-left">
+                <a href="" class="cs-link">
+                    <div class="cs-media">
+                        <video
+                            class="cs-video"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="auto"
+                            poster="/assets/images/portfolio/hardwood-stories.jpg"
+                        >
+                            <source src="https://player.vimeo.com/progressive_redirect/playback/1158898850/rendition/720p/file.mp4%20%28720p%29.mp4?loc=external&signature=5f637d6452236b028c1a706081a6045dee082e52868d13736300b6d2257c7524" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="cs-info">
+                        <span class="cs-name">Hardwood<br>Stories</span>
+                    </div>
+                    <span class="cs-plus" aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 1V13M1 7H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    </span>
+                    <div class="cs-hover-overlay">
+                        <span class="cs-tag">Media &amp; Content</span>
+                        <p class="cs-desc">Podcast and media platform celebrating the stories behind athletes' second acts.</p>
+                    </div>
+                </a>
+            </li>
+
+            <!-- Row 4 Right - Wide -->
+            <li class="cs-item cs-wide-right">
+                <a href="" class="cs-link">
+                    <div class="cs-media">
+                        <video
+                            class="cs-video"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="auto"
+                            poster="/assets/images/portfolio/nicholson-ventures.jpg"
+                        >
+                            <source src="https://player.vimeo.com/progressive_redirect/playback/1158898774/rendition/720p/file.mp4%20%28720p%29.mp4?loc=external&signature=ea01c1f82571e4bc9778fb966868a39511de480673df36c55f57a41d1d12046e" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="cs-info">
+                        <span class="cs-name">Nicholson<br>Ventures</span>
+                    </div>
+                    <span class="cs-plus" aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 1V13M1 7H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    </span>
+                    <div class="cs-hover-overlay">
+                        <span class="cs-tag">Investment</span>
+                        <p class="cs-desc">Early-stage fund backing founders at the intersection of sport, health, and consumer technology.</p>
+                    </div>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</section>
+
+<script src="/assets/js/homepage.js"></script>
+
+{% include 'sections/cta.html' %}
+{% endblock %}

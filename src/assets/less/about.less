@@ -1,0 +1,313 @@
+/*-- -------------------------- -->
+<---    About Chapter Sections  -->
+<--- -------------------------- -*/
+
+// Raw channel values — from design tokens
+// --dark: #121212  --bodyTextColorWhite: #fafbfc  --primary: #f47323
+@dark-rgb:    18, 18, 18;
+@white-rgb:   250, 251, 252;  // --bodyTextColorWhite
+@primary-rgb: 244, 115, 35;   // --primary
+
+/* ── CHAPTER WRAPPER ───────────────────────────────────────── */
+@media only screen and (min-width: 0rem) {
+
+    .an-chapter {
+        position: relative;
+        /* height set dynamically by JS: (pairs + 1) * 100vh */
+    }
+
+    /* ── STICKY CONTAINER ──────────────────────────────────── */
+    .an-sticky {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    /* ── TRACK ─────────────────────────────────────────────── */
+    .an-track {
+        display: flex;
+        height: 100%;
+        will-change: transform;
+        /* width set by JS */
+    }
+
+    /* ── TITLE PANEL ────────────────────────────────────────── */
+    .an-title-panel {
+        flex: 0 0 100vw;
+        width: 100vw;
+        height: 100%;
+        background: var(--dark);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: (56/16rem) (64/16rem);
+        position: relative;
+
+        &::after { display: none; }
+    }
+
+    .an-chapter-index {
+        font-family: var(--bodyFont);
+        font-size: (10/16rem);
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: rgba(@white-rgb, 0.22);
+        margin-bottom: (20/16rem);
+        display: block;
+    }
+
+    .an-chapter-title {
+        font-family: var(--headerFont);
+        font-size: clamp((44/16rem), 5vw, (80/16rem));
+        font-weight: 800;
+        line-height: 0.95;
+        letter-spacing: -0.03em;
+        text-transform: uppercase;
+        color: var(--headerColor);
+
+        em {
+            font-style: normal;
+            color: rgba(@white-rgb, 0.12);
+            display: block;
+            font-size: 0.38em;
+            letter-spacing: 0.06em;
+            font-weight: 500;
+            margin-top: (12/16rem);
+            line-height: 1.6;
+            text-transform: none;
+            max-width: 22ch;
+        }
+    }
+
+    /* ── PAIR PANEL ─────────────────────────────────────────── */
+    .an-pair {
+        flex: 0 0 100vw;
+        width: 100vw;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* ── TEXT HALF ──────────────────────────────────────────── */
+    .an-pair-text {
+        background: var(--dark);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: (64/16rem) (56/16rem) (64/16rem) (64/16rem);
+        position: relative;
+
+        &::after { display: none; }
+    }
+
+    .an-pair-eyebrow {
+        font-family: var(--bodyFont);
+        font-size: (10/16rem);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(@white-rgb, 0.25);
+        margin-bottom: (24/16rem);
+        display: block;
+    }
+
+    .an-pair-heading {
+        font-family: var(--headerFont);
+        font-size: clamp((28/16rem), 2.8vw, (44/16rem));
+        font-weight: 700;
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        color: var(--headerColor);
+        margin: 0 0 (20/16rem);
+    }
+
+    .an-pair-body {
+        font-family: var(--bodyFont);
+        font-size: clamp((13/16rem), 1vw, (15/16rem));
+        line-height: 1.78;
+        color: rgba(@white-rgb, 0.48);
+        max-width: 44ch;
+        margin: 0;
+    }
+
+    /* ── STAT CALLOUT ───────────────────────────────────────── */
+    .an-pair-stat {
+        margin-top: (32/16rem);
+        display: flex;
+        align-items: baseline;
+        gap: (8/16rem);
+    }
+
+    .an-pair-stat-num {
+        font-family: var(--headerFont);
+        font-size: clamp((32/16rem), 3.5vw, (52/16rem));
+        font-weight: 800;
+        color: var(--headerColor);
+        line-height: 1;
+        letter-spacing: -0.04em;
+    }
+
+    .an-pair-stat-label {
+        font-family: var(--bodyFont);
+        font-size: (10/16rem);
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(@white-rgb, 0.25);
+    }
+
+    /* ── IMAGE HALF ─────────────────────────────────────────── */
+    .an-pair-img {
+        position: relative;
+        overflow: hidden;
+        background: var(--darkElevated);
+
+        /* Subtle left fade for text bleed */
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(@dark-rgb, 0.18) 0%, transparent 30%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 110%;
+            top: -5%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+            will-change: transform;
+        }
+    }
+
+    /* ── PROGRESS BAR ───────────────────────────────────────── */
+    .an-progress {
+        display: none;
+        position: absolute;
+        bottom: (32/16rem);
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 20;
+        width: 28%;
+        height: (1/16rem);
+        background: rgba(@white-rgb, 0.1);
+        border-radius: 999px;
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+    .an-progress-fill {
+        height: 100%;
+        width: 0%;
+        background: var(--primary); // orange fill — matches portfolio + hero
+        border-radius: 999px;
+        transition: width 0.12s linear;
+    }
+
+    /* ── SCROLL HINT ────────────────────────────────────────── */
+    .an-scroll-hint {
+        position: absolute;
+        bottom: (32/16rem);
+        right: (44/16rem);
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        gap: (8/16rem);
+        font-family: var(--bodyFont);
+        font-size: (9/16rem);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(@white-rgb, 0.2);
+        pointer-events: none;
+        transition: opacity 0.4s ease;
+
+        svg {
+            animation: anHintSlideAbout 1.8s ease-in-out infinite;
+        }
+
+        &.is-hidden {
+            opacity: 0;
+        }
+    }
+
+    @keyframes anHintSlideAbout {
+        0%, 100% { transform: translateX(0); }
+        50%       { transform: translateX((5/16rem)); }
+    }
+
+    /* ── CHAPTER DIVIDER ────────────────────────────────────── */
+    .an-chapter-divider {
+        display: none;
+    }
+
+} /* end base */
+
+/* ── MOBILE (max 767px) ─────────────────────────────────────── */
+@media only screen and (max-width: 47.9375rem) {
+
+    /* Title panel — full viewport on mobile */
+    .an-title-panel {
+        flex: 0 0 100vw;
+        width: 100vw;
+        padding: (48/16rem) (28/16rem);
+        justify-content: center;
+
+        &::after { display: none; }
+    }
+
+    .an-chapter-title {
+        font-size: clamp((36/16rem), 12vw, (56/16rem));
+    }
+
+    /* Pair panel — split into text + image as separate full-screen slides */
+    .an-pair {
+        flex: 0 0 200vw;  // each pair = 2 full-screen slides
+        width: 200vw;
+        grid-template-columns: 100vw 100vw;
+        grid-template-rows: 1fr;
+        height: 100svh;
+    }
+
+    .an-pair-img {
+        order: 1;  // image always after text
+        position: relative;
+        height: 100%;
+        overflow: hidden;
+
+        img {
+            position: absolute;
+            width: 100%;
+            height: 110%;
+            top: -5%;
+            object-fit: cover;
+        }
+    }
+
+    .an-pair-text {
+        order: 0;  // text always first
+        width: 100vw;
+        padding: (40/16rem) (28/16rem);
+        justify-content: center;
+        overflow-y: auto;
+
+        &::after { display: none; }
+    }
+
+    .an-progress { display: none !important; }
+    .an-scroll-hint { display: none; }
+
+} /* end mobile */
+
+/* ── DESKTOP (min 768px) — show progress bar ────────────────── */
+@media only screen and (min-width: 48rem) {
+
+    .an-progress {
+        display: block;
+    }
+
+} /* end desktop */

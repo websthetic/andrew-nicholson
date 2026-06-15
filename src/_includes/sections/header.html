@@ -1,0 +1,63 @@
+<!-- ============================================ -->
+<!--                 Navigation                   -->
+<!-- ============================================ -->
+<div class="cs-menu-overlay" id="cs-menu-overlay" aria-hidden="true">
+    <div class="cs-menu-inner">
+
+        <nav class="cs-nav-col">
+            <ul class="cs-ul">
+                <li class="cs-li">
+                    <a href="/" class="cs-li-link" {% if page.url == "/" %} aria-current="page" {% endif %}>
+                        Home <span class="cs-arrow" aria-hidden="true">→</span>
+                    </a>
+                </li>
+                <li class="cs-li">
+                    <a href="/portfolio/" class="cs-li-link" {% if page.url == "/portfolio/" %} aria-current="page" {% endif %}>
+                        Portfolio <span class="cs-arrow" aria-hidden="true">→</span>
+                    </a>
+                </li>
+                <li class="cs-li">
+                    <a href="/about/" class="cs-li-link" {% if page.url == "/about/" %} aria-current="page" {% endif %}>
+                        About <span class="cs-arrow" aria-hidden="true">→</span>
+                    </a>
+                </li>
+                <li class="cs-li">
+                    <a href="/44hoops-foundation/" class="cs-li-link" {% if page.url == "/44-hoops-foundation/" %} aria-current="page" {% endif %}>
+                        44 Hoops Foundation <span class="cs-arrow" aria-hidden="true">→</span>
+                    </a>
+                </li>
+                <li class="cs-li">
+                    <a href="/contact/" class="cs-li-link" {% if page.url == "/contact/" %} aria-current="page" {% endif %}>
+                        Contact <span class="cs-arrow" aria-hidden="true">→</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <aside class="cs-menu-aside">
+            <p class="cs-social-label">Social</p>
+            <ul class="cs-social-list">
+                <li><a href="https://instagram.com/" class="cs-social-link" target="_blank" rel="noopener">Instagram</a></li>
+                <li><a href="https://twitter.com/" class="cs-social-link" target="_blank" rel="noopener">Twitter</a></li>
+                <li><a href="https://facebook.com/" class="cs-social-link" target="_blank" rel="noopener">Facebook</a></li>
+                <li><a href="https://youtube.com/" class="cs-social-link" target="_blank" rel="noopener">YouTube</a></li>
+            </ul>
+        </aside>
+
+    </div>
+</div>
+
+<header id="cs-navigation">
+    <div class="cs-container">
+        <a href="/" class="cs-logo" aria-label="Home">
+            <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/andrew-nicholoson-logo.png" alt="Andrew Nicholson" class="cs-logo-img" />
+        </a>
+        <button class="cs-toggle" id="cs-toggle" aria-expanded="false" aria-controls="cs-menu-overlay" aria-label="menu toggle" aria-haspopup="menu">
+            <span class="cs-box" aria-hidden="true">
+                <span class="cs-line cs-line1"></span>
+                <span class="cs-line cs-line2"></span>
+                <span class="cs-line cs-line3"></span>
+            </span>
+        </button>
+    </div>
+</header>

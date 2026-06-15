@@ -1,0 +1,328 @@
+---
+title: "Portfolio | Andrew Nicholson"
+description: "Meta description for the page"
+permalink: "/portfolio/"
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/portfolio.css">
+{% endblock %}
+
+{% block body %}
+
+<!-- ============================================ -->
+<!--                    HERO                      -->
+<!-- ============================================ -->
+
+<section id="an-hero">
+    <div class="cs-container">
+        <div class="cs-content">
+            <h1 class="cs-title">
+                Andrew's Portfolio
+            </h1>
+            <p class="cs-text">
+                Eight ventures. Three categories. One through line — build something that lasts.
+            </p>
+            <div class="cs-meta">
+                <span class="cs-meta-item">Wellness</span>
+                <span class="cs-meta-divider">·</span>
+                <span class="cs-meta-item">The Community</span>
+                <span class="cs-meta-divider">·</span>
+                <span class="cs-meta-item">The Business</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background image -->
+    <picture class="cs-background">
+        <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-3.jpg">
+        <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-3.jpg">
+        <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-3.jpg"
+             alt="Andrew Nicholson with youth at a 44 Hoops basketball camp"
+             loading="eager"
+             decoding="async">
+    </picture>
+
+    <!-- Scroll cue -->
+    <div class="cs-scroll-cue" aria-hidden="true">
+        <span class="cs-scroll-line"></span>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!--                  Portfolio                   -->
+<!-- ============================================ -->
+
+<!-- FIXED SIDEBAR -->
+<nav class="vp-sidebar" id="vp-sidebar" aria-label="Venture categories">
+  <ul class="vp-sidebar-list">
+    <li class="vp-sidebar-item" data-category="body">
+      <span class="vp-sidebar-label">Wellness</span>
+      <span class="vp-sidebar-count">03</span>
+    </li>
+    <li class="vp-sidebar-item" data-category="community">
+      <span class="vp-sidebar-label">The Community</span>
+      <span class="vp-sidebar-count">03</span>
+    </li>
+    <li class="vp-sidebar-item" data-category="business">
+      <span class="vp-sidebar-label">The Business</span>
+      <span class="vp-sidebar-count">02</span>
+    </li>
+  </ul>
+</nav>
+
+<!-- MOBILE TAB NAV -->
+<div class="vp-mobile-tabs" id="vp-mobile-tabs">
+  <div class="vp-mobile-tab" data-category="body">Wellness</div>
+  <div class="vp-mobile-tab" data-category="community">The Community</div>
+  <div class="vp-mobile-tab" data-category="business">The Business</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     Wellness
+     ══════════════════════════════════════════ -->
+<div class="vp-divider-section" data-category="body">
+  <div class="vp-divider-bottom">
+    <div class="vp-divider-title">Wellness</div>
+  </div>
+</div>
+
+<div class="vp-group" data-category="body" id="group-body">
+  <div class="vp-group-sticky">
+    <div class="vp-track" id="track-body">
+
+      <div class="vp-panel">
+        <div class="vp-card-bg" style="background-image:url('https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/portfolio-page/revibe-hero.webp')"></div>
+        <div class="vp-card-overlay"></div>
+        <div class="vp-card-content">
+          <div class="vp-card-category">Wellness</div>
+          <div class="vp-card-body-wrap">
+            <div class="vp-card-body">
+              <h2 class="vp-card-title">Revibe — Athlete Grade Care</h2>
+              <p class="vp-card-role">Investor &amp; Partner</p>
+              <p class="vp-card-desc">A growing wellness brand across the GTA built around the concept of Athlete Grade Care.
+Revibe offers advanced recovery therapies, movement-based treatment, and wellness
+services designed for athletes and active individuals who want to perform, recover, and live at
+a higher level.</p>
+              <a href="#" class="vp-card-cta">Explore <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="vp-panel">
+        <div class="vp-card-bg" style="background-image:url('https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/portfolio-page/movefit-perfomance.avif')"></div>
+        <div class="vp-card-overlay"></div>
+        <div class="vp-card-content">
+          <div class="vp-card-category">Wellness</div>
+          <div class="vp-card-body-wrap">
+            <div class="vp-card-body">
+              <h2 class="vp-card-title">MoveFit Performance</h2>
+              <p class="vp-card-role">Investor &amp; Partner</p>
+              <p class="vp-card-desc">Sport science and strength & conditioning built on real data. MoveFit works with athletes
+across every level — using biomechanics, performance training, recovery strategies, and
+data-driven methodologies to improve speed, strength, mobility, and durability. The kind of
+system Andrew built his career on.</p>
+              <a href="#" class="vp-card-cta">Explore <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="vp-panel">
+        <div class="vp-card-bg" style="background-image:url('https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/portfolio-page/fuel-nutrition.jpg')"></div>
+        <div class="vp-card-overlay"></div>
+        <div class="vp-card-content">
+          <div class="vp-card-category">Wellness</div>
+          <div class="vp-card-body-wrap">
+            <div class="vp-card-body">
+              <h2 class="vp-card-title">Made</h2>
+              <p class="vp-card-role">Investor &amp; Partner</p>
+              <p class="vp-card-desc">High-performance meal preparation and catering for athletes, teams, and professionals. Made
+delivers chef-prepared, nutrient-dense meals built around performance — because
+what you eat between the games matters as much as what you do during them.</p>
+              <a href="#" class="vp-card-cta">Explore <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="vp-scroll-hint" id="hint-body">
+      <span>Scroll</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <!-- Progress bar — desktop only -->
+    <div class="vp-progress" id="progress-body">
+      <div class="vp-progress-fill"></div>
+    </div>
+  </div>
+  <!-- Dots — mobile only -->
+  <div class="vp-dots" id="dots-body">
+    <div class="vp-dot is-active"></div>
+    <div class="vp-dot"></div>
+    <div class="vp-dot"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     THE COMMUNITY
+     ══════════════════════════════════════════ -->
+<div class="vp-divider-section" data-category="community">
+  <div class="vp-divider-bottom">
+    <div class="vp-divider-title">The Community</div>
+  </div>
+</div>
+
+<div class="vp-group" data-category="community" id="group-community">
+  <div class="vp-group-sticky">
+    <div class="vp-track" id="track-community">
+
+      <div class="vp-panel">
+        <div class="vp-card-bg" style="background-image:url('https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/mosaic-imgs/andrew-img-3.jpg')"></div>
+        <div class="vp-card-overlay"></div>
+        <div class="vp-card-content">
+          <div class="vp-card-category">The Community</div>
+          <div class="vp-card-body-wrap">
+            <div class="vp-card-body">
+              <h2 class="vp-card-title">44Hoops Foundation</h2>
+              <p class="vp-card-role">Founder</p>
+              <p class="vp-card-desc">Named for his number. Built for the next generation. 44Hoops has impacted over 4,400 young
+people across the GTA through high-level basketball camps, academic scholarships, and the
+Books & Buckets literacy initiative. Because the skills that matter most go beyond the court.</p>
+              <a href="#" class="vp-card-cta">Explore <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="vp-panel">
+        <div class="vp-card-bg" style="background-image:url('https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/portfolio-page/recess-athletics-club-andrew.jpg')"></div>
+        <div class="vp-card-overlay"></div>
+        <div class="vp-card-content">
+          <div class="vp-card-category">The Community</div>
+          <div class="vp-card-body-wrap">
+            <div class="vp-card-body">
+              <h2 class="vp-card-title">Recess Athletic Club</h2>
+              <p class="vp-card-role">Founder &amp; Owner</p>
+              <p class="vp-card-desc">A premium multi-sport athletic club and high-performance development platform in Markham,
+Ontario. Recess brings together basketball, volleyball, pickleball, performance training,
+leagues, youth development, and wellness — all under one community-focused environment
+built for people who take the game seriously.</p>
+              <a href="#" class="vp-card-cta">Explore <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="vp-panel">
+        <div class="vp-card-bg" style="background-image:url('https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/portfolio-page/rise-up-league.jpg')"></div>
+        <div class="vp-card-overlay"></div>
+        <div class="vp-card-content">
+          <div class="vp-card-category">The Community</div>
+          <div class="vp-card-body-wrap">
+            <div class="vp-card-body">
+              <h2 class="vp-card-title">Rise Up Men's Basketball League</h2>
+              <p class="vp-card-role">Investor &amp; Operator</p>
+              <p class="vp-card-desc">One of the GTA's premier competitive basketball leagues, serving 1,000+ athletes annually.
+Rise Up provides a structured, high-level environment where the love of the game meets real
+community — keeping athletes competing long after their school careers end.</p>
+              <a href="#" class="vp-card-cta">Explore <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="vp-scroll-hint" id="hint-community">
+      <span>Scroll</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <!-- Progress bar — desktop only -->
+    <div class="vp-progress" id="progress-community">
+      <div class="vp-progress-fill"></div>
+    </div>
+  </div>
+  <!-- Dots — mobile only -->
+  <div class="vp-dots" id="dots-community">
+    <div class="vp-dot is-active"></div>
+    <div class="vp-dot"></div>
+    <div class="vp-dot"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     THE BUSINESS
+     ══════════════════════════════════════════ -->
+<div class="vp-divider-section" data-category="business">
+  <div class="vp-divider-bottom">
+    <div class="vp-divider-title">The Business</div>
+  </div>
+</div>
+
+<div class="vp-group" data-category="business" id="group-business">
+  <div class="vp-group-sticky">
+    <div class="vp-track" id="track-business">
+
+      <div class="vp-panel">
+        <div class="vp-card-bg" style="background-image:url('https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/portfolio-page/crumbl-cookies.avif')"></div>
+        <div class="vp-card-overlay"></div>
+        <div class="vp-card-content">
+          <div class="vp-card-category">The Business</div>
+          <div class="vp-card-body-wrap">
+            <div class="vp-card-body">
+              <h2 class="vp-card-title">Crumbl Cookies Ontario</h2>
+              <p class="vp-card-role">Franchise Investor &amp; Partner</p>
+              <p class="vp-card-desc">Franchise partner in three Crumbl Cookie locations across Ontario — including involvement
+in launching one of the first Crumbl locations in Canada. A strategic bet on a brand that has
+become one of North America's fastest-growing and most culturally relevant food franchises.</p>
+              <a href="#" class="vp-card-cta">Explore <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="vp-panel">
+        <div class="vp-card-bg" style="background-image:url('https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/portfolio-page/canurta-therapeutics.jpg')"></div>
+        <div class="vp-card-overlay"></div>
+        <div class="vp-card-content">
+          <div class="vp-card-category">The Business</div>
+          <div class="vp-card-body-wrap">
+            <div class="vp-card-body">
+              <h2 class="vp-card-title">Canurta Therapeutics</h2>
+              <p class="vp-card-role">Investor &amp; Advisor</p>
+              <p class="vp-card-desc">A biotechnology company at the frontier of plant-based therapeutic development. Canurta is
+advancing health solutions through science-backed research and next-generation medicinal
+applications — where natural compounds meet rigorous science. Andrew's investment
+reflects a long-held belief that recovery and wellness are the next frontier of performance.</p>
+              <a href="#" class="vp-card-cta">Explore <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="vp-scroll-hint" id="hint-business">
+      <span>Scroll</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <!-- Progress bar — desktop only -->
+    <div class="vp-progress" id="progress-business">
+      <div class="vp-progress-fill"></div>
+    </div>
+  </div>
+  <!-- Dots — mobile only -->
+  <div class="vp-dots" id="dots-business">
+    <div class="vp-dot is-active"></div>
+    <div class="vp-dot"></div>
+  </div>
+</div>
+
+<script src="/assets/js/portfolio-page.js"></script>
+    
+
+    {% include 'sections/cta.html' %}
+
+{% endblock %}

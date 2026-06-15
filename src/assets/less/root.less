@@ -1,0 +1,273 @@
+/*-- -------------------------- -->
+<---        Core Styles         -->
+<--- -------------------------- -*/
+@media only screen and (min-width: 0px) {
+	/* All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */
+	:root {
+  --primary: #f47323;
+  --primaryLight: #ffba43;
+  --secondary: #ffba43;
+  --secondaryLight: #ff9a5c;
+  --headerColor: #f0ede8;
+  --bodyTextColor: #a09e9a;
+  --bodyTextColorWhite: #fafbfc;
+
+  /* Dark background system */
+  --dark: #121212;
+  --darkElevated: #1e1e1e;
+  --darkCard: #2a2a2a;
+  --darkBorder: rgba(255, 255, 255, 0.08);
+
+
+		/* 13px - 16px */
+		--topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
+		/* 31px - 49px */
+		--headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
+		--bodyFontSize: 1rem;
+		/* 60px - 100px top and bottom */
+		--sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
+
+		--headerFont: "Suisse Screen", Arial, sans-serif;
+		--bodyFont: "Inter", Arial, sans-serif;
+	}
+
+	html,
+	body {
+		margin: 0;
+		padding: 0;
+		overflow-x: clip;
+		font-family: var(--bodyFont);
+		font-size: 100%;
+		transition: background-color 0.3s;
+		color: var(--bodyTextColor);
+	}
+
+	*,
+	*:before,
+	*:after {
+		/* prevents padding from affecting height and width */
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+
+	.cs-topper {
+		font-size: var(--topperFontSize);
+		line-height: 1.2em;
+		text-transform: uppercase;
+		text-align: inherit;
+		letter-spacing: 0.1em;
+		font-weight: 700;
+		color: var(--primary);
+		margin-bottom: 0.25rem;
+		display: block;
+	}
+
+	.cs-title {
+		font-size: var(--headerFontSize);
+		font-weight: 900;
+		line-height: 1.2em;
+		text-align: inherit;
+		max-width: 43.75rem;
+		margin: 0 0 1rem 0;
+		color: var(--headerColor);
+		position: relative;
+		text-transform: uppercase;
+	}
+
+	.cs-text {
+		font-size: var(--bodyFontSize);
+		line-height: 1.5em;
+		text-align: inherit;
+		width: 100%;
+		max-width: 40.625rem;
+		margin: 0;
+		color: var(--bodyTextColor);
+	}
+}
+
+/* Components + Utilities */
+@media only screen and (min-width: 0px) {
+	// Hidden screen reader skip nav button
+	.skip {
+		z-index: -1111111;
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0;
+	}
+
+	// Buttons - can be replaced using CodeStitch's "Button" Stitches. Make sure to clear the default .cs-button-solid/outline styles from any new stitches you place.
+	.cs-button-solid {
+    z-index: 1;
+	font-family: var(--headerFont);
+    position: relative;
+    display: inline-block;
+    background-color: var(--primary);
+    width: auto;
+    padding: (16/16rem) (32/16rem);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: (16/16rem);
+    line-height: (16/16em);
+    font-weight: bold;
+    border-radius: (64/16rem);
+    overflow: hidden;
+
+    // Transition Properties
+    color: var(--bodyTextColorWhite);
+    transition: color 0.3s ease;
+    transition-delay: 0.05s;
+    text-align: center;
+
+    &:hover {
+        color: var(--dark);
+
+        &:before {
+            transform: translateY(0);
+        }
+    }
+
+    &:before {
+        z-index: -1;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        content: "";
+        display: block;
+        background-color: #ffffff;
+        width: 100%;
+        height: 100%;
+
+        // Slide up from bottom
+        transform: translateY(-100%);
+        transition: transform 0.35s cubic-bezier(0.77, 0, 0.18, 1);
+    }
+}
+
+	.cs-button-outline {
+		z-index: 1;
+		position: relative;
+		display: inline-block;
+		width: auto;
+		padding: (16/16rem) (32/16rem);
+		text-decoration: none;
+		text-transform: uppercase;
+		font-size: (16/16rem);
+		line-height: (16/16em);
+		font-weight: bold;
+		border: 2px solid #000;
+
+		// Transition Properties
+		color: #000;
+		transition: color 0.3s;
+		transition-delay: 0.1s;
+		text-align: center;
+
+		&:hover {
+			color: #fff;
+
+			&:before {
+				width: 100%;
+			}
+		}
+
+		&:before {
+			z-index: -1;
+			position: absolute;
+			top: 0;
+			left: 0;
+			content: "";
+			opacity: 1;
+			display: block;
+			background-color: #000;
+			height: 100%;
+
+			//Transition properties
+			width: 0;
+			transition: width 0.3s;
+		}
+	}
+
+	// Utilities - small classes useful in various common situations
+	.cs-color {
+		color: var(--primary);
+	}
+
+	.cs-bold {
+		font-weight: 700;
+	}
+
+	.cs-hide-on-mobile {
+		display: none !important;
+	}
+}
+
+/* Desktop Utilities */
+@media only screen and (min-width: 64rem) {
+	.cs-hide-on-mobile {
+		display: block !important;
+	}
+
+	.cs-hide-on-desktop {
+		display: none !important;
+	}
+}
+
+/* Base Element Styles */
+@media only screen and (min-width: 0px) {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--headerFont);
+		line-height: 1.2em;
+		color: var(--headerColor);
+	}
+
+	p,
+	li,
+	a {
+		font-size: (16/16rem);
+		line-height: 1.5em;
+	}
+
+	p,
+	li {
+		color: var(--bodyTextColor);
+
+		a {
+			color: var(--primary);
+		}
+	}
+
+	a,
+	button {
+		&:hover {
+			cursor: pointer;
+		}
+	}
+}
+
+/* Fonts */
+@media only screen and (min-width: 0px) {
+	@font-face {
+		font-style: normal;
+		font-family: "Inter";
+		font-weight: 400;
+		font-display: swap;
+		src: local(""), url("/assets/fonts/InterRegular.woff2") format("woff2"), /* Chrome 26+, Opera 23+, Firefox 39+ */ url("/assets/fonts/InterRegular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+	}
+
+	
+	@font-face {
+		font-style: normal;
+		font-family: "Suisse Screen";
+		font-weight: 700;
+		font-display: swap;
+		src: local(""), url("/assets/fonts/SuisseScreen-Bold.woff2") format("woff2"), /* Chrome 26+, Opera 23+, Firefox 39+ */ url("/assets/fonts/SuisseScreen-Bold.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+	}
+}
+
