@@ -58,8 +58,7 @@
         }
 
         .cs-text {
-            // bodyTextColorWhite at reduced opacity — no raw hex
-            color: rgba(250, 251, 252, 0.55); // var(--bodyTextColorWhite) = #fafbfc
+            color: rgba(250, 251, 252, 0.55);
             font-size: (14/16rem);
             line-height: 1.7;
             max-width: (400/16rem);
@@ -78,7 +77,7 @@
             font-size: (11/16rem);
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: rgba(250, 251, 252, 0.35); // var(--bodyTextColorWhite) at low opacity
+            color: rgba(250, 251, 252, 0.35);
         }
 
         .cs-meta-divider {
@@ -122,8 +121,8 @@
             height: (48/16rem);
             background: linear-gradient(
                 to bottom,
-                rgba(244, 115, 35, 0) 0%,    // var(--primary) = #f47323, transparent
-                rgba(244, 115, 35, 0.6) 100%  // var(--primary) at 60%
+                rgba(244, 115, 35, 0) 0%,
+                rgba(244, 115, 35, 0.6) 100%
             );
             animation: anHeroScrollCue 2s ease-in-out infinite;
         }
@@ -207,15 +206,11 @@
 
 /* =============================================================
    AN Ventures Portfolio
-   3 independent sticky scroll groups + divider sections.
-   CodeStitch BEM conventions, pixel-to-rem via (X/16rem).
    ============================================================= */
 
-// Shared raw channel values — derived from design tokens
-// --dark: #121212  --bodyTextColorWhite: #fafbfc  --primary: #f47323
 @dark-rgb:        18, 18, 18;
-@white-rgb:       250, 251, 252;  // --bodyTextColorWhite
-@primary-rgb:     244, 115, 35;   // --primary
+@white-rgb:       250, 251, 252;
+@primary-rgb:     244, 115, 35;
 
 /* ── FIXED SIDEBAR ──────────────────────────────────────────── */
 #vp-sidebar {
@@ -265,7 +260,7 @@
             transform: translateY(-50%);
             width: (2/16rem);
             height: 0;
-            background: var(--primary); // accent tick — orange, not white
+            background: var(--primary);
             transition: height 0.4s ease;
         }
 
@@ -354,7 +349,6 @@
 /* ── HORIZONTAL GROUP ───────────────────────────────────────── */
 .vp-group {
     position: relative;
-    /* height set dynamically by JS */
 
     .vp-group-sticky {
         position: sticky;
@@ -363,7 +357,6 @@
         height: 100vh;
         overflow: hidden;
 
-        /* Left gradient so sidebar stays readable over images */
         &::before {
             content: "";
             position: absolute;
@@ -381,7 +374,6 @@
         display: flex;
         height: 100%;
         will-change: transform;
-        /* width set by JS */
     }
 }
 
@@ -400,10 +392,7 @@
     inset: 0;
     background-size: cover;
     background-position: center;
-    transition: transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     will-change: transform;
-
-    .vp-panel:hover & { transform: scale(1.04); }
 }
 
 .vp-card-overlay {
@@ -415,10 +404,7 @@
         rgba(@dark-rgb, 0.38) 50%,
         rgba(@dark-rgb, 0.10) 100%
     );
-    opacity: 0.75;
-    transition: opacity 0.5s ease;
-
-    .vp-panel:hover & { opacity: 1; }
+    opacity: 1;
 }
 
 .vp-card-content {
@@ -445,15 +431,8 @@
 }
 
 .vp-card-body {
-    transform: translateY((18/16rem));
-    opacity: 0;
-    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                opacity 0.5s ease;
-
-    .vp-panel:hover & {
-        transform: translateY(0);
-        opacity: 1;
-    }
+    transform: none;
+    opacity: 1;
 }
 
 .vp-card-title {
@@ -465,10 +444,7 @@
     color: var(--headerColor);
     line-height: 1.05;
     margin: 0 0 (6/16rem);
-    transform: translateY((10/16rem));
-    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.05s;
-
-    .vp-panel:hover & { transform: translateY(0); }
+    transform: none;
 }
 
 .vp-card-role {
@@ -510,7 +486,7 @@
     }
 }
 
-/* ── DOTS (mobile only — hidden on desktop) ─────────────────── */
+/* ── DOTS (mobile only) ─────────────────────────────────────── */
 .vp-dots {
     position: absolute;
     bottom: (28/16rem);
@@ -530,12 +506,12 @@
     transition: all 0.3s ease;
 
     &.is-active {
-        background: var(--primary); // orange active dot — not flat white
+        background: var(--primary);
         transform: scale(1.4);
     }
 }
 
-/* ── PROGRESS BAR (desktop only — hidden on mobile) ─────────── */
+/* ── PROGRESS BAR (desktop only) ────────────────────────────── */
 .vp-progress {
     display: none;
 }
@@ -577,7 +553,6 @@
 
     #vp-sidebar { display: none; }
 
-    /* Mobile tab nav */
     .vp-mobile-tabs {
         display: flex;
         position: fixed;
@@ -621,7 +596,7 @@
             width: (3/16rem);
             height: (3/16rem);
             border-radius: 50%;
-            background: var(--primary); // orange indicator dot
+            background: var(--primary);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -632,7 +607,6 @@
         }
     }
 
-    /* Divider — 50vh on mobile */
     .vp-divider-section {
         height: 50vh;
         padding: (28/16rem) (24/16rem);
@@ -650,18 +624,15 @@
         }
     }
 
-    /* Group — just 100vh, no extra scroll height */
     .vp-group {
         height: 100vh !important;
         position: relative;
 
-        /* Sticky becomes the scroll container */
         .vp-group-sticky {
             position: relative;
             top: auto;
             width: 100%;
             height: 100vh;
-            /* CSS scroll snap — native browser swipe */
             overflow-x: scroll;
             overflow-y: hidden;
             scroll-snap-type: x mandatory;
@@ -672,7 +643,6 @@
             &::before { display: none; }
         }
 
-        /* Track flows naturally inside scroll container */
         .vp-track {
             transform: none !important;
             display: flex;
@@ -680,7 +650,6 @@
         }
     }
 
-    /* Each panel snaps into place */
     .vp-panel {
         flex: 0 0 100vw;
         width: 100vw;
@@ -689,22 +658,16 @@
         scroll-snap-stop: always;
     }
 
-    /* Cards always visible on mobile — no hover needed */
-    .vp-card-body {
-        transform: none !important;
-        opacity: 1 !important;
-    }
+    .vp-card-body  { transform: none !important; opacity: 1 !important; }
     .vp-card-title { transform: none !important; }
 
     .vp-card-category  { margin-left: 0; }
     .vp-card-body-wrap { padding-left: 0; }
     .vp-card-content   { padding: 0 (24/16rem) (40/16rem); }
 
-    /* Dots visible on mobile */
     .vp-dots { bottom: (20/16rem); }
     .vp-dot  { width: (5/16rem); height: (5/16rem); }
 
-    /* Progress bar hidden on mobile */
     .vp-progress { display: none !important; }
 
     .vp-scroll-hint { display: none; }
@@ -713,10 +676,8 @@
 /* ── DESKTOP: progress bar ──────────────────────────────────── */
 @media only screen and (min-width: 48rem) {
 
-    /* Dots hidden on desktop */
     .vp-dots { display: none; }
 
-    /* Progress bar shown on desktop */
     .vp-progress {
         display: block;
         position: absolute;
@@ -735,7 +696,7 @@
     .vp-progress-fill {
         height: 100%;
         width: 0%;
-        background: var(--primary); // orange fill — not flat white
+        background: var(--primary);
         border-radius: 999px;
         transition: width 0.15s linear;
     }

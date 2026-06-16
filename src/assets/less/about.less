@@ -2,18 +2,15 @@
 <---    About Chapter Sections  -->
 <--- -------------------------- -*/
 
-// Raw channel values — from design tokens
-// --dark: #121212  --bodyTextColorWhite: #fafbfc  --primary: #f47323
 @dark-rgb:    18, 18, 18;
-@white-rgb:   250, 251, 252;  // --bodyTextColorWhite
-@primary-rgb: 244, 115, 35;   // --primary
+@white-rgb:   250, 251, 252;
+@primary-rgb: 244, 115, 35;
 
 /* ── CHAPTER WRAPPER ───────────────────────────────────────── */
 @media only screen and (min-width: 0rem) {
 
     .an-chapter {
         position: relative;
-        /* height set dynamically by JS: (pairs + 1) * 100vh */
     }
 
     /* ── STICKY CONTAINER ──────────────────────────────────── */
@@ -30,7 +27,6 @@
         display: flex;
         height: 100%;
         will-change: transform;
-        /* width set by JS */
     }
 
     /* ── TITLE PANEL ────────────────────────────────────────── */
@@ -44,6 +40,17 @@
         justify-content: center;
         padding: (56/16rem) (64/16rem);
         position: relative;
+
+        // Primary left border accent
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--primary);
+        }
 
         &::after { display: none; }
     }
@@ -69,10 +76,11 @@
 
         em {
             font-style: normal;
-            color: rgba(@white-rgb, 0.12);
+            font-family: var(--bodyFont);
+            color: var(--primary); // chapter subtitle in primary
             display: block;
             font-size: 0.38em;
-            letter-spacing: 0.06em;
+            letter-spacing: 0.02em;
             font-weight: 500;
             margin-top: (12/16rem);
             line-height: 1.6;
@@ -99,6 +107,18 @@
         padding: (64/16rem) (56/16rem) (64/16rem) (64/16rem);
         position: relative;
 
+        // Primary left border accent
+        &::before {
+            content: "";
+            position: absolute;
+            top: (48/16rem);
+            left: 0;
+            width: 3px;
+            height: (60/16rem);
+            background: var(--primary);
+            border-radius: 0 2px 2px 0;
+        }
+
         &::after { display: none; }
     }
 
@@ -107,7 +127,7 @@
         font-size: (10/16rem);
         letter-spacing: 0.2em;
         text-transform: uppercase;
-        color: rgba(@white-rgb, 0.25);
+        color: var(--primary); // eyebrow in primary
         margin-bottom: (24/16rem);
         display: block;
     }
@@ -115,6 +135,7 @@
     .an-pair-heading {
         font-family: var(--headerFont);
         font-size: clamp((28/16rem), 2.8vw, (44/16rem));
+        text-transform: uppercase;
         font-weight: 700;
         line-height: 1.05;
         letter-spacing: -0.02em;
@@ -134,6 +155,8 @@
     /* ── STAT CALLOUT ───────────────────────────────────────── */
     .an-pair-stat {
         margin-top: (32/16rem);
+        padding-top: (24/16rem);
+        border-top: 1px solid var(--darkBorder);
         display: flex;
         align-items: baseline;
         gap: (8/16rem);
@@ -143,7 +166,7 @@
         font-family: var(--headerFont);
         font-size: clamp((32/16rem), 3.5vw, (52/16rem));
         font-weight: 800;
-        color: var(--headerColor);
+        color: var(--primary); // stat number in primary
         line-height: 1;
         letter-spacing: -0.04em;
     }
@@ -162,7 +185,6 @@
         overflow: hidden;
         background: var(--darkElevated);
 
-        /* Subtle left fade for text bleed */
         &::before {
             content: "";
             position: absolute;
@@ -204,7 +226,7 @@
     .an-progress-fill {
         height: 100%;
         width: 0%;
-        background: var(--primary); // orange fill — matches portfolio + hero
+        background: var(--primary);
         border-radius: 999px;
         transition: width 0.12s linear;
     }
@@ -250,7 +272,6 @@
 /* ── MOBILE (max 767px) ─────────────────────────────────────── */
 @media only screen and (max-width: 47.9375rem) {
 
-    /* Title panel — full viewport on mobile */
     .an-title-panel {
         flex: 0 0 100vw;
         width: 100vw;
@@ -264,9 +285,8 @@
         font-size: clamp((36/16rem), 12vw, (56/16rem));
     }
 
-    /* Pair panel — split into text + image as separate full-screen slides */
     .an-pair {
-        flex: 0 0 200vw;  // each pair = 2 full-screen slides
+        flex: 0 0 200vw;
         width: 200vw;
         grid-template-columns: 100vw 100vw;
         grid-template-rows: 1fr;
@@ -274,7 +294,7 @@
     }
 
     .an-pair-img {
-        order: 1;  // image always after text
+        order: 1;
         position: relative;
         height: 100%;
         overflow: hidden;
@@ -289,7 +309,7 @@
     }
 
     .an-pair-text {
-        order: 0;  // text always first
+        order: 0;
         width: 100vw;
         padding: (40/16rem) (28/16rem);
         justify-content: center;

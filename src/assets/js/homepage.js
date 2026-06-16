@@ -147,37 +147,37 @@
     }
 
     // ── Mobile ────────────────────────────────────────────────────────────────
-   if (mobile) {
-    gsap.set([brandText, portraitWrap, portraitOver, mosaic], { clearProps: "all" });
+    if (mobile) {
+      gsap.set([brandText, portraitWrap, portraitOver, mosaic], { clearProps: "all" });
 
-    // All tiles start hidden
-    gsap.set(mosaicTiles, { scale: 0, opacity: 0 });
+      // All tiles start hidden
+      gsap.set(mosaicTiles, { scale: 0, opacity: 0 });
 
-    // Center slot starts at normal size (no jump)
-    gsap.set(mosaicSlot, { scale: 1, opacity: 1, zIndex: 10 });
+      // Center slot starts at normal size (no jump)
+      gsap.set(mosaicSlot, { scale: 1, opacity: 1, zIndex: 10 });
 
-    const slotLabel = mosaicSlot.querySelector(".cs-mosaic-slot-label");
-    if (slotLabel) slotLabel.textContent = "Built for Impact.";
+      const slotLabel = mosaicSlot.querySelector(".cs-mosaic-slot-label");
+      if (slotLabel) slotLabel.innerHTML = 'Built for <span class="cs-accent">Impact.</span>';
 
-    ScrollTrigger.create({
+      ScrollTrigger.create({
         trigger: section,
-        start:   "top 60%", // trigger earlier so tiles are visible as you scroll in
+        start:   "top 60%",
         once:    true,
         onEnter: function () {
-            mosaicTiles.forEach(function (tile, i) {
-                gsap.to(tile, {
-                    scale:    1,
-                    opacity:  TILE_OPACITY,
-                    duration: 0.6,
-                    delay:    tileDelays[i] * 0.25,
-                    ease:     "back.out(1.4)",
-                });
+          mosaicTiles.forEach(function (tile, i) {
+            gsap.to(tile, {
+              scale:    1,
+              opacity:  TILE_OPACITY,
+              duration: 0.6,
+              delay:    tileDelays[i] * 0.25,
+              ease:     "back.out(1.4)",
             });
+          });
         },
-    });
+      });
 
-    return;
-}
+      return;
+    }
 
     // ── Desktop only from here ─────────────────────────────────────────────────
     const PW       = Math.round(SW * 0.30);
@@ -251,9 +251,9 @@
     let labelState = "large";
     function setLabel(state) {
       if (!portraitLabel || labelState === state) return;
-      portraitLabel.textContent = state === "large"
-        ? "More Than an Athlete?"
-        : "Built for Impact.";
+      portraitLabel.innerHTML = state === "large"
+        ? '<span class="cs-accent">More</span> Than an Athlete?'
+        : 'Built for <span class="cs-accent">Impact.</span>';
       labelState = state;
     }
 
