@@ -157,7 +157,7 @@
       gsap.set(mosaicSlot, { scale: 1, opacity: 1, zIndex: 10 });
 
       const slotLabel = mosaicSlot.querySelector(".cs-mosaic-slot-label");
-      if (slotLabel) slotLabel.innerHTML = 'Built for <span class="cs-accent">Impact.</span>';
+      if (slotLabel) slotLabel.innerHTML = 'Built for<br><span class="cs-accent">Impact</span>';
 
       ScrollTrigger.create({
         trigger: section,
@@ -252,8 +252,8 @@
     function setLabel(state) {
       if (!portraitLabel || labelState === state) return;
       portraitLabel.innerHTML = state === "large"
-        ? '<span class="cs-accent">More</span> Than an Athlete?'
-        : 'Built for <span class="cs-accent">Impact.</span>';
+        ? '<span class="cs-accent">More</span> Than an Athlete'
+        : 'Built for<br><span class="cs-accent">Impact</span>';
       labelState = state;
     }
 
@@ -449,7 +449,7 @@
     }
 
     function onScroll() {
-        if (!spacer || window.innerWidth < 1024) {
+        if (!spacer || window.innerWidth < 1025) {
             activateAll();
             return;
         }
@@ -466,7 +466,7 @@
     }
 
     // Init
-    if (window.innerWidth < 1024) {
+    if (window.innerWidth < 1025) {
         activateAll();
     } else {
         words[0]  && words[0].classList.add('is-active');

@@ -704,11 +704,39 @@
             margin: 0;
         }
 
+        .cs-content-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: (20/16rem);
+        }
+
         .cs-text {
             line-height: 1.65em;
             color: var(--bodyTextColor);
             max-width: (520/16rem);
             margin: 0;
+        }
+
+        .cs-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: (14/16rem) (28/16rem);
+            background-color: var(--primary);
+            color: var(--bodyTextColorWhite);
+            font-family: var(--bodyFont);
+            font-size: (14/16rem);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: (64/16rem);
+            transition: background-color 0.2s ease, opacity 0.2s ease;
+
+            &:hover {
+                opacity: 0.85;
+            }
         }
 
         /* Card Group */
@@ -862,6 +890,10 @@
 
         .cs-title {
             flex-shrink: 0;
+        }
+
+        .cs-content-right {
+            align-items: flex-end;
         }
 
         .cs-text {
