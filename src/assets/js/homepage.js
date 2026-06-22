@@ -340,11 +340,13 @@
   }
 
   // ── Boot ───────────────────────────────────────────────────────────────────
-  window.addEventListener("load", function () {
-    requestAnimationFrame(function () {
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function () {
       requestAnimationFrame(init);
     });
-  });
+  } else {
+    requestAnimationFrame(init);
+  }
 
 })();
 
