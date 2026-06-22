@@ -215,6 +215,7 @@
       width:      PW,
       height:     PH,
       zIndex:     5,
+      opacity:    1,
     });
 
     gsap.set(mosaic,      { opacity: 0 });
