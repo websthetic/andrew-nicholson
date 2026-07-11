@@ -251,79 +251,59 @@
 <---             CTA            -->
 <--- -------------------------- -*/
 
-@media only screen and (min-width: 0px) {
+@media only screen and (min-width: 0rem) {
     #cs-cta {
-        position: relative;
-        overflow: hidden;
+        background-color: var(--darkElevated);
+    }
 
-        /* Parallax image layer */
-        .cs-background {
-            width: 100%;
-            height: 110%;
-            position: absolute;
-            top: -5%;
-            left: 0;
-            z-index: 0;
-            will-change: transform;
+    #cs-cta .cs-container {
+        width: 100%;
+        max-width: (1280/16rem);
+        margin: 0 auto;
+        padding: var(--sectionPadding);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: (32/16rem);
+        box-sizing: border-box;
+    }
 
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                object-position: center;
-                display: block;
-            }
+    .cs-cta-header {
+        width: 100%;
+    }
 
-            /* Dark overlay */
-            &:after {
-                content: "";
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.65);
-                position: absolute;
-                top: 0;
-                left: 0;
-                display: block;
-            }
-        }
+    .cs-cta-title {
+        font-size: clamp(3rem, 12vw, 6rem);
+        font-family: var(--headerFont);
+        font-weight: 900;
+        line-height: 0.98em;
+        letter-spacing: -0.03em;
+        text-transform: uppercase;
+        color: var(--bodyTextColorWhite);
+        margin: 0;
 
-        .cs-container {
-            width: 100%;
-            max-width: (1280/16rem);
-            margin: 0 auto;
-            padding: var(--sectionPadding);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: (32/16rem);
-            box-sizing: border-box;
-            position: relative;
-            z-index: 1;
+        span {
+            color: var(--primary);
         }
     }
 
     .cs-cta-content {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        gap: (16/16rem);
+        align-items: flex-start;
+        gap: (20/16rem);
+        max-width: (420/16rem);
     }
 
-    .cs-cta-title {
-        font-size: clamp(2.5rem, 6vw, 4.5rem);
-        font-family: var(--headerFont);
-        font-weight: 900;
-        line-height: 1.05em;
-        letter-spacing: -0.02em;
+    .cs-cta-eyebrow {
+        font-size: (14/16rem);
+        font-family: var(--bodyFont);
+        font-weight: 700;
+        line-height: 1.2em;
+        letter-spacing: 0.14em;
         text-transform: uppercase;
-        color: var(--bodyTextColorWhite);
+        color: var(--primary);
         margin: 0;
-        max-width: (800/16rem);
-
-        span {
-            color: var(--primary);
-        }
     }
 
     .cs-cta-text {
@@ -332,8 +312,28 @@
         font-weight: 400;
         line-height: 1.6em;
         color: rgba(255, 255, 255, 0.7);
-        max-width: (520/16rem);
         margin: 0;
+    }
+}
+
+/* Desktop - side-by-side */
+@media only screen and (min-width: 64rem) {
+    #cs-cta .cs-container {
+        flex-direction: row;
+        align-items: center;
+        gap: (40/16rem);
+    }
+
+    .cs-cta-header {
+        flex: 1.4;
+        width: auto;
+    }
+
+    .cs-cta-content {
+        flex: 1;
+        max-width: none;
+        border-left: 1px solid rgba(255, 255, 255, 0.12);
+        padding-left: (40/16rem);
     }
 }
 
