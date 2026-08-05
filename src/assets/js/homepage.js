@@ -356,24 +356,37 @@
 (function () {
 
     /* ── 1. Marquee ── */
+    const CDN = "https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-portfolio/logos/";
+
+    /* cls: shape class (cs-wide | cs-square | cs-tall)
+       Optionally append a fine-tune class: cs-xs | cs-sm | cs-lg | cs-xl
+       e.g. cls: "cs-square cs-lg"                                        */
     const logos = [
-        { text: "Recess Athletic Club",   cls: "" },
-        { text: "Rise Up",                cls: "cs-upper" },
-        { text: "44Hoops Foundation",     cls: "" },
-        { text: "Revibe",                 cls: "cs-script" },
-        { text: "Fuel Nutrition Co.",     cls: "" },
-        { text: "MoveFit Performance",    cls: "cs-upper" },
-        { text: "Crumbl Cookies Ontario", cls: "cs-serif" },
-        { text: "Canurta Therapeutics",   cls: "" },
+       
+        { src: "riseup-logo.webp",          alt: "Rise Up",                cls: "cs-wide" },
+        { src: "revibe-logo.png",           alt: "Revibe",                 cls: "cs-wide" },
+        { src: "movefit-logo.avif",         alt: "MoveFit Performance",    cls: "cs-wide" },
+         { src: "44-hoops.webp",             alt: "44Hoops Foundation",     cls: "cs-square" },
+        { src: "crumbl_logo.svg",           alt: "Crumbl Cookies Ontario", cls: "cs-wide" },
+        { src: "canurta-therapeutics.avif", alt: "Canurta Therapeutics",   cls: "cs-wide" },
     ];
 
     const track = document.getElementById("cs-marquee-track");
     if (track) {
         [...logos, ...logos, ...logos, ...logos].forEach(function (logo) {
-            const span = document.createElement("span");
-            span.className = "cs-logo-item" + (logo.cls ? " " + logo.cls : "");
-            span.textContent = logo.text;
-            track.appendChild(span);
+            const wrap = document.createElement("span");
+            wrap.className = "cs-logo-item" + (logo.cls ? " " + logo.cls : "");
+
+            const img = document.createElement("img");
+            img.className = "cs-logo-img";
+            img.src = CDN + logo.src;
+            img.alt = "";
+            img.setAttribute("aria-hidden", "true");
+            img.loading = "lazy";
+            img.decoding = "async";
+
+            wrap.appendChild(img);
+            track.appendChild(wrap);
         });
     }
 

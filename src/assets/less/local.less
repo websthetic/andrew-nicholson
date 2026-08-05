@@ -364,10 +364,10 @@
 
         .cs-marquee-track {
             display: flex;
-            gap: (72/16rem);
+            gap: (28/16rem);
             width: max-content;
             align-items: center;
-            animation: brandStatementMarquee 120s linear infinite;
+            animation: brandStatementMarquee 45s linear infinite;
 
             &:hover {
                 animation-play-state: paused;
@@ -375,39 +375,52 @@
         }
 
         .cs-logo-item {
-            font-family: var(--bodyFont);
-            font-size: (32/16rem);
-            font-weight: 600;
-            color: var(--bodyTextColor);
-            white-space: nowrap;
-            letter-spacing: 0.01em;
-            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* Fixed box — nothing exceeds it in either direction */
+            width: (120/16rem);
+            height: (48/16rem);
+            flex: none;
             user-select: none;
 
-            &:hover {
-                color: var(--primary);
+            /* Default optical multiplier, overridden per logo below */
+            --logoScale: 1;
+
+            .cs-logo-img {
+                display: block;
+                max-width: 100%;
+                max-height: 100%;
+                width: auto;
+                height: auto;
+                object-fit: contain;
+                transform: scale(var(--logoScale));
+
+                /* Flattens every mark to one light grey on the dark bg */
+                filter: grayscale(1) brightness(0) invert(1);
+                opacity: 0.45;
+                transition: opacity 0.3s ease;
+
+                /* Alternative: keep original artwork, just desaturated
+                filter: grayscale(1);
+                opacity: 0.6;
+                */
             }
 
-            &.cs-serif {
-                font-family: Georgia, serif;
-                font-weight: 400;
-                font-size: (32/16rem);
+            &:hover .cs-logo-img {
+                opacity: 1;
             }
 
-            &.cs-script {
-                font-family: Georgia, serif;
-                font-style: italic;
-                font-weight: 400;
-                font-size: (32/16rem);
-            }
+            /* Shape-based defaults */
+            &.cs-wide   { --logoScale: 1; }    // horizontal wordmarks
+            &.cs-square { --logoScale: 1.15; } // badges / stacked marks
+            &.cs-tall   { --logoScale: 1.25; } // vertical lockups
 
-            &.cs-upper {
-                font-family: var(--headerFont);
-                font-weight: 700;
-                font-size: (32/16rem);
-                text-transform: uppercase;
-                letter-spacing: 0.14em;
-            }
+            /* Fine-tuning escape hatches */
+            &.cs-xs { --logoScale: 0.8; }
+            &.cs-sm { --logoScale: 0.9; }
+            &.cs-lg { --logoScale: 1.2; }
+            &.cs-xl { --logoScale: 1.35; }
         }
     }
 
@@ -422,6 +435,15 @@
 
     #brand-statement {
         padding: clamp(3.75rem, 7.82vw, 6.25rem) (20/16rem) clamp(3rem, 5vw, 4rem);
+
+        .cs-marquee-track {
+            gap: (40/16rem);
+        }
+
+        .cs-logo-item {
+            width: (145/16rem);
+            height: (58/16rem);
+        }
     }
 
 }
