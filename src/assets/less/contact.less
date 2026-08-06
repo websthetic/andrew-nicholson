@@ -1,5 +1,3 @@
-
-
 /*-- -------------------------- -->
 <---        Contact Form        -->
 <--- -------------------------- -*/
@@ -9,6 +7,7 @@
 @dark-rgb:    18, 18, 18;
 @white-rgb:   250, 251, 252;  // --bodyTextColorWhite
 @primary-rgb: 244, 115, 35;   // --primary
+@error-rgb:   224, 96, 96;    // form error state
 
 @media only screen and (min-width: 0rem) {
     #contact-form {
@@ -165,6 +164,19 @@
             gap: (20/16rem);
         }
 
+        /* Netlify honeypot — must render in the DOM but stay invisible */
+        .cf-hp {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
         .cf-field {
             display: flex;
             flex-direction: column;
@@ -273,17 +285,24 @@
             }
         }
 
-        .cf-success {
+        /* Status message — success and error share one element */
+        .cf-message {
             font-family: var(--bodyFont);
             font-size: (13/16rem);
+            line-height: 1.6;
             color: var(--primary);
             opacity: 0;
             transition: opacity 0.4s ease;
             margin: 0;
             text-align: center;
+            max-width: (320/16rem);
 
             &.is-visible {
                 opacity: 1;
+            }
+
+            &.is-error {
+                color: rgba(@error-rgb, 0.9);
             }
         }
     }
@@ -354,7 +373,7 @@
             margin-top: (12/16rem);
         }
 
-        .cf-success {
+        .cf-message {
             text-align: left;
         }
     }

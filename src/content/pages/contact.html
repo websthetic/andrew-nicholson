@@ -62,7 +62,24 @@ permalink: "/contact/"
                 <p class="cf-form-sub">All fields are required. We'll only use your details to reply.</p>
             </div>
 
-            <form class="cf-form" id="cf-form" novalidate>
+            <form class="cf-form"
+                  id="cf-form"
+                  name="contact"
+                  method="POST"
+                  action="/"
+                  data-netlify="true"
+                  netlify-honeypot="bot-field"
+                  novalidate>
+
+                <!-- Required by Netlify to route the AJAX submission -->
+                <input type="hidden" name="form-name" value="contact" />
+
+                <!-- Honeypot: present in the DOM, hidden from humans -->
+                <p class="cf-hp" aria-hidden="true">
+                    <label>Don't fill this out if you're human:
+                        <input name="bot-field" tabindex="-1" autocomplete="off" />
+                    </label>
+                </p>
 
                 <div class="cf-field">
                     <span class="cf-label">Enquiry Type</span>
@@ -94,7 +111,7 @@ permalink: "/contact/"
 
                 <div class="cf-submit-wrap">
                     <button class="cs-button-solid" type="submit">Send Message</button>
-                    <p class="cf-success" id="cf-success" aria-live="polite">Thanks, we'll be in touch soon.</p>
+                    <p class="cf-message" id="cf-status" role="status" aria-live="polite"></p>
                 </div>
 
             </form>
