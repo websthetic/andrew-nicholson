@@ -7,7 +7,7 @@
     var DEFAULT_CATEGORY = "business";
     var SUBMIT_LABEL     = "Send Message";
     var SUCCESS_TEXT     = "Thank You! We'll be in touch soon.";
-    var ERROR_TEXT       = "Something went wrong. Please try again, or email hello@andrewnicholson.com.";
+    var ERROR_TEXT       = "Something went wrong. Please try again, or email founder@thenicholson.org";
 
     var form          = document.getElementById("cf-form");
     var tabContainer  = document.getElementById("cf-tabs");
