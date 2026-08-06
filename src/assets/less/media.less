@@ -32,11 +32,11 @@
 
     .am-hero-background img {
         position: absolute;
+        inset: 0;
         width: 100%;
-        height: 130%;
-        top: -15%;
+        height: 100%;
         object-fit: cover;
-        object-position: center top;
+        object-position: center center;
     }
 
     .am-hero-container {
@@ -145,6 +145,14 @@
     }
 
 } /* end mobile */
+
+@media only screen and (min-width: 64rem) {
+
+    .am-hero-background img {
+        object-position: center bottom;
+    }
+
+} /* end desktop */
 
 /*-- -------------------------------- -->
 <---         Speaking Topics          -->
@@ -712,11 +720,11 @@
         align-self: center;
     }
 
-    /* ── Press: featured + list ── */
+    /* ── Press: two-card grid ── */
     .am-press-pub {
         display: flex;
         align-items: center;
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.5rem;
     }
 
     .am-press-pub-name {
@@ -725,129 +733,53 @@
         font-weight: 900;
         text-transform: uppercase;
         letter-spacing: 0.08em;
-        color: var(--headerColor);
+        color: var(--primary);
     }
 
     .am-press-headline {
-        font-size: 0.9375rem;
-        line-height: 1.55;
-        color: var(--bodyTextColor);
-    }
-
-    .am-press-feature {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .am-press-featured {
-        position: relative;
-        min-height: 18rem;
-        border-radius: 0.5rem;
-        overflow: hidden;
-        background-color: var(--darkCard);
-    }
-
-    .am-press-featured-bg {
-        position: absolute;
-        inset: 0;
-        z-index: 0;
-        overflow: hidden;
-    }
-
-    .am-press-featured-bg img {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-    }
-
-    .am-press-featured::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: 1;
-        background: linear-gradient(to top, rgba(18, 18, 18, 0.94) 0%, rgba(18, 18, 18, 0.55) 50%, rgba(18, 18, 18, 0.1) 100%);
-    }
-
-    .am-press-featured-content {
-        position: relative;
-        z-index: 2;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        gap: 0.375rem;
-        padding: 1.5rem 1.25rem;
-    }
-
-    .am-press-featured .am-press-pub {
-        display: inline-flex;
-        background-color: rgba(255, 255, 255, 0.12);
-        padding: 0.375rem 0.75rem;
-        border-radius: 0.25rem;
-        margin-bottom: 0.25rem;
-        width: fit-content;
-    }
-
-    .am-press-featured .am-press-pub-name {
-        font-size: 0.8125rem;
-    }
-
-    .am-press-featured-headline {
-        font-size: clamp(1.125rem, 3vw, 1.375rem);
+        font-size: clamp(1.0625rem, 2.4vw, 1.25rem);
         font-weight: 700;
         line-height: 1.35;
-        color: #fff;
-        max-width: 28rem;
+        color: var(--headerColor);
         margin: 0;
     }
 
-    .am-press-featured .am-media-cta {
-        margin-top: 0.5rem;
+    .am-press-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
 
-    .am-press-list {
+    .am-press-card {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        align-items: flex-start;
+        padding: 1.75rem 1.5rem;
+        border: 1px solid var(--darkBorder);
+        border-radius: 0.5rem;
+        background-color: var(--darkCard);
+        text-decoration: none;
+        transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
     }
 
-    .am-press-list-row {
-        padding: 1.25rem 0;
-        border-bottom: 1px solid var(--darkBorder);
-        display: flex;
-        flex-direction: column;
-        gap: 0.375rem;
+    .am-press-card:hover {
+        border-color: rgba(244, 115, 35, 0.4);
+        background-color: rgba(255, 255, 255, 0.03);
+        transform: translateY(-0.125rem);
     }
 
-    .am-press-list-row:first-child {
-        padding-top: 0;
-    }
-
-    .am-press-list-row:last-child {
-        border-bottom: none;
-        padding-bottom: 0;
+    .am-press-card .am-media-cta {
+        margin-top: auto;
+        padding-top: 1.25rem;
     }
 
 }
 
 @media only screen and (min-width: 48rem) {
 
-    .am-press-feature {
-        flex-direction: row;
+    .am-press-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 1.5rem;
-    }
-
-    .am-press-featured {
-        flex: 0 0 60%;
-        min-height: 22rem;
-    }
-
-    .am-press-list {
-        flex: 1;
     }
 
 }

@@ -1,3 +1,5 @@
+
+
 /*-- -------------------------- -->
 <---        Contact Form        -->
 <--- -------------------------- -*/
@@ -23,6 +25,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+        }
+
+        .cf-col {
+            width: 100%;
         }
 
         /* Header */
@@ -55,12 +61,100 @@
 
         .cf-sub {
             font-family: var(--bodyFont);
-            font-size: (14/16rem);
+            font-size: (16/16rem);
             line-height: 1.7;
             color: rgba(@white-rgb, 0.45);
             margin: 0 auto;
             max-width: (420/16rem);
             text-align: center;
+        }
+
+        /* Aside — contact details under the header */
+        .cf-aside {
+            width: 100%;
+            display: none; // hidden on mobile, form takes priority
+            flex-direction: column;
+        }
+
+        .cf-aside-divider {
+            margin: 0 0 (24/16rem);
+        }
+
+        .cf-detail {
+            display: flex;
+            flex-direction: column;
+            gap: (6/16rem);
+            margin-top: (20/16rem);
+            margin-bottom: (20/16rem);
+        }
+
+        .cf-detail-link {
+            font-family: var(--bodyFont);
+            font-size: (14/16rem);
+            color: var(--headerColor);
+            text-decoration: none;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: var(--primary);
+            }
+        }
+
+        .cf-socials {
+            display: flex;
+            gap: (10/16rem);
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            a {
+                width: (38/16rem);
+                height: (38/16rem);
+                border-radius: 50%;
+                border: 1px solid rgba(@white-rgb, 0.12);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: rgba(@white-rgb, 0.55);
+                transition: color 0.3s ease, border-color 0.3s ease;
+
+                &:hover {
+                    color: var(--primary);
+                    border-color: rgba(@primary-rgb, 0.4);
+                }
+
+                svg {
+                    width: (16/16rem);
+                    height: (16/16rem);
+                }
+            }
+        }
+
+        /* Form column header */
+        .cf-form-header {
+            width: 100%;
+            margin-bottom: (28/16rem);
+            padding-bottom: (20/16rem);
+            border-bottom: 1px solid var(--darkBorder);
+        }
+
+        .cf-form-topper {
+            display: block;
+            font-family: var(--headerFont);
+            font-size: (16/16rem);
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: var(--headerColor);
+            margin-bottom: (8/16rem);
+        }
+
+        .cf-form-sub {
+            font-family: var(--bodyFont);
+            font-size: (13/16rem);
+            line-height: 1.6;
+            color: rgba(@white-rgb, 0.4);
+            margin: 0;
         }
 
         /* Form */
@@ -210,8 +304,66 @@
 
 @media only screen and (min-width: 64rem) {
     #contact-form {
+        align-items: flex-start;
+        padding: clamp(5rem, 9vw, 8rem) (32/16rem);
+
+        /* Two-column split */
         .cf-inner {
+            max-width: (1200/16rem);
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: clamp(3rem, 6vw, 5.5rem);
+            margin: 0 auto;
+        }
+
+        .cf-col-left {
+            flex: 0 1 (440/16rem);
+            position: sticky;
+            top: clamp(5rem, 9vw, 8rem);
+        }
+
+        .cf-col-right {
+            flex: 1 1 (560/16rem);
             max-width: (600/16rem);
+        }
+
+        /* Header goes left-aligned in the split */
+        .cf-header {
+            text-align: left;
+            margin-bottom: (36/16rem);
+        }
+
+        .cf-sub {
+            text-align: left;
+            margin-left: 0;
+            max-width: (380/16rem);
+        }
+
+        /* Aside appears alongside the form */
+        .cf-aside {
+            display: flex;
+        }
+
+        /* Button aligns with the form edge rather than centring */
+        .cf-submit-wrap {
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            gap: (20/16rem);
+            margin-top: (12/16rem);
+        }
+
+        .cf-success {
+            text-align: left;
+        }
+    }
+}
+
+@media only screen and (min-width: 80rem) {
+    #contact-form {
+        .cf-heading {
+            font-size: clamp(2.5rem, 3.4vw, 3.25rem);
         }
     }
 }

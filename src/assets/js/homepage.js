@@ -365,6 +365,7 @@
        
         { src: "riseup-logo.webp",          alt: "Rise Up",                cls: "cs-wide" },
         { src: "revibe-logo.png",           alt: "Revibe",                 cls: "cs-wide" },
+        { src: "recess-logo.png",           alt: "Recess",                 cls: "cs-wide" },
         { src: "movefit-logo.avif",         alt: "MoveFit Performance",    cls: "cs-wide" },
          { src: "44-hoops.webp",             alt: "44Hoops Foundation",     cls: "cs-square" },
         { src: "crumbl_logo.svg",           alt: "Crumbl Cookies Ontario", cls: "cs-wide" },
